@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import InputField from "../components/login/input";
 import { login } from "../services/authService";
-// import dotenv from "dotenv";
 
 const LoginForm: React.FC = () => {
 	const [email, setEmail] = useState("");
@@ -12,9 +11,7 @@ const LoginForm: React.FC = () => {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		try {
-			// dotenv.config();
 			await login(email, password);
-			console.log("<<<<<<<<<<<14", email, password);
 		} catch (err) {
 			setError("Error al iniciar sesión");
 		}
