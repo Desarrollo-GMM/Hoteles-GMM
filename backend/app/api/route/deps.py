@@ -14,6 +14,7 @@ from fastapi.security import OAuth2PasswordBearer
 from fastapi import Depends, HTTPException, status
 
 
+#* SSO IP
 reusable_oauth2 = OAuth2PasswordBearer(
     tokenUrl=f"http://10.1.7.92:8000/api/v1/login/access-token/{settings.CODE_SYSTEM}"
 )
@@ -33,6 +34,7 @@ async def async_get_db() -> AsyncGenerator:
 
 async def get_current_user(token: str = Depends(reusable_oauth2)):
     async with httpx.AsyncClient() as client:
+        #* SSO IP
         sso_response = await client.get(
             f"http://10.1.7.92:8000/api/v1/access_system/getCurrentUserSSO/{settings.CODE_SYSTEM}",
             headers={"Authorization": f"Bearer {token}"}
