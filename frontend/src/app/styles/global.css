@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+    user-select: none;
+  }
+
+.cssHCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cssVCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cssCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cssBetween {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
