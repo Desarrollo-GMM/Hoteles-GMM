@@ -30,10 +30,10 @@ export const login = async (username: string, password: string) => {
   }
 }
 
-export const userGetMe = async (token: string): Promise<UserGetMe> => {
+export const userGetMe = async (token: string): Promise<UserResponse[]> => {
   const BACKEND_SSO_GETME = `${API_BASE_URL_SSO}/login/get_user_by_token/`;
   try {
-    const response = await axios.get<UserGetMe>(BACKEND_SSO_GETME, {
+    const response = await axios.get(BACKEND_SSO_GETME, {
       params: { token },
       headers: { Authorization: `Bearer ${token}`}
     });
