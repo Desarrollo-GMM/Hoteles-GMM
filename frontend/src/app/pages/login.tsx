@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputField from "../components/login/input";
 import { login } from "../services/authService";
 
@@ -7,6 +7,20 @@ const LoginForm: React.FC = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
+    const [token, setToken] = useState<string | null>(null); 
+
+    useEffect(() => {
+        const fetchTokenFromURL = () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tokenFromURL = urlParams.get("redirect"); 
+            console.log("<<<<<<<<<<<<17, TOKEN: ", tokenFromURL);
+            if (tokenFromURL) {
+                setToken(tokenFromURL);
+            }
+        };
+
+        fetchTokenFromURL();
+    }, []); 
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
