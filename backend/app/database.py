@@ -3,6 +3,7 @@ from sqlalchemy.ext.declarative import DeclarativeMeta, declarative_base
 from sqlalchemy.orm import sessionmaker
 import databases
 
+#* SSO IP
 DATABASE_URL = "postgresql://lunaroja:sedena@10.1.7.92:5432/pjaguar"
 
 database = databases.Database(DATABASE_URL)

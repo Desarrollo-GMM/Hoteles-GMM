@@ -12,7 +12,7 @@ class AsyncPostgresDsn(PostgresDsn):
 
 class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
-    # GAFSACOMM IP
+    #* SSO IP
     API_DOMAIN: str = "http://10.1.7.92:8005"
     SECRET_KEY: str = secrets.token_urlsafe(32)
     # ! CREAR NUEVA EXPIRACIÓN PARA QUE SEA CORTA
