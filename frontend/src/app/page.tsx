@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginForm from './pages/login';
+// import Dashboard from './pages/dashboard';
 
 export default function Home() {
   return (
