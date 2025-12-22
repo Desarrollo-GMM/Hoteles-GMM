@@ -8,10 +8,6 @@ RUN pip install qrcode
 
 COPY ./app ./app
 COPY ./requirements.txt /app/requirements.txt
-COPY ./alembic/env.py /app/alembic/env.py
-COPY ./alembic.ini /app/alembic.ini
-COPY ./alembic/script.py.mako /app/alembic/script.py.mako
-COPY ./alembic/versions /app/alembic/versions
 
 WORKDIR /app
 
