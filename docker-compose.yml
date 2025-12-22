@@ -1,12 +1,12 @@
 services:
-  backend-leaf:
+  backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
       - "8001:8000"
     depends_on:
-      - postgres-leaf
+      - postgres
     env_file:
       - ./.env
     environment:
@@ -16,8 +16,8 @@ services:
       - ./backend/alembic:/app/alembic
       - ./backend/app/:/app/app
 
-  frontend-leaf:
-    container_name: frontend-leaf
+  frontend:
+    container_name: frontend
     build:
       context: ./frontend
       target: dev
@@ -34,8 +34,8 @@ services:
     ports:
       - 3001:3000
 
-  postgres-leaf:
-    container_name: postgres-leaf
+  postgres:
+    container_name: postgres
     image: postgres:latest
     environment:
       POSTGRES_USER: lunaroja

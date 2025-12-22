@@ -1,14 +1,10 @@
 from typing import Any, Dict, Generic, List, Optional, Type, TypeVar, Union, cast
-
-from fastapi.encoders import jsonable_encoder
-from pydantic import BaseModel
-from sqlalchemy.orm import Session
 from sqlalchemy.ext.asyncio import AsyncSession
-
-from app.base_class import Base
+from fastapi.encoders import jsonable_encoder
 from sqlalchemy.sql.expression import select
+from app.base_class import Base
+from pydantic import BaseModel
 
-from app.validation.check_validation import Validations
 
 ModelType = TypeVar("ModelType", bound=Base)
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
@@ -27,12 +23,12 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         """
         self.model = model
 
+
     async def get(self, db: AsyncSession, id: Any) -> Optional[ModelType]:
         result = await db.execute(select(self.model).filter(self.model.id == id))
-        Validations.validate_entity_not_found(result, "No se encontró registro.")
         return result.scalars().first()
 
-# 1306 BY MAHU
+
     async def getStatus(
             self, db: AsyncSession, *, status_user: int
     ) -> List[ModelType]:
@@ -41,20 +37,28 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         res = result.scalars().all()
         return res
 
+
     async def get_multi(
-            self, db: AsyncSession, *, skip: int = 0, limit: int = 10000
+            self, db: AsyncSession, *, skip: int = 0, limit: int = 1000000000
     ) -> List[ModelType]:
         query = select(self.model).offset(skip).limit(limit)
 
         result = await db.execute(query)
         res = result.scalars().all()
-        if len(res) > 0:
-            sorted_res = sorted(res, key=lambda x: x.id)
-            return sorted_res
-        return res
+        sorted_res = sorted(res, key=lambda x: x.id)
+        return sorted_res
+    
+    async def get_all(self, db: AsyncSession) -> List[ModelType]:
+        query = select(self.model)
+
+        result = await db.execute(query)
+        res = result.scalars().all()
+        sorted_res = sorted(res, key=lambda x: x.id)
+        return sorted_res
+
 
     async def get_multi_by_owner(
-            self, db: AsyncSession, *, owner_id: int, skip: int = 0, limit: int = 10000
+            self, db: AsyncSession, *, owner_id: int, skip: int = 0, limit: int = 100000000
     ) -> List[ModelType]:
         result = await db.execute(
             select(self.model)
@@ -64,14 +68,15 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         )
         return result.scalars().all()
 
+
     async def create(self, db: AsyncSession, *, obj_in: CreateSchemaType) -> ModelType:
-        # obj_in_data = jsonable_encoder(obj_in)
         obj_in_data = obj_in.dict()
         db_obj = self.model(**obj_in_data)  # type: ignore
         db.add(db_obj)
         await db.commit()
         await db.refresh(db_obj)
         return db_obj
+
 
     async def update(
             self,
@@ -92,6 +97,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         await db.commit()
         await db.refresh(db_obj)
         return db_obj
+
 
     async def remove(self, db: AsyncSession, *, id: int) -> ModelType:
         obj = await db.get(self.model, id)
