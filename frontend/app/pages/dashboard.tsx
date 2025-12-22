@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 // Components
-import Sidebar from "../components/principal/sidebar";
+import Sidebar from "../../components/principal/sidebar";
 // Services
 import { userGetMe } from "../services/authService";
 

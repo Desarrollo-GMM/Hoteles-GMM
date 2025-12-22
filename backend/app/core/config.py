@@ -1,39 +1,42 @@
 import secrets
-from typing import Any, Dict, List, Optional, Union, ClassVar
 import logging
-from pydantic import AnyHttpUrl, EmailStr, HttpUrl, PostgresDsn, validator
+from typing import Any, Dict, List, Optional, Union
 from pydantic_settings import BaseSettings
+from pydantic import AnyHttpUrl, EmailStr, HttpUrl, PostgresDsn, validator, ConfigDict
 
 logging.basicConfig(level=logging.INFO)
 
-PROJECT_NAME='zootopia'
+PROJECT_NAME = 'api-rcd'
+
 class AsyncPostgresDsn(PostgresDsn):
     allowed_schemes = {"postgres+asyncpg", "postgresql+asyncpg"}
 
-
 class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
-    #* SSO IP
-    API_DOMAIN: str = "http://10.110.156.176:8005"
+    # GAFSACOMM IP
+    API_DOMAIN_SSO: str = "http://10.110.161.240:8002" ## GAFSACOMM IP
+    API_DOMAIN: str = "http://10.110.161.240:8000"
     SECRET_KEY: str = secrets.token_urlsafe(32)
     # ! CREAR NUEVA EXPIRACIÓN PARA QUE SEA CORTA
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 8
     JOB_ACCESS_TOKEN_EXPIRE_MINUTES: int = 1
     SERVER_NAME: str
-    SERVER_HOST: AnyHttpUrl
+    SERVER_HOST: AnyHttpUrl = "10.110.161.240"
     BACKEND_CORS_ORIGINS: List[Union[AnyHttpUrl, str]] = []
     TEST_MODE: bool = False
     PROFILE_QUERY_MODE: bool = False
-    ARBITRARY_TYPES_ALLOWED: ClassVar[bool] = True
-    CODE_SYSTEM: int = 5
+    ARBITRARY_TYPES_ALLOWED: bool = True
+    CODE_SYSTEM: str = "32182a9a-2873-405d-b8b8-719b2d8bfd51"
     
     @validator("BACKEND_CORS_ORIGINS", pre=False)
     def assemble_cors_origins(cls, v: Union[str, List[Union[AnyHttpUrl, str]]]) -> List[Union[AnyHttpUrl, str]]:
-        if isinstance(v, str):
+        if isinstance(v, str) and not v.startswith("["):
             return [i.strip() for i in v.split(",")]
-        return v
+        elif isinstance(v, (list, str)):
+            return v
+        raise ValueError(v)
 
-    PROJECT_NAME: str
+    PROJECT_NAME: str = PROJECT_NAME
     SENTRY_DSN: Optional[HttpUrl] = None
 
     @validator("SENTRY_DSN", pre=True)
@@ -42,7 +45,7 @@ class Settings(BaseSettings):
             return None
         return v
 
-    POSTGRES_SERVER: str
+    POSTGRES_SERVER: str 
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
     POSTGRES_DB: str
@@ -55,19 +58,21 @@ class Settings(BaseSettings):
             return "postgres"
         if isinstance(v, str):
             return v
+        return v
 
     @validator("SQLALCHEMY_DATABASE_URI", pre=True)
     def assemble_db_connection(cls, v: Optional[str], values: Dict[str, Any]) -> Any:
         if isinstance(v, str):
             return v
-        return f"postgresql://{values['POSTGRES_USER']}:{values['POSTGRES_PASSWORD']}@{values['POSTGRES_SERVER']}/{values['POSTGRES_DB']}"
+        port = values.get("POSTGRES_PORT", "5435")
+        return f"postgresql://{values.get('POSTGRES_USER')}:{values.get('POSTGRES_PASSWORD')}@{values.get('POSTGRES_SERVER')}:{port}/{values.get('POSTGRES_DB')}"
 
     @validator("SQLALCHEMY_DATABASE_URI_ASYNC", pre=True)
     def assemble_async_db_connection(cls, v: Optional[str], values: Dict[str, Any]) -> Any:
         if isinstance(v, str):
             return v
-        return f"postgresql+asyncpg://{values['POSTGRES_USER']}:{values['POSTGRES_PASSWORD']}@{values['POSTGRES_SERVER']}/{values['POSTGRES_DB']}"
-
+        port = values.get("POSTGRES_PORT", "5435")
+        return f"postgresql+asyncpg://{values.get('POSTGRES_USER')}:{values.get('POSTGRES_PASSWORD')}@{values.get('POSTGRES_SERVER')}:{port}/{values.get('POSTGRES_DB')}"
 
     SMTP_TLS: bool = True
     SMTP_PORT: Optional[int] = None
@@ -80,7 +85,7 @@ class Settings(BaseSettings):
     @validator("EMAILS_FROM_NAME")
     def get_project_name(cls, v: Optional[str], values: Dict[str, Any]) -> str:
         if not v:
-            return values["PROJECT_NAME"]
+            return values.get("PROJECT_NAME", "rcd")
         return v
 
     EMAIL_RESET_TOKEN_EXPIRE_HOURS: int = 8
@@ -95,14 +100,16 @@ class Settings(BaseSettings):
             and values.get("EMAILS_FROM_EMAIL")
         )
 
-    EMAIL_TEST_USER: EmailStr = "confirmacion.automatica@gafsacomm.com"  # type: ignore
+    EMAIL_TEST_USER: EmailStr = "no-reply@gafsacomm.com"  # type: ignore
     FIRST_SUPERUSER: EmailStr
     FIRST_SUPERUSER_NICKNAME: str
     FIRST_SUPERUSER_PASSWORD: str
     USERS_OPEN_REGISTRATION: bool = True
 
-    class Config:
-        case_sensitive = True
-
+    # Configuración para Pydantic v2
+    model_config = ConfigDict(
+        case_sensitive=True,
+        arbitrary_types_allowed=True
+    )
 
 settings = Settings()
