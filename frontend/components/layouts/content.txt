@@ -1,0 +1,4 @@
+En este nivel se generan los componentes que son propias de cada pagina:
+- Headers
+- Footers
+- Sidebar
