@@ -1,0 +1,4 @@
+En este nivel se generan los componentes propios de cada funcionalidad
+Preferible generar un carpeta por funcionalidad o por pages
+
+Si tengo una page llamada login, aqui deberiamos crear su contraparte que almacene todos los componentes del login
