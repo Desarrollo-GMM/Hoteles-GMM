@@ -18,6 +18,7 @@ const Page: React.FC = () => {
             <NavbarComponent />
 
             <div className="min-h-screen">
+                
                 <div className="">
                     <ReservationComponent option={2} />
                 </div>
