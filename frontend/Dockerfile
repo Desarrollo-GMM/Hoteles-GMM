@@ -1,6 +1,12 @@
-FROM node:18-alpine as dev
+FROM node:22-slim as dev
 
-RUN apk add --no-cache libc6-compat && npm install -g pnpm
+# Eliminar línea de apk (slim usa apt, no apk)
+# Instalar curl para health check y dependencias básicas si las necesitas
+RUN apt-get update && apt-get install -y \
+    curl \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/* \
+    && npm install -g pnpm
 
 WORKDIR /app
 
@@ -33,7 +39,7 @@ RUN npm run build
 # Exponer puerto
 EXPOSE 3000
 
-# Health check
+# Health check (curl ya está instalado)
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:3000 || exit 1
 

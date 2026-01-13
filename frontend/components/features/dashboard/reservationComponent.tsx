@@ -85,8 +85,8 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string }
     const tomorrow = new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split('T')[0];
 
     return (
-        <div className="relative min-h-screen">
-            <div className="absolute inset-0 h-[60vh] md:h-[100vh]">
+        <div className="relative lg:min-h-screen">
+            <div className="absolute inset-0 h-full sm:h-[60vh] md:h-[100vh]">
                 <Image
                     src={imageUrl}
                     alt="Fondo Hoteles GMM"
@@ -94,12 +94,12 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string }
                     priority
                     className="object-cover"
                     sizes="100vw"
-                    quality={90}
+                    quality={75}
                     style={{ objectFit: 'cover' }}
                     />
             </div>
 
-            <div className="relative z-10 flex flex-col justify-center min-h-screen px-4 py-12 text-white">
+            <div className="relative z-10 lg:mt-0 mt-12 flex flex-col justify-center lg:min-h-screen px-4 py-12 text-white">
                 <div className="max-w-7xl mx-auto w-full">
                     <div className="text-center mb-8 md:mb-12 lg:mb-16">
                         <h1 className="uppercase font-bold text-3xl md:text-5xl lg:text-6xl mb-4 tracking-tight">

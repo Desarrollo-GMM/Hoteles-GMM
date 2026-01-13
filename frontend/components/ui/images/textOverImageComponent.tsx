@@ -71,7 +71,7 @@ const TextOverImageComponent: React.FC<ComponentProps> = ({
                     <div className="absolute inset-0 bg-black/30"></div>
                 )}
             </div>
-            <div className={`relative z-10 flex flex-col min-h-screen px-4 py-12 text-white 
+            <div className={`relative z-10 flex flex-col min-h-full lg:min-h-screen px-4 py-12 text-white 
                 ${verticalClasses[vertical_position]} 
                 ${horizontalClasses[horizontal_position]}`}>
                 
