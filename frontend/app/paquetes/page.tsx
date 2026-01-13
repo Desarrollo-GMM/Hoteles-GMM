@@ -1,8 +1,8 @@
 'use client'
 
 import NavbarComponent from "../../components/layouts/dashboard/navbarComponent"
-import PromotionComponent from "../../components/features/promotions/promotionCardComponent"
 import FooterComponent from "../../components/layouts/dashboard/footerComponent"
+import PackageComponent from "../../components/features/package/packageComponent"
 
 const Page: React.FC = () => {
     return (
@@ -13,7 +13,7 @@ const Page: React.FC = () => {
 
                 <div className="mt-16">
                     <div className="">
-                        <PromotionComponent></PromotionComponent>
+                        <PackageComponent></PackageComponent>
                     </div>
 
 

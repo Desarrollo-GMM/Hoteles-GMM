@@ -1,7 +1,7 @@
 export const ROUTES = {
   HOME: '/',
   PROMOTIONS: '/promociones',
-  SUMMER_PACKAGES: '/paquetes-verano',
+  SUMMER_PACKAGES: '/paquetes',
   HOTELS: '/hoteles',
   CONTACT: '/contacto',
 } as const;

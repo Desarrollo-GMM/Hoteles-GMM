@@ -18,61 +18,52 @@ const Page: React.FC = () => {
             <NavbarComponent />
 
             <div className="min-h-screen">
-                
+
                 <div className="">
                     <ReservationComponent option={2} />
                 </div>
 
-                <div className="mt-16">
+                <div className="lg:mt-16">
                     <OurPackageComponent />
                 </div>
 
                 <TextOverImageComponent
                     image_src="/images/686da02b415d79e07d3ebc16_tututututu.jpg"
                     image_alt="Estancia"
-                    image_black={false}
+                    image_black={true}
                     over_text="Tu estancia entre lujo y naturaleza,TE está esperando..."
-                    vertical_position="top" 
-                    horizontal_position="left" 
+                    vertical_position="top"
+                    horizontal_position="left"
                     text_align="left"
+                    text_size="lg:text-6xl text-3xl"
                 />
-
-                <div className="relative overflow-hidden">
-                    <div className="parallax-container inset-0 absolute h-[60vh] md:h-[100vh]">
-                        <SimpleParallax scale={1.3}>
-                            <Image
-                                src="/images/68685657cd9b8869fc7e110d_23.png"
-                                alt="Alberca"
-                                fill
-                                style={{ objectFit: 'cover' }}
-                            />
-                        </SimpleParallax>
-                    </div>
-                    <div className="relative z-10 flex flex-col justify-start min-h-screen px-4 py-12 text-white">
-                        <div className="max-w-7xl w-full">
-                            <p className="uppercase text-6xl font-extrabold ">
-                                comparte momentos con tus seres queridos
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <TextOverImageComponent
+                    image_src="/images/68685657cd9b8869fc7e110d_23.png"
+                    image_alt="Alberca"
+                    image_black={true}
+                    over_text="comparte momentos con tus seres queridos"
+                    vertical_position="top"
+                    horizontal_position="left"
+                    text_align="left"
+                    text_size="lg:text-6xl text-3xl"
+                />
 
                 <div className="">
                     <AdditionalInformationComponent />
                 </div>
 
-                <TextOverImageComponent 
-                image_src="/images/686c21caae5f50747ff362ab_nvcxmnvmxnc.png"
-                image_alt="Alberca"
-                image_black={true}
-                over_text="¿qué destino descrubriras hoy?"
-                over_button_disable={true}
-                over_button_text="Reserva Ahora"
-                horizontal_position="center"
-                vertical_position="bottom"
-                text_align="center"
-                size_content_text="w-full mb-20"
-                text_size="text-6xl"
+                <TextOverImageComponent
+                    image_src="/images/686c21caae5f50747ff362ab_nvcxmnvmxnc.png"
+                    image_alt="Alberca"
+                    image_black={true}
+                    over_text="¿qué destino descrubriras hoy?"
+                    over_button_disable={true}
+                    over_button_text="Reserva Ahora"
+                    horizontal_position="center"
+                    vertical_position="bottom"
+                    text_align="center"
+                    size_content_text="w-full mb-20"
+                    text_size="lg:text-6xl text-3xl"
                 />
 
                 <div className="">
