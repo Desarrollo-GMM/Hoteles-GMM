@@ -26,7 +26,7 @@ const NavbarComponent: React.FC = () => {
                             <Image
                                 className="w-auto h-20 object-contain"
                                 alt="Logo GMM"
-                                src="/images/Copia-de-Hoteles-general-01.png"
+                                src="/images/GMM blanco.png"
                                 width={180}
                                 height={80}
                             />

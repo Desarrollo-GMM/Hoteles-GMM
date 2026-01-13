@@ -55,37 +55,37 @@ const DropdownButtonComponent = () => {
             >
                 <ul className="bg-white rounded-md text-sm text-body font-medium">
                     <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                        <a href="#" className="inline-flex text-black items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
                             Tulum
                         </a>
                     </li>
                     <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                        <a href="#" className="inline-flex text-black items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
                             Tulum Aeropuerto
                         </a>
                     </li>
                     <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                        <a href="#" className="inline-flex text-black items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
                             Chechen Itzá
                         </a>
                     </li>
                     <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                        <a href="#" className="inline-flex text-black items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
                             Nuevo Uxmal
                         </a>
                     </li>
                     <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                        <a href="#" className="inline-flex text-black items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
                             Edzná
                         </a>
                     </li>
                     <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                        <a href="#" className="inline-flex text-black items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
                             Calakmul
                         </a>
                     </li>
                     <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                        <a href="#" className="inline-flex text-black items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
                             Palenque
                         </a>
                     </li>
