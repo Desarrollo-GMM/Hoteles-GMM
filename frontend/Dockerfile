@@ -1,12 +1,6 @@
-FROM node:22-slim as dev
+FROM node:22-alpine as dev
 
-# Eliminar línea de apk (slim usa apt, no apk)
-# Instalar curl para health check y dependencias básicas si las necesitas
-RUN apt-get update && apt-get install -y \
-    curl \
-    ca-certificates \
-    && rm -rf /var/lib/apt/lists/* \
-    && npm install -g pnpm
+RUN apk add --no-cache libc6-compat && npm install -g pnpm
 
 WORKDIR /app
 
@@ -16,22 +10,6 @@ RUN npm install
 
 # Copiar el código fuente
 COPY . .
-
-# Configurar variables de entorno
-ARG NEXT_PUBLIC_CODE_SYSTEM
-ARG NEXT_PUBLIC_SECURE_LOCAL_STORAGE_HASH_KEY
-ARG NEXT_PUBLIC_SECURE_LOCAL_STORAGE_PREFIX
-ARG NEXT_PUBLIC_SSO_WEB
-ARG NEXT_PUBLIC_API_URL_SSO
-ARG NEXT_PUBLIC_API_VER_SSO
-
-ENV NEXT_TELEMETRY_DISABLED 1
-ENV NEXT_PUBLIC_CODE_SYSTEM $NEXT_PUBLIC_CODE_SYSTEM
-ENV NEXT_PUBLIC_SECURE_LOCAL_STORAGE_HASH_KEY $NEXT_PUBLIC_SECURE_LOCAL_STORAGE_HASH_KEY
-ENV NEXT_PUBLIC_SECURE_LOCAL_STORAGE_PREFIX $NEXT_PUBLIC_SECURE_LOCAL_STORAGE_PREFIX
-ENV NEXT_PUBLIC_SSO_WEB $NEXT_PUBLIC_SSO_WEB
-ENV NEXT_PUBLIC_API_URL_SSO $NEXT_PUBLIC_API_URL_SSO
-ENV NEXT_PUBLIC_API_VER_SSO $NEXT_PUBLIC_API_VER_SSO
 
 # Construir la aplicación
 RUN npm run build
