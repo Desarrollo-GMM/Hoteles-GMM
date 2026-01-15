@@ -23,13 +23,13 @@ const AdditionalInformationComponent: React.FC<ComponentProps> = ({
                     </a>
 
                 </div>
-                <div className="">
-                    <Image src={"/images/686863c67fa8a296d0981f19_1_mapa 1.png"} alt="" width={1000} height={1000}></Image>
+                <div className="w-full flex justify-center">
+                    <Image src={"/images/686863c67fa8a296d0981f19_1_mapa 1.png"} alt="" className="w-full rounded-xl"  width={1000} height={1000}></Image>
                 </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 m-3 lg:m-0 border border-gray-300 rounded-xl lg:border-none">
-                <div className="flex justify-end">
-                    <Image src={"/images/686bf8afbace0563854adb5b_puiopi.png"} alt="" width={500} height={500}></Image>
+                <div className="flex md:justify-center lg:justify-end">
+                    <Image src={"/images/686bf8afbace0563854adb5b_puiopi.png"} alt="" className="w-full rounded-xl" width={500} height={500}></Image>
                 </div>
                 <div className="flex flex-col items-center justify-center m-3 lg:m-0">
                     <p className="uppercase text-xl lg:text-5xl font-bold text-center text-black">zonas arqueológicas</p>
@@ -58,8 +58,8 @@ const AdditionalInformationComponent: React.FC<ComponentProps> = ({
                     </a>
 
                 </div>
-                <div className="">
-                    <Image src={"/images/686c1466f0f1ba5ceafa78da_ghjkhjgkhj.png"} alt="" width={500} height={500}></Image>
+                <div className="flex md:justify-center lg:justify-end">
+                    <Image src={"/images/686c1466f0f1ba5ceafa78da_ghjkhjgkhj.png"} alt="" className="w-full rounded-xl" width={500} height={500}></Image>
                 </div>
             </div>
         </div>

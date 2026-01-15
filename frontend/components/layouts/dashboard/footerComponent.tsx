@@ -12,7 +12,7 @@ const FooterComponent = () => {
                             <Image
                                 className="w-15 h-24"
                                 alt="Logo GMM"
-                                src={"/images/Copia-de-Hoteles-general-01.png"}
+                                src={"/images/GMM blanco.png"}
                                 width={200}
                                 height={100}
                             />

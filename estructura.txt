@@ -1,0 +1,178 @@
+.
+├── backend
+│   ├── app
+│   │   ├── api
+│   │   │   ├── endpoint
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── login.py
+│   │   │   │   ├── request_tracing.py
+│   │   │   │   └── timing_middleware.py
+│   │   │   └── route
+│   │   │       ├── api.py
+│   │   │       ├── deps.py
+│   │   │       └── __init__.py
+│   │   ├── base_class.py
+│   │   ├── base.py
+│   │   ├── celeryworker_pre_start.py
+│   │   ├── config.py
+│   │   ├── core
+│   │   │   ├── celery_app.py
+│   │   │   ├── config.py
+│   │   │   └── security.py
+│   │   ├── crud
+│   │   │   ├── base.py
+│   │   │   ├── crud_request_tracing.py
+│   │   │   └── __init__.py
+│   │   ├── database.py
+│   │   ├── db
+│   │   │   ├── __init__.py
+│   │   │   └── session.py
+│   │   ├── enum
+│   │   │   ├── EnumError.py
+│   │   │   ├── EnumErrorQuery.py
+│   │   │   ├── EnumProfile.py
+│   │   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   ├── model
+│   │   │   ├── __init__.py
+│   │   │   └── request_tracing.py
+│   │   ├── schemas
+│   │   │   ├── __init__.py
+│   │   │   ├── msg.py
+│   │   │   ├── request_tracing.py
+│   │   │   ├── token.py
+│   │   │   └── user.py
+│   │   ├── utils
+│   │   │   ├── db_utils.py
+│   │   │   ├── __init__.py
+│   │   │   └── utils.py
+│   │   └── validation
+│   │       ├── check_validation.py
+│   │       └── __init__.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── docker-compose.yml
+├── estructura.txt
+├── frontend
+│   ├── app
+│   │   ├── constants
+│   │   │   └── routes.ts
+│   │   ├── dashboard
+│   │   │   └── page.tsx
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── paquetes
+│   │   │   └── page.tsx
+│   │   ├── promociones
+│   │   │   └── page.tsx
+│   │   └── styles
+│   │       └── global.css
+│   ├── components
+│   │   ├── features
+│   │   │   ├── content.txt
+│   │   │   ├── dashboard
+│   │   │   │   ├── additionalInformationComponent.tsx
+│   │   │   │   ├── carouselComponent.tsx
+│   │   │   │   ├── ourPackageComponent.tsx
+│   │   │   │   ├── reservationComponent.tsx
+│   │   │   │   └── videoBandComponent.tsx
+│   │   │   ├── package
+│   │   │   │   └── packageComponent.tsx
+│   │   │   └── promotions
+│   │   │       └── promotionCardComponent.tsx
+│   │   ├── forms
+│   │   │   └── content.txt
+│   │   ├── layouts
+│   │   │   ├── content.txt
+│   │   │   └── dashboard
+│   │   │       ├── footerComponent.tsx
+│   │   │       └── navbarComponent.tsx
+│   │   └── ui
+│   │       ├── buttons
+│   │       │   └── dropdownButtonComponent.tsx
+│   │       ├── conent.txt
+│   │       └── images
+│   │           └── textOverImageComponent.tsx
+│   ├── Dockerfile
+│   ├── estructura.txt
+│   ├── lib
+│   │   ├── schemas
+│   │   │   └── user.ts
+│   │   └── services
+│   │       └── authService.ts
+│   ├── next.config.mjs
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── pages
+│   │   └── content.txt
+│   ├── postcss.config.mjs
+│   ├── public
+│   │   ├── images
+│   │   │   ├── 68685657cd9b8869fc7e110d_23.png
+│   │   │   ├── 686863c67fa8a296d0981f19_1_mapa 1.png
+│   │   │   ├── 68686f12f595865f823d944c_4 razones_A 2-p-2000.png
+│   │   │   ├── 686bf8afbace0563854adb5b_puiopi.png
+│   │   │   ├── 686c1466f0f1ba5ceafa78da_ghjkhjgkhj.png
+│   │   │   ├── 686c21caae5f50747ff362ab_nvcxmnvmxnc.png
+│   │   │   ├── 686d5354c468605f89c569ae_calidad 5.jpg
+│   │   │   ├── 686da02b415d79e07d3ebc16_tututututu.jpg
+│   │   │   ├── Copia-de-Hoteles-general-01.png
+│   │   │   ├── GMM blanco.png
+│   │   │   └── PAQUETES-TURISTICOS
+│   │   │       ├── CALAKMUL
+│   │   │       │   └── 5 DÍAS 6 NOCHES
+│   │   │       │       ├── calakmul temporada alta hsistoria .png
+│   │   │       │       └── propuesta calakmul 2 .png
+│   │   │       ├── CHICHÉN ITZÁ
+│   │   │       │   ├── 2 NOCHES 3 DIAS
+│   │   │       │   │   ├── CHICHEN HISTORIA 02.png
+│   │   │       │   │   └── CHICHEN HORIZONTAL 02.png
+│   │   │       │   └── 4 NOCHES 5 DÍAS
+│   │   │       │       ├── CHICHEN HISTORIA 01.png
+│   │   │       │       └── PORTAL DE KUKULKAN.png
+│   │   │       ├── EDZNÁ
+│   │   │       │   ├── 2 NOCHES 3 DIAS
+│   │   │       │   │   ├── EDZNA 2 N 3 D HOR.png
+│   │   │       │   │   └── EDZNA HISTORIA 2N3D.png
+│   │   │       │   └── 4 NOCHES 5 DIAS
+│   │   │       │       ├── EDZNA 4 N 5 D HOR.png
+│   │   │       │       └── EDZNA HISTORIA 4N5D.png
+│   │   │       ├── NUEVO UXMAL
+│   │   │       │   ├── 3 DÍAS 2 NOCHES
+│   │   │       │   │   ├── paquete nuevo uxmal 3 dias 2 noches hist.png
+│   │   │       │   │   └── paquete nuevo uxmal 3 dias 2 noches.png
+│   │   │       │   └── 4 DÍAS 3 NOCHES
+│   │   │       │       ├── paquete nuevo uxmal 5 dias 4 noches hist.png
+│   │   │       │       └── paquete nuevo uxmal 5 dias 4 noches.png
+│   │   │       ├── PALENQUE
+│   │   │       │   ├── 2 NOCHES 3 DÍAS
+│   │   │       │   │   ├── Historia Paquete Turistico Palenque 2 noches 3 dias_.png
+│   │   │       │   │   └── Paquete turistico palenque 2 noches 3 dias.png
+│   │   │       │   └── 3 NOCHES 4 DÍAS
+│   │   │       │       ├── Historia Paquete Turistico Palenque 3 noches 4 dias_.png
+│   │   │       │       └── Paquete turistico palenque 3 noches 4 dias.png
+│   │   │       └── TULUM
+│   │   │           ├── 2 NOCHES 3 DÍAS
+│   │   │           │   ├── Historia 2 noches 3 días_VO.png
+│   │   │           │   └── Paquete Turístico Tulum_.png
+│   │   │           └── 3 NOCHES 4 DÍAS
+│   │   │               ├── Copia de Paquete Turístico Tulum_.png
+│   │   │               └── Historia 3 noches 4 días VO.png
+│   │   ├── img
+│   │   │   ├── parque_jaguar-26.png
+│   │   │   ├── parque_jaguar-27.png
+│   │   │   ├── parque_jaguar-28.png
+│   │   │   ├── parque_jaguar-29.png
+│   │   │   └── parque_jaguar-31.png
+│   │   ├── next.svg
+│   │   └── vercel.svg
+│   ├── README.md
+│   ├── tailwind.config.ts
+│   └── tsconfig.json
+├── package.json
+└── README.md
+
+57 directories, 119 files

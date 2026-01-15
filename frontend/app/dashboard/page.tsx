@@ -62,8 +62,8 @@ const Page: React.FC = () => {
                     horizontal_position="center"
                     vertical_position="bottom"
                     text_align="center"
-                    size_content_text="w-full mb-20"
-                    text_size="lg:text-6xl text-3xl"
+                    size_content_text="w-full lg:mb-20 md:mb-5"
+                    text_size="lg:text-6xl text-2xl"
                 />
 
                 <div className="">

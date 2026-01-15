@@ -86,7 +86,7 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string }
 
     return (
         <div className="relative lg:min-h-screen">
-            <div className="absolute inset-0 h-full sm:h-[60vh] md:h-[100vh]">
+            <div className="absolute inset-0 h-full sm:h-[60vh] md:h-[72vh] lg:h-[100vh]">
                 <Image
                     src={imageUrl}
                     alt="Fondo Hoteles GMM"
@@ -115,7 +115,7 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string }
                             ¿Qué destino descubrirás hoy?
                         </h2>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-5 gap-4 md:gap-6 md:mx-20">
                             <div>
                                 <label className="block text-sm font-medium mb-2">
                                     Check-in

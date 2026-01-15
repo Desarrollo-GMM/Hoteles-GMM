@@ -57,10 +57,10 @@ const NavbarComponent: React.FC = () => {
                         </a>
                     </div>
 
-                    {/* Menú móvil - Botón Hamburguesa */}
+                    {/* Menú móvil - Botón Hamburguesa - AHORA SE MUESTRA HASTA md */}
                     <button
                         type="button"
-                        className="md:hidden text-white p-2 focus:outline-none z-60"
+                        className="lg:hidden text-white p-2 focus:outline-none z-60" // Cambiado de xl:hidden a md:hidden
                         aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
@@ -97,8 +97,8 @@ const NavbarComponent: React.FC = () => {
                         )}
                     </button>
 
-                    {/* Menú desktop */}
-                    <div className="hidden md:flex items-center space-x-5">
+                    {/* Menú desktop - AHORA SE MUESTRA DESDE lg EN ADELANTE */}
+                    <div className="hidden lg:flex items-center space-x-5"> {/* Cambiado de md:flex a lg:flex */}
                         <Link
                             href={ROUTES.HOME}
                             className={`text-sm font-medium transition-colors duration-300 
@@ -206,9 +206,9 @@ const NavbarComponent: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Menú móvil - Dropdown */}
+                {/* Menú móvil - Dropdown - AHORA SE MUESTRA HASTA md */}
                 <div className={`
-                    md:hidden fixed top-16 left-0 right-0 backdrop-blur-md bg-black/60 transform transition-all duration-300 ease-in-out z-40
+                    lg:hidden fixed top-16 left-0 right-0 backdrop-blur-md bg-black/60 transform transition-all duration-300 ease-in-out z-40
                     ${isMenuOpen 
                         ? 'translate-y-0 opacity-100 visible' 
                         : '-translate-y-4 opacity-0 invisible'
