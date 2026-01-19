@@ -58,19 +58,22 @@ const Page: React.FC = () => {
                     <AdditionalInformationComponent />
                 </div>
 
-                <TextOverImageComponent
-                    image_src="/images/686c21caae5f50747ff362ab_nvcxmnvmxnc.png"
-                    image_alt="Alberca"
-                    image_black={true}
-                    over_text="¿qué destino descrubriras hoy?"
-                    over_button_disable={true}
-                    over_button_text="Reserva Ahora"
-                    horizontal_position="center"
-                    vertical_position="bottom"
-                    text_align="center"
-                    size_content_text="w-full lg:mb-20 md:mb-5"
-                    text_size="lg:text-6xl text-2xl"
-                />
+                <div className="" data-aos="fade-up">
+                    <TextOverImageComponent
+                        image_src="/images/686c21caae5f50747ff362ab_nvcxmnvmxnc.png"
+                        image_alt="Alberca"
+                        image_black={true}
+                        over_text="¿qué destino descrubriras hoy?"
+                        over_button_disable={true}
+                        over_button_text="Reserva Ahora"
+                        horizontal_position="center"
+                        vertical_position="bottom"
+                        text_align="center"
+                        size_content_text="w-full lg:mb-20 md:mb-5"
+                        text_size="lg:text-6xl text-2xl"
+                    />
+                </div>
+
 
                 <div className="">
                     <VideoBandComponent />
