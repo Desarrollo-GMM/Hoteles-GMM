@@ -27,26 +27,32 @@ const Page: React.FC = () => {
                     <OurPackageComponent />
                 </div>
 
-                <TextOverImageComponent
-                    image_src="/images/686da02b415d79e07d3ebc16_tututututu.jpg"
-                    image_alt="Estancia"
-                    image_black={true}
-                    over_text="Tu estancia entre lujo y naturaleza,TE está esperando..."
-                    vertical_position="top"
-                    horizontal_position="left"
-                    text_align="left"
-                    text_size="lg:text-6xl text-3xl"
-                />
-                <TextOverImageComponent
-                    image_src="/images/68685657cd9b8869fc7e110d_23.png"
-                    image_alt="Alberca"
-                    image_black={true}
-                    over_text="comparte momentos con tus seres queridos"
-                    vertical_position="top"
-                    horizontal_position="left"
-                    text_align="left"
-                    text_size="lg:text-6xl text-3xl"
-                />
+                <div className="" data-aos="fade-up">
+                    <TextOverImageComponent
+                        image_src="/images/686da02b415d79e07d3ebc16_tututututu.jpg"
+                        image_alt="Estancia"
+                        image_black={true}
+                        over_text="Tu estancia entre lujo y naturaleza,TE está esperando..."
+                        vertical_position="top"
+                        horizontal_position="left"
+                        text_align="left"
+                        text_size="lg:text-6xl text-3xl"
+                    />
+                </div>
+
+                <div className="" data-aos="fade-up">
+                    <TextOverImageComponent
+                        image_src="/images/68685657cd9b8869fc7e110d_23.png"
+                        image_alt="Alberca"
+                        image_black={true}
+                        over_text="comparte momentos con tus seres queridos"
+                        vertical_position="top"
+                        horizontal_position="left"
+                        text_align="left"
+                        text_size="lg:text-6xl text-3xl"
+                    />
+                </div>
+
 
                 <div className="">
                     <AdditionalInformationComponent />

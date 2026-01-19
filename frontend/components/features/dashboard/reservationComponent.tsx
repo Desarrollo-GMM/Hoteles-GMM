@@ -99,7 +99,7 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string }
                     />
             </div>
 
-            <div className="relative z-10 lg:mt-0 mt-12 flex flex-col justify-center lg:min-h-screen px-4 py-12 text-white">
+            <div className="relative z-10 lg:mt-0 mt-12 flex flex-col justify-center lg:min-h-screen px-4 py-12 text-white" data-aos="fade-up">
                 <div className="max-w-7xl mx-auto w-full">
                     <div className="text-center mb-8 md:mb-12 lg:mb-16">
                         <h1 className="uppercase font-bold text-3xl md:text-5xl lg:text-6xl mb-4 tracking-tight">

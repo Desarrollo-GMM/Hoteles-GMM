@@ -71,6 +71,7 @@
 │   │   └── styles
 │   │       └── global.css
 │   ├── components
+│   │   ├── AOSInit.tsx
 │   │   ├── features
 │   │   │   ├── content.txt
 │   │   │   ├── dashboard
@@ -104,6 +105,61 @@
 │   │   └── services
 │   │       └── authService.ts
 │   ├── next.config.mjs
+│   ├── next-env.d.ts
+│   ├── node_modules
+│   │   ├── acornn
+│   │   │   └── README.md
+│   │   ├── acorn-jsx
+│   │   ├── ajv
+│   │   ├── @alloc
+│   │   ├── ansi-styles
+│   │   ├── anymatch
+│   │   ├── any-promise
+│   │   │   └── register-shim.js
+│   │   ├── aos
+│   │   │   ├── bower.json
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── CONTRIBUTING.md
+│   │   │   ├── demo
+│   │   │   │   ├── async.html
+│   │   │   │   ├── css
+│   │   │   │   │   └── styles.css
+│   │   │   │   └── simple.html
+│   │   │   ├── dist
+│   │   │   │   ├── aos.css
+│   │   │   │   └── aos.js
+│   │   │   ├── karma.conf.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── postcss.config.js
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── js
+│   │   │   │   │   ├── aos.js
+│   │   │   │   │   ├── helpers
+│   │   │   │   │   │   ├── calculateOffset.js
+│   │   │   │   │   │   ├── detector.js
+│   │   │   │   │   │   ├── elements.js
+│   │   │   │   │   │   ├── handleScroll.js
+│   │   │   │   │   │   └── prepare.js
+│   │   │   │   │   └── libs
+│   │   │   │   │       ├── observer.js
+│   │   │   │   │       └── offset.js
+│   │   │   │   └── sass
+│   │   │   │       ├── _animations.scss
+│   │   │   │       ├── aos.scss
+│   │   │   │       ├── _core.scss
+│   │   │   │       └── _easing.scss
+│   │   │   ├── test
+│   │   │   │   ├── aos.spec.js
+│   │   │   │   ├── calculateOffset.spec.js
+│   │   │   │   ├── elements.spec.js
+│   │   │   │   ├── fixtures
+│   │   │   │   │   ├── aos.fixture.html
+│   │   │   │   │   └── aos-offset.fixture.html
+│   │   │   │   └── index.js
+│   │   │   ├── webpack.config.js
+│   │   │   └── yarn.lock
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── pages
@@ -175,4 +231,4 @@
 ├── package.json
 └── README.md
 
-57 directories, 119 files
+2357 directories, 23236 files

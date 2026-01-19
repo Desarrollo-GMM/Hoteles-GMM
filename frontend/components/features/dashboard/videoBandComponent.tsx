@@ -10,10 +10,10 @@ const VideoBandComponent: React.FC<ComponentProps> = ({
     return (
         <div className="px-4 md:px-8 lg:px-20 py-12">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-4">
-                <div className="uppercase text-center flex items-center mx-auto">
+                <div className="uppercase text-center flex items-center mx-auto" data-aos="fade-right">
                     <p className="text-center text-gray-600 text-3xl lg:text-5xl font-bold">más contenido relacionado...</p>
                 </div>
-                <div className="">
+                <div className="" data-aos="fade-right">
                     <iframe 
                         className="w-full h-56 md:h-96 lg:h-64 my-3 lg:my-0"
                         src="https://www.youtube.com/embed/WoqSJmJGscU"
@@ -24,7 +24,7 @@ const VideoBandComponent: React.FC<ComponentProps> = ({
                         allowFullScreen>
                     </iframe>
                 </div>
-                <div className="">
+                <div className="" data-aos="fade-right">
                     <iframe  
                         className="w-full h-56 md:h-96 lg:h-64 my-3 lg:my-0"
                         src="https://www.youtube.com/embed/UdwyRzYQvB4"
@@ -36,7 +36,7 @@ const VideoBandComponent: React.FC<ComponentProps> = ({
                     </iframe>
 
                 </div>
-                <div className="">
+                <div className="" data-aos="fade-right">
                     <iframe 
                     className="w-full h-56 md:h-96 lg:h-64 my-3 lg:my-0"
                     src="https://www.youtube.com/embed/bydhvCF3utE" 
