@@ -70,7 +70,7 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
 
     return (
         <div className="px-4 md:px-8 lg:px-20 lg:py-12 py-5">
-            <div className="grid lg:grid-cols-2 gap-8 mb-12">
+            <div className="grid lg:grid-cols-2 gap-8 mb-12" data-aos="fade-up">
                 <div className="flex items-center text-center">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl lg:px-28 font-bold uppercase leading-tight text-black">
                         Nuestros Paquetes de verano
@@ -84,9 +84,7 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
                 </div>
             </div>
 
-            {/* Carousel Container */}
-            <div className="relative w-full overflow-hidden px-4">
-                {/* Contenedor principal */}
+            <div className="relative w-full overflow-hidden px-4" data-aos="fade-up">
                 <div className="relative h-[250px] md:h-[300px] lg:h-[400px] w-full">
                     <div 
                         className="flex w-72 lg:w-full h-full transition-transform duration-500 ease-in-out gap-3 md:gap-4 lg:gap-5"
@@ -109,8 +107,10 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
                                     alt={`Paquete turístico ${index + 1}`}
                                     width={1000}
                                     height={1000}
+                                    
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"
+                                    onClick={() => setIsAutoPlaying(!isAutoPlaying)}>
                                     <div className="absolute bottom-4 left-4 text-white">
                                         <span className="text-sm font-semibold">Paquete {index + 1}</span>
                                     </div>
@@ -120,7 +120,6 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
                     </div>
                 </div>
 
-                {/* Botones de navegación */}
                 <button 
                     type="button" 
                     onClick={prevSlide}
@@ -143,7 +142,6 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
                     <span className="sr-only">Next</span>
                 </button>
 
-                {/* Indicadores de posición */}
                 <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2">
                     {Array.from({ length: images.length - slidesToShow + 1 }).map((_, index) => (
                         <button
@@ -159,34 +157,12 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
                     ))}
                 </div>
 
-                {/* Contador */}
                 <div className="absolute top-4 right-4 z-30 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
                     {currentIndex + 1}/{images.length - slidesToShow + 1}
                 </div>
             </div>
 
-            {/* Información adicional */}
-            <div className="mt-12 text-center">
-                
-                <div className="flex justify-center items-center space-x-6">
-                    <button
-                        onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                        className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors flex items-center space-x-2"
-                    >
-                        {isAutoPlaying ? (
-                            <>
-                                <span>⏸️</span>
-                                <span>Pausar</span>
-                            </>
-                        ) : (
-                            <>
-                                <span>▶️</span>
-                                <span>Reproducir</span>
-                            </>
-                        )}
-                    </button>
-                </div>
-            </div>
+            
         </div>
     );
 };

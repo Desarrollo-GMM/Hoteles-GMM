@@ -11,7 +11,7 @@ const AdditionalInformationComponent: React.FC<ComponentProps> = ({
     return (
         <div className="px-1 md:px-8 lg:px-20 py-1 lg:py-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 m-3 lg:m-0 border border-gray-300 rounded-xl lg:border-none">
-                <div className="flex flex-col items-center justify-center m-3 lg:m-0">
+                <div className="flex flex-col items-center justify-center m-3 lg:m-0" data-aos="fade-right">
                     <p className="uppercase text-xl lg:text-5xl font-bold text-center text-black">el corazón del sureste mexicano</p>
                     <div className="mt-5 mb-5 m-5">
                         <p className="text-center font-light text-gray-500">¿Por qué elegir un solo destino cuando puedes tenerlos todos?</p>
@@ -23,15 +23,15 @@ const AdditionalInformationComponent: React.FC<ComponentProps> = ({
                     </a>
 
                 </div>
-                <div className="w-full flex justify-center">
+                <div className="w-full flex justify-center" data-aos="fade-left">
                     <Image src={"/images/686863c67fa8a296d0981f19_1_mapa 1.png"} alt="" className="w-full rounded-xl"  width={1000} height={1000}></Image>
                 </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 m-3 lg:m-0 border border-gray-300 rounded-xl lg:border-none">
-                <div className="flex md:justify-center lg:justify-end">
+                <div className="flex md:justify-center lg:justify-end" data-aos="fade-right">
                     <Image src={"/images/686bf8afbace0563854adb5b_puiopi.png"} alt="" className="w-full rounded-xl" width={500} height={500}></Image>
                 </div>
-                <div className="flex flex-col items-center justify-center m-3 lg:m-0">
+                <div className="flex flex-col items-center justify-center m-3 lg:m-0" data-aos="fade-left">
                     <p className="uppercase text-xl lg:text-5xl font-bold text-center text-black">zonas arqueológicas</p>
                     <div className="mt-5 mb-5">
                         <p className="text-center font-light text-gray-500">Estamos ubicados a solo minutos de las principales y emblemáticas zonas arqueológicas mayas...</p>
@@ -44,7 +44,7 @@ const AdditionalInformationComponent: React.FC<ComponentProps> = ({
                 </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 m-3 lg:m-0 border border-gray-300 rounded-xl lg:border-none">
-                <div className="flex flex-col items-center justify-center m-3 lg:m-0">
+                <div className="flex flex-col items-center justify-center m-3 lg:m-0" data-aos="fade-right">
                     <p className="uppercase text-xl lg:text-5xl font-bold text-center text-black">Business class</p>
                     <div className="mt-5 mb-5">
                         <p className="text-center font-light text-gray-500">A metros del Aeropuerto Internacional de Tulum...</p>
@@ -58,7 +58,7 @@ const AdditionalInformationComponent: React.FC<ComponentProps> = ({
                     </a>
 
                 </div>
-                <div className="flex md:justify-center lg:justify-end">
+                <div className="flex md:justify-center lg:justify-end" data-aos="fade-left">
                     <Image src={"/images/686c1466f0f1ba5ceafa78da_ghjkhjgkhj.png"} alt="" className="w-full rounded-xl" width={500} height={500}></Image>
                 </div>
             </div>

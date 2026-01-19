@@ -101,7 +101,7 @@ const NavbarComponent: React.FC = () => {
                     <div className="hidden lg:flex items-center space-x-5"> {/* Cambiado de md:flex a lg:flex */}
                         <Link
                             href={ROUTES.HOME}
-                            className={`text-sm font-medium transition-colors duration-300 
+                            className={`text-sm font-medium transition-colors duration-300 hover:scale-125 hover:-translate-y-1 hover:transition-transform
                             ${isActive(ROUTES.HOME)
                                     ? "text-teal-500"
                                     : "text-white hover:text-teal-500"
@@ -112,7 +112,7 @@ const NavbarComponent: React.FC = () => {
                         <a
                             href={EXTERNAL_LINKS.ABOUT}
                             target="_blank"
-                            className="text-white hover:text-teal-500 transition-colors duration-300 text-sm font-medium"
+                            className="text-white hover:text-teal-500 transition-colors duration-300 text-sm font-medium "
                         >
                             ¿Quiénes Somos?
                         </a>
