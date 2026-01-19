@@ -61,11 +61,6 @@ const DropdownButtonComponent = () => {
                     </li>
                     <li className='hover:bg-slate-200'>
                         <a href="#" className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
-                            Tulum Aeropuerto
-                        </a>
-                    </li>
-                    <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
                             Chechen Itzá
                         </a>
                     </li>
