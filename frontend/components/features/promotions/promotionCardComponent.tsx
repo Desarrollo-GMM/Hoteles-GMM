@@ -8,7 +8,7 @@ interface ComponentProps {
 const PromotionComponent: React.FC<ComponentProps> = () => {
     return (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6 px-4 lg:mt-24 md:mt-16 md:px-8 lg:px-20 py-12">
-            <a href="#" className="grid grayscale hover:grayscale-0 transition-all duration-300 md:grid-cols-1 lg:grid-cols-2 mx-auto items-center border border-3 border-gray-300 rounded-xl shadow-xs md:flex-row md:max-w-5xl hover:scale-105 hover:shadow-xl transition duration-200">
+            <a href="#" data-aos="fade-up" className="grid grayscale hover:grayscale-0 transition-all duration-300 md:grid-cols-1 lg:grid-cols-2 mx-auto items-center border border-3 border-gray-300 rounded-xl shadow-xs md:flex-row md:max-w-5xl hover:scale-105 hover:shadow-xl transition duration-200">
                 <Image 
                     className="object-cover min-w-40 min-h-56 rounded-xl mb-4 md:mb-0" 
                     src="/images/68686f12f595865f823d944c_4 razones_A 2-p-2000.png" alt="" width={2000} height={3000}></Image>
@@ -45,7 +45,7 @@ const PromotionComponent: React.FC<ComponentProps> = () => {
                     </div>
                 </div>
             </a>
-            <a href="#" className="grid grayscale hover:grayscale-0 transition-all duration-300 md:grid-cols-1 lg:grid-cols-2 mx-auto items-center border border-3 border-gray-300 rounded-xl shadow-xs md:flex-row md:max-w-5xl hover:scale-105 hover:shadow-xl transition duration-200">
+            <a href="#" data-aos="fade-up" className="grid grayscale hover:grayscale-0 transition-all duration-300 md:grid-cols-1 lg:grid-cols-2 mx-auto items-center border border-3 border-gray-300 rounded-xl shadow-xs md:flex-row md:max-w-5xl hover:scale-105 hover:shadow-xl transition duration-200">
                 <Image 
                     className="object-cover min-w-40 min-h-56 rounded-xl mb-4 md:mb-0" 
                     src="/images/68686f12f595865f823d944c_4 razones_A 2-p-2000.png" alt="" width={2000} height={3000}></Image>
@@ -82,7 +82,7 @@ const PromotionComponent: React.FC<ComponentProps> = () => {
                     </div>
                 </div>
             </a>
-            <a href="#" className="grid grayscale hover:grayscale-0 transition-all duration-300 md:grid-cols-1 lg:grid-cols-2 mx-auto items-center border border-3 border-gray-300 rounded-xl shadow-xs md:flex-row md:max-w-5xl hover:scale-105 hover:shadow-xl transition duration-200">
+            <a href="#" data-aos="fade-up" className="grid grayscale hover:grayscale-0 transition-all duration-300 md:grid-cols-1 lg:grid-cols-2 mx-auto items-center border border-3 border-gray-300 rounded-xl shadow-xs md:flex-row md:max-w-5xl hover:scale-105 hover:shadow-xl transition duration-200">
                 <Image 
                     className="object-cover min-w-40 min-h-56 rounded-xl mb-4 md:mb-0" 
                     src="/images/68686f12f595865f823d944c_4 razones_A 2-p-2000.png" alt="" width={2000} height={3000}></Image>
@@ -119,7 +119,7 @@ const PromotionComponent: React.FC<ComponentProps> = () => {
                     </div>
                 </div>
             </a>
-            <a href="#" className="grid grayscale hover:grayscale-0 transition-all duration-300 md:grid-cols-1 lg:grid-cols-2 mx-auto items-center border border-3 border-gray-300 rounded-xl shadow-xs md:flex-row md:max-w-5xl hover:scale-105 hover:shadow-xl transition duration-200">
+            <a href="#" data-aos="fade-up" className="grid grayscale hover:grayscale-0 transition-all duration-300 md:grid-cols-1 lg:grid-cols-2 mx-auto items-center border border-3 border-gray-300 rounded-xl shadow-xs md:flex-row md:max-w-5xl hover:scale-105 hover:shadow-xl transition duration-200">
                 <Image 
                     className="object-cover min-w-40 min-h-56 rounded-xl mb-4 md:mb-0" 
                     src="/images/68686f12f595865f823d944c_4 razones_A 2-p-2000.png" alt="" width={2000} height={3000}></Image>
@@ -156,7 +156,7 @@ const PromotionComponent: React.FC<ComponentProps> = () => {
                     </div>
                 </div>
             </a>
-            <a href="#" className="grid grayscale hover:grayscale-0 transition-all duration-300 md:grid-cols-1 lg:grid-cols-2 mx-auto items-center border border-3 border-gray-300 rounded-xl shadow-xs md:flex-row md:max-w-5xl hover:scale-105 hover:shadow-xl transition duration-200">
+            <a href="#" data-aos="fade-up" className="grid grayscale hover:grayscale-0 transition-all duration-300 md:grid-cols-1 lg:grid-cols-2 mx-auto items-center border border-3 border-gray-300 rounded-xl shadow-xs md:flex-row md:max-w-5xl hover:scale-105 hover:shadow-xl transition duration-200">
                 <Image 
                     className="object-cover min-w-40 min-h-56 rounded-xl mb-4 md:mb-0" 
                     src="/images/68686f12f595865f823d944c_4 razones_A 2-p-2000.png" alt="" width={2000} height={3000}></Image>
@@ -193,7 +193,7 @@ const PromotionComponent: React.FC<ComponentProps> = () => {
                     </div>
                 </div>
             </a>
-            <a href="#" className="grid grayscale hover:grayscale-0 transition-all duration-300 md:grid-cols-1 lg:grid-cols-2 mx-auto items-center border border-3 border-gray-300 rounded-xl shadow-xs md:flex-row md:max-w-5xl hover:scale-105 hover:shadow-xl transition duration-200">
+            <a href="#" data-aos="fade-up" className="grid grayscale hover:grayscale-0 transition-all duration-300 md:grid-cols-1 lg:grid-cols-2 mx-auto items-center border border-3 border-gray-300 rounded-xl shadow-xs md:flex-row md:max-w-5xl hover:scale-105 hover:shadow-xl transition duration-200">
                 <Image 
                     className="object-cover min-w-40 min-h-56 rounded-xl mb-4 md:mb-0" 
                     src="/images/68686f12f595865f823d944c_4 razones_A 2-p-2000.png" alt="" width={2000} height={3000}></Image>

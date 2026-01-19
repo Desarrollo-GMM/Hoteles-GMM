@@ -86,7 +86,7 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string }
 
     return (
         <div className="relative lg:min-h-screen">
-            <div className="absolute inset-0 h-full sm:h-[60vh] md:h-[100vh]">
+            <div className="absolute inset-0 h-full sm:h-[60vh] md:h-[72vh] lg:h-[100vh]">
                 <Image
                     src={imageUrl}
                     alt="Fondo Hoteles GMM"
@@ -99,7 +99,7 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string }
                     />
             </div>
 
-            <div className="relative z-10 lg:mt-0 mt-12 flex flex-col justify-center lg:min-h-screen px-4 py-12 text-white">
+            <div className="relative z-10 lg:mt-0 mt-12 flex flex-col justify-center lg:min-h-screen px-4 py-12 text-white" data-aos="fade-up">
                 <div className="max-w-7xl mx-auto w-full">
                     <div className="text-center mb-8 md:mb-12 lg:mb-16">
                         <h1 className="uppercase font-bold text-3xl md:text-5xl lg:text-6xl mb-4 tracking-tight">
@@ -115,7 +115,7 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string }
                             ¿Qué destino descubrirás hoy?
                         </h2>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-5 gap-4 md:gap-6 md:mx-20">
                             <div>
                                 <label className="block text-sm font-medium mb-2">
                                     Check-in
@@ -210,7 +210,7 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string }
                                 </div>
                             </div>
 
-                            <div className="flex items-end">
+                            <div className="flex items-end justify-center">
                                 <button className="p-3 bg-gradient-to-r from-teal-700 to-teal-600 hover:from-teal-600 hover:to-teal-500 text-white font-semibold rounded-lg transition-all duration-300 h-[52px] transform hover:scale-[1.02] shadow-lg hover:shadow-xl">
                                     Reservar Ahora
                                 </button>
