@@ -9,29 +9,29 @@ const AdditionalInformationComponent: React.FC<ComponentProps> = ({
 
 }) => {
     return (
-        <div className="px-4 md:px-8 lg:px-20 py-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="flex flex-col items-center justify-center">
+        <div className="px-1 md:px-8 lg:px-20 py-1 lg:py-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 m-3 lg:m-0 border border-gray-300 rounded-xl lg:border-none">
+                <div className="flex flex-col items-center justify-center m-3 lg:m-0" data-aos="fade-right">
                     <p className="uppercase text-xl lg:text-5xl font-bold text-center text-black">el corazón del sureste mexicano</p>
                     <div className="mt-5 mb-5 m-5">
                         <p className="text-center font-light text-gray-500">¿Por qué elegir un solo destino cuando puedes tenerlos todos?</p>
                         <p className="text-center font-light text-gray-500">Nuestra increíble red de hoteles, te abre las puertas a un mundo de maravillas arqueológicas.</p>
                     </div>
                     <a href="https://grupomundomaya.com/index.html/servicios-turisticos/index.html" target="_blank"
-                        className="text-danger mx-auto border-1 border-black rounded-full bg-neutral-primary border border-danger hover:bg-black hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none transition-all duration-300 ease-in-out">
+                        className="text-danger text-black mx-auto border-1 border-black rounded-full bg-neutral-primary border border-danger hover:bg-black hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none transition-all duration-300 ease-in-out">
                         Saber Más
                     </a>
 
                 </div>
-                <div className="">
-                    <Image src={"/images/686863c67fa8a296d0981f19_1_mapa 1.png"} alt="" width={1000} height={1000}></Image>
+                <div className="w-full flex justify-center" data-aos="fade-left">
+                    <Image src={"/images/686863c67fa8a296d0981f19_1_mapa 1.png"} alt="" className="w-full rounded-xl"  width={1000} height={1000}></Image>
                 </div>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="flex justify-end">
-                    <Image src={"/images/686bf8afbace0563854adb5b_puiopi.png"} alt="" width={500} height={500}></Image>
+            <div className="grid grid-cols-1 lg:grid-cols-2 m-3 lg:m-0 border border-gray-300 rounded-xl lg:border-none">
+                <div className="flex md:justify-center lg:justify-end" data-aos="fade-right">
+                    <Image src={"/images/686bf8afbace0563854adb5b_puiopi.png"} alt="" className="w-full rounded-xl" width={500} height={500}></Image>
                 </div>
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center justify-center m-3 lg:m-0" data-aos="fade-left">
                     <p className="uppercase text-xl lg:text-5xl font-bold text-center text-black">zonas arqueológicas</p>
                     <div className="mt-5 mb-5">
                         <p className="text-center font-light text-gray-500">Estamos ubicados a solo minutos de las principales y emblemáticas zonas arqueológicas mayas...</p>
@@ -43,8 +43,8 @@ const AdditionalInformationComponent: React.FC<ComponentProps> = ({
 
                 </div>
             </div>
-            <div className="grid grid-cols-2">
-                <div className="flex flex-col items-center justify-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 m-3 lg:m-0 border border-gray-300 rounded-xl lg:border-none">
+                <div className="flex flex-col items-center justify-center m-3 lg:m-0" data-aos="fade-right">
                     <p className="uppercase text-xl lg:text-5xl font-bold text-center text-black">Business class</p>
                     <div className="mt-5 mb-5">
                         <p className="text-center font-light text-gray-500">A metros del Aeropuerto Internacional de Tulum...</p>
@@ -58,8 +58,8 @@ const AdditionalInformationComponent: React.FC<ComponentProps> = ({
                     </a>
 
                 </div>
-                <div className="">
-                    <Image src={"/images/686c1466f0f1ba5ceafa78da_ghjkhjgkhj.png"} alt="" width={500} height={500}></Image>
+                <div className="flex md:justify-center lg:justify-end" data-aos="fade-left">
+                    <Image src={"/images/686c1466f0f1ba5ceafa78da_ghjkhjgkhj.png"} alt="" className="w-full rounded-xl" width={500} height={500}></Image>
                 </div>
             </div>
         </div>

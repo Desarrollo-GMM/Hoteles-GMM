@@ -49,43 +49,38 @@ const DropdownButtonComponent = () => {
             </button>
 
             <div
-                className={`z-10 absolute bg-neutral-primary-medium rounded-base shadow-lg w-44 transition-all duration-200 ${isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
+                className={`z-10 absolute  bg-neutral-primary-medium rounded-base shadow-lg w-44 transition-all duration-200 ${isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
                 onMouseEnter={() => setIsOpen(true)}
                 onMouseLeave={() => setIsOpen(false)}
             >
-                <ul className="bg-white rounded-md text-sm text-body font-medium">
+                <ul className="backdrop-blur-md bg-black/80  rounded-md text-sm text-body font-medium">
                     <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                        <a href="#" className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
                             Tulum
                         </a>
                     </li>
                     <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
-                            Tulum Aeropuerto
-                        </a>
-                    </li>
-                    <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                        <a href="#" className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
                             Chechen Itzá
                         </a>
                     </li>
                     <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                        <a href="#" className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
                             Nuevo Uxmal
                         </a>
                     </li>
                     <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                        <a href="#" className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
                             Edzná
                         </a>
                     </li>
                     <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                        <a href="#" className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
                             Calakmul
                         </a>
                     </li>
                     <li className='hover:bg-slate-200'>
-                        <a href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                        <a href="#" className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
                             Palenque
                         </a>
                     </li>

@@ -58,20 +58,21 @@ const TextOverImageComponent: React.FC<ComponentProps> = ({
 
     return (
         <div className="relative overflow-hidden mt-16">
-            <div className="parallax-container inset-0 absolute h-[60vh] md:h-[100vh]">
+            <div className="parallax-container inset-0 absolute h-[60vh] md:h-full">
                 <SimpleParallax scale={1.2}>
                     <Image
                         src={image_src}
                         alt={image_alt}
-                        fill
-                        style={{ objectFit: 'cover' }}
+                        className="md:object-contain lg:object-fill h-[35vh] md:h-[40vh] lg:h-[100vh] lg:w-full"
+                        width={3000}
+                        height={3000}
                     />
                 </SimpleParallax>
                 {image_black && (
                     <div className="absolute inset-0 bg-black/30"></div>
                 )}
             </div>
-            <div className={`relative z-10 flex flex-col min-h-full lg:min-h-screen px-4 py-12 text-white 
+            <div className={`relative z-10 flex flex-col min-h-full md:h-[40vh] lg:min-h-screen px-4 py-10 lg:py-12 text-white 
                 ${verticalClasses[vertical_position]} 
                 ${horizontalClasses[horizontal_position]}`}>
                 

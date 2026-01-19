@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import './styles/global.css';
 
+import AOSInit from '@/components/AOSInit'
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -19,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={inter.className}>
+        <AOSInit />
         {children}
       </body>
     </html>
