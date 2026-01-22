@@ -43,7 +43,7 @@ const NavbarComponent: React.FC = () => {
     return (
         <nav className="fixed top-0 right-0 left-0 z-50 bg-transparent h-16 lg:h-24">
             <div className="px-4 sm:px-6 lg:px-40 h-16 lg:h-full">
-                <div className=" bg-white rounded-b-3xl h-full w-full">
+                <div className=" bg-white rounded-b-3xl  shadow-md h-full w-full">
                     <div className=" w-full h-full">
                         {/* Menú móvil - Botón Hamburguesa - AHORA SE MUESTRA HASTA md */}
                         <button
