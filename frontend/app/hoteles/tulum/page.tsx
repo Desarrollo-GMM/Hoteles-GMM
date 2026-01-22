@@ -19,8 +19,8 @@ const Page: React.FC = () => {
                 description="Disfruta de la naturaleza y la tranquilidad en nuestro hotel de Tulum"
                 title="Hotel Tulum"
                 extraStyles="rounded-xl h-[96vh]" />
-
-            <div className="h-[40vh]  w-full">
+            
+            <div className="h-[40vh] mt-20 w-full">
                 <AutoScrollComponent
                     speed="medium"
                     direction="horizontal"
@@ -37,9 +37,9 @@ const Page: React.FC = () => {
                 </AutoScrollComponent>
             </div>
 
-            <div className="h-[80vh] w-full">
+            <div className="h-[30vh] pt-20 w-full">
                 <AutoScrollComponent
-                    speed="slow"
+                    speed="medium"
                     direction="horizontal"
                     reverse={true}
                     pauseOnHover={true}
@@ -53,9 +53,12 @@ const Page: React.FC = () => {
                     ))}
                 </AutoScrollComponent>
             </div>
-
-
-            <InformationComponent />
+            
+            <div className="">
+                <hr className="h-px my-8 bg-neutral-quaternary border-spacing-2"></hr>
+                <InformationComponent />
+            </div>
+            
 
         </div>
     )
