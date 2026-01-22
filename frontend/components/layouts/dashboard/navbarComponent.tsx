@@ -134,7 +134,7 @@ const NavbarComponent: React.FC = () => {
                             Paquetes de verano
                         </Link>
 
-                        <DropdownButtonComponent />
+                        <DropdownButtonComponent textButton="text-white" />
                         <div className="flex items-center space-x-4">
                             <a
                                 href="https://www.facebook.com/HotelesGrupoMundoMaya"
@@ -255,7 +255,7 @@ const NavbarComponent: React.FC = () => {
                         </Link>
 
                         <div className="py-2">
-                            <DropdownButtonComponent />
+                            <DropdownButtonComponent  />
                         </div>
 
                         <div className="flex items-center justify-center space-x-6 pt-4 border-t border-gray-800">

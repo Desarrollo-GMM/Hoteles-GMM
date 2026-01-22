@@ -8,21 +8,24 @@ interface ReservationComponentProps {
     title?: string;
     description?: string;
     imageUrl?: string;
+    extraStyles?: string
 }
 
 const ReservationComponent: React.FC<ReservationComponentProps> = ({
     option = 1,
     title = "Hoteles Grupo Mundo Maya",
     description = "Aventúrate en un viaje inolvidable por el sureste mexicano.",
-    imageUrl = "/images/686d5354c468605f89c569ae_calidad 5.jpg"
+    imageUrl = "/images/686d5354c468605f89c569ae_calidad 5.jpg",
+    extraStyles = ""
+
 }) => {
     switch (option) {
         case 1:
             return <Option1 title={title} description={description} imageUrl={imageUrl} />;
         case 2:
-            return <Option2 title={title} description={description} imageUrl={imageUrl} />;
+            return <Option2 title={title} description={description} imageUrl={imageUrl} extraStyles={extraStyles}/>;
         case 3:
-            return <Option3 title={title} description={description} imageUrl={imageUrl} />;
+            return <Option3 title={title} description={description} imageUrl={imageUrl} extraStyles={extraStyles} />;
         default:
             return <Option1 title={title} description={description} imageUrl={imageUrl} />;
     }
@@ -67,10 +70,11 @@ const Option1: React.FC<{ title: string; description: string; imageUrl: string }
 };
 
 
-const Option2: React.FC<{ title: string; description: string; imageUrl: string }> = ({
+const Option2: React.FC<{ title: string; description: string; imageUrl: string, extraStyles: string }> = ({
     title,
     description,
-    imageUrl
+    imageUrl,
+    extraStyles
 }) => {
     const [adults, setAdults] = useState(2);
     const [children, setChildren] = useState(0);
@@ -92,7 +96,7 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string }
                     alt="Fondo Hoteles GMM"
                     fill
                     priority
-                    className="object-cover"
+                    className={`object-cover ${extraStyles}`}
                     sizes="100vw"
                     quality={75}
                     style={{ objectFit: 'cover' }}
@@ -223,27 +227,28 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string }
     );
 };
 
-const Option3: React.FC<{ title: string; description: string; imageUrl: string }> = ({
+const Option3: React.FC<{ title: string; description: string; imageUrl: string, extraStyles: string }> = ({
     title,
     description,
-    imageUrl
+    imageUrl,
+    extraStyles
 }) => {
     return (
         <div className="relative min-h-screen">
             <div className="absolute inset-0">
                 <Image
-                    className="object-cover"
+                    className={`object-cover ${extraStyles}`}
                     alt="Imagen de Hoteles GMM"
                     src={imageUrl}
-                    fill
-                    sizes="100vw"
+                    width={5000}
+                    height={1000}
                     priority
                     quality={90}
                     style={{ objectFit: 'cover' }}
                 />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
-            <div className="relative z-10 flex flex-col md:flex-row min-h-screen items-center">
+            <div className={`absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent ${extraStyles}`}></div>
+            <div className={`relative z-10 flex flex-col md:flex-row min-h-screen items-center ${extraStyles}`}>
                 <div className="flex-1 flex flex-col justify-center text-white p-6 md:p-12 lg:p-16">
                     <p className="uppercase font-bold text-3xl md:text-4xl lg:text-6xl mb-4">
                         {title}
@@ -253,8 +258,8 @@ const Option3: React.FC<{ title: string; description: string; imageUrl: string }
                     </p>
                 </div>
                 <div className="flex-1 flex items-center justify-center p-6 md:p-12">
-                    <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6 md:p-8 w-full max-w-md transform transition-all duration-300 hover:shadow-3xl">
-                        <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+                    <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl p-6 md:p-8 w-full max-w-md transform transition-all duration-300 hover:shadow-3xl">
+                        <h3 className="text-2xl font-bold text-gray-700 mb-6 text-center">
                             Reserva tu estadía
                         </h3>
                         <form className="space-y-4">
@@ -263,21 +268,21 @@ const Option3: React.FC<{ title: string; description: string; imageUrl: string }
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Check-in</label>
                                     <input
                                         type="date"
-                                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                                     />
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Check-out</label>
                                     <input
                                         type="date"
-                                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                                     />
                                 </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Adultos</label>
-                                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -286,7 +291,7 @@ const Option3: React.FC<{ title: string; description: string; imageUrl: string }
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Niños</label>
-                                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500">
                                         <option>0</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -296,7 +301,7 @@ const Option3: React.FC<{ title: string; description: string; imageUrl: string }
                             </div>
                             <button
                                 type="button"
-                                className="w-full p-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
+                                className="w-full p-4 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
                             >
                                 Buscar disponibilidad
                             </button>

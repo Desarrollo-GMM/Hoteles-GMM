@@ -58,7 +58,7 @@ const PackageComponent: React.FC<ComponentProps> = () => {
             id: 'palenque', label: 'Palenque', active_color: 'bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700',
             images: [
                 "/images/PAQUETES-TURISTICOS/PALENQUE/2 NOCHES 3 DÍAS/Paquete turistico palenque 2 noches 3 dias.png",
-                "/images/PAQUETES-TURISTICOS/PALENQUE/3 NOCHES 4 DÍAS/Paquete turisico palenque 3 noches 4 dias.png"
+                "/images/PAQUETES-TURISTICOS/PALENQUE/3 NOCHES 4 DÍAS/Paquete turistico palenque 3 noches 4 dias.png"
             ],
             link: "https://forms.cloud.microsoft/r/6SPw6Vtm5d?origin=lprLink"
         },
