@@ -14,7 +14,7 @@ export const ROUTES = {
 } as const;
 
 export const EXTERNAL_LINKS = {
-  ABOUT: 'https://grupomundomaya.com/index.html/servicios-turisticos/index.html',
+  ABOUT: 'https://grupomundomaya.mx/',
   FACEBOOK: 'https://www.facebook.com/HotelesGrupoMundoMaya',
   TWITTER: 'https://x.com/HGrupomundomaya',
   INSTAGRAM: 'https://www.instagram.com/hotelesgrupomundomaya/',

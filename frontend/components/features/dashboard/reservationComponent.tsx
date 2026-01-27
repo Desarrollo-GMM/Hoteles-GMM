@@ -100,7 +100,7 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string, 
                     sizes="100vw"
                     quality={75}
                     style={{ objectFit: 'cover' }}
-                    />
+                />
             </div>
 
             <div className="relative z-10 lg:mt-0 mt-12 flex flex-col justify-center lg:min-h-screen px-4 py-12 text-white" data-aos="fade-up">
@@ -120,6 +120,21 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string, 
                         </h2>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-5 gap-4 md:gap-6 md:mx-20">
+                            <div className="block text-sm font-medium mb-2">
+                                <form className="max-w-sm mx-auto">
+                                    <label htmlFor="countries" className="block mb-2.5 text-sm font-medium text-heading">Hoteles</label>
+                                    <select id="countries" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-gray-800 bg-white">
+                                        <option defaultValue={'Selecciona un Hotel'}>Selecciona un Hotel</option>
+                                        <option value="US">Hotel Tulum Aeropuerto</option>
+                                        <option value="CA">Hotel Tulum</option>
+                                        <option value="FR">Hotel Chichen Itzá</option>
+                                        <option value="DE">Hotel Calakmul</option>
+                                        <option value="DE">Hotel Edzná</option>
+                                        <option value="DE">Hotel Nuevo Uxmal</option>
+                                        <option value="DE">Hotel Palenque</option>
+                                    </select>
+                                </form>
+                            </div>
                             <div>
                                 <label className="block text-sm font-medium mb-2">
                                     Check-in
@@ -243,7 +258,6 @@ const Option3: React.FC<{ title: string; description: string; imageUrl: string, 
                     width={5000}
                     height={1000}
                     priority
-                    quality={90}
                     style={{ objectFit: 'cover' }}
                 />
             </div>

@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --no-turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "convert-images": "node app/scripts/convert-images.js"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -20,11 +21,12 @@
     "flowbite": "^4.0.1",
     "flowbite-react": "^0.12.15",
     "motion": "^12.27.1",
-    "next": "^16.1.1",
+    "next": "^16.1.4",
     "qs": "^6.13.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-router-dom": "^6.26.0",
+    "sharp": "^0.34.5",
     "simple-parallax-js": "^6.3.3",
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7"

@@ -31,7 +31,7 @@ const Page: React.FC = () => {
 
                     {IMAGES_ROUTES.VERTICAL_IMAGES.TULUM.map((image, index) => (
                         <div key={index} className="mx-4">
-                            <img key={index} src={image} alt={`Tulum ${index}`} className="h-[40vh] object-cover rounded-lg" />
+                            <img key={index} src={image} alt={`Tulum ${index}`} className="h-[40vh] object-cover rounded-lg hover:scale-125 hover:shadow-xl hover:transform hover:duration-75 hover:rounded-3xl" />
                         </div>
                     ))}
                 </AutoScrollComponent>
@@ -58,6 +58,8 @@ const Page: React.FC = () => {
                 <hr className="h-px my-8 bg-neutral-quaternary border-spacing-2"></hr>
                 <InformationComponent />
             </div>
+
+            
             
 
         </div>

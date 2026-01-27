@@ -7,17 +7,17 @@ interface ComponentProps {}
 
 const OurPackageComponent: React.FC<ComponentProps> = () => {
     const images = [
-        "/images/PAQUETES-TURISTICOS/CALAKMUL/5 DÍAS 6 NOCHES/propuesta calakmul 2 .png",
-        "/images/PAQUETES-TURISTICOS/CHICHÉN ITZÁ/2 NOCHES 3 DIAS/CHICHEN HORIZONTAL 02.png",
-        "/images/PAQUETES-TURISTICOS/CHICHÉN ITZÁ/4 NOCHES 5 DÍAS/PORTAL DE KUKULKAN.png",
-        "/images/PAQUETES-TURISTICOS/EDZNÁ/2 NOCHES 3 DIAS/EDZNA 2 N 3 D HOR.png",
-        "/images/PAQUETES-TURISTICOS/EDZNÁ/4 NOCHES 5 DIAS/EDZNA 4 N 5 D HOR.png",
-        "/images/PAQUETES-TURISTICOS/NUEVO UXMAL/3 DÍAS 2 NOCHES/paquete nuevo uxmal 3 dias 2 noches.png",
-        "/images/PAQUETES-TURISTICOS/NUEVO UXMAL/4 DÍAS 3 NOCHES/paquete nuevo uxmal 5 dias 4 noches.png",
-        "/images/PAQUETES-TURISTICOS/PALENQUE/2 NOCHES 3 DÍAS/Paquete turistico palenque 2 noches 3 dias.png",
-        "/images/PAQUETES-TURISTICOS/PALENQUE/3 NOCHES 4 DÍAS/Paquete turistico palenque 3 noches 4 dias.png",
-        "/images/PAQUETES-TURISTICOS/TULUM/2 NOCHES 3 DÍAS/Paquete Turístico Tulum_.png",
-        "/images/PAQUETES-TURISTICOS/TULUM/3 NOCHES 4 DÍAS/Copia de Paquete Turístico Tulum_.png"
+        "/images/PAQUETES/CALAKMUL/5 DÍAS 6 NOCHES/propuesta calakmul 2 .png",
+        "/images/PAQUETES/CHICHEN_ITZA/2 NOCHES 3 DIAS/CHICHEN HORIZONTAL 02.png",
+        "/images/PAQUETES/CHICHEN_ITZA/4 NOCHES 5 DIAS/PORTAL DE KUKULKAN.png",
+        "/images/PAQUETES/EDZNÁ/2 NOCHES 3 DIAS/EDZNA 2 N 3 D HOR.png",
+        "/images/PAQUETES/EDZNÁ/4 NOCHES 5 DIAS/EDZNA 4 N 5 D HOR.png",
+        "/images/PAQUETES/NUEVO UXMAL/3 DIAS 2 NOCHES/paquete nuevo uxmal 3 dias 2 noches.png",
+        "/images/PAQUETES/NUEVO UXMAL/4 DIAS 3 NOCHES/paquete nuevo uxmal 5 dias 4 noches.png",
+        "/images/PAQUETES/PALENQUE/2 NOCHES 3 DÍAS/Paquete turistico palenque 2 noches 3 dias.png",
+        "/images/PAQUETES/PALENQUE/3 NOCHES 4 DÍAS/Paquete turistico palenque 3 noches 4 dias.png",
+        "/images/PAQUETES/TULUM/2 NOCHES 3 DÍAS/Paquete Turístico Tulum_.png",
+        "/images/PAQUETES/TULUM/3 NOCHES 4 DÍAS/Copia de Paquete Turístico Tulum_.png"
     ];
     
     const [currentIndex, setCurrentIndex] = useState(0);

@@ -41,8 +41,8 @@ const PackageComponent: React.FC<ComponentProps> = () => {
         {
             id: 'uxmal', label: 'Nuevo Uxmal', active_color: 'bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700',
             images: [
-                "/images/PAQUETES-TURISTICOS/NUEVO UXMAL/3 DÍAS 2 NOCHES/paquete nuevo uxmal 3 dias 2 noches.png",
-                "/images/PAQUETES-TURISTICOS/NUEVO UXMAL/4 DÍAS 3 NOCHES/paquete nuevo uxmal 5 dias 4 noches.png"
+                "/images/PAQUETES_TURISTICOS/NUEVO UXMAL/3 DÍAS 2 NOCHES/paquete nuevo uxmal 3 dias 2 noches.png",
+                "/images/PAQUETES_TURISTICOS/NUEVO UXMAL/4 DÍAS 3 NOCHES/paquete nuevo uxmal 5 dias 4 noches.png"
             ],
             link: "https://forms.cloud.microsoft/r/hcrmxe0W14?origin=lprLink"
         },
