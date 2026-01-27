@@ -16,7 +16,7 @@ const Page: React.FC = () => {
                         <PromotionComponent></PromotionComponent>
                     </div>
 
-
+                    
                     
                 </div>
             </div>
