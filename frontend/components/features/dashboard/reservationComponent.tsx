@@ -23,7 +23,7 @@ const ReservationComponent: React.FC<ReservationComponentProps> = ({
         case 1:
             return <Option1 title={title} description={description} imageUrl={imageUrl} />;
         case 2:
-            return <Option2 title={title} description={description} imageUrl={imageUrl} extraStyles={extraStyles}/>;
+            return <Option2 title={title} description={description} imageUrl={imageUrl} extraStyles={extraStyles} />;
         case 3:
             return <Option3 title={title} description={description} imageUrl={imageUrl} extraStyles={extraStyles} />;
         default:
@@ -228,12 +228,11 @@ const Option2: React.FC<{ title: string; description: string; imageUrl: string, 
                                     </button>
                                 </div>
                             </div>
-
-                            <div className="flex items-end justify-center">
-                                <button className="p-3 bg-gradient-to-r from-teal-700 to-teal-600 hover:from-teal-600 hover:to-teal-500 text-white font-semibold rounded-lg transition-all duration-300 h-[52px] transform hover:scale-[1.02] shadow-lg hover:shadow-xl">
-                                    Reservar Ahora
-                                </button>
-                            </div>
+                        </div>
+                        <div className="flex items-end justify-center pt-5">
+                            <button className="p-3 bg-gradient-to-r from-teal-700 to-teal-600 hover:from-teal-600 hover:to-teal-500 text-white font-semibold rounded-lg transition-all duration-300 h-[52px] transform hover:scale-[1.02] shadow-lg hover:shadow-xl">
+                                Reservar Ahora
+                            </button>
                         </div>
                     </div>
                 </div>
