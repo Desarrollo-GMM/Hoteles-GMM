@@ -87,8 +87,8 @@ const WeatherComponent: React.FC<WeatherComponentProps> = ({
   switch(variant) {
     case 'compact':
       return (
-        <div className={`flex items-center gap-2 mx-auto bg-black/50 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20 ${className}`}>
-          <div className={`text-2xl ${weatherInfo.color}`}>
+        <div className={`flex items-center gap-2 mx-auto bg-black/50 backdrop-blur-sm px-2 py-2 rounded-xl border border-white/20 ${className}`}>
+          <div className={`text-3xl ${weatherInfo.color}`}>
             {getIconComponent(weatherInfo.icon)}
           </div>
           <div className="text-white">

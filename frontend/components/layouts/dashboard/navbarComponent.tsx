@@ -52,12 +52,10 @@ const NavbarComponent: React.FC = () => {
 
   const isActive = (path: string) => pathname === path;
 
-  // Cerrar el menú móvil cuando cambia la ruta
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
 
-  // Prevenir scroll cuando el menú móvil está abierto
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -70,7 +68,6 @@ const NavbarComponent: React.FC = () => {
     };
   }, [isMenuOpen]);
 
-  // Cerrar menú al presionar Escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setIsMenuOpen(false);
@@ -79,7 +76,6 @@ const NavbarComponent: React.FC = () => {
     return () => window.removeEventListener('keydown', handleEscape);
   }, []);
 
-  // Cálculo de opacidad dinámica basado en scroll
   const getOpacity = useCallback(() => {
     // Suavizamos la transición con una curva más natural
     const progress = Math.min(scrollY / 100, 1);
@@ -91,30 +87,14 @@ const NavbarComponent: React.FC = () => {
 
   return (
     <nav 
-      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ease-out ${
+      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ease-out bg-gradient-to-b from-black/60 via-black/40 to-transparent ${
         isScrolled 
-          ? 'shadow-xl' 
-          : ''
+          ? 'h-16' 
+          : 'h-24'
       }`}
-      style={{
-        // Transición suave del fondo
-        background: isScrolled 
-          ? `linear-gradient(
-              to bottom,
-              rgba(0, 0, 0, ${0.9 * opacity}) 0%,
-              rgba(0, 0, 0, ${0.7 * opacity}) 50%,
-              rgba(0, 0, 0, ${0.3 * opacity}) 100%
-            )`
-          : 'rgba(0, 0, 0, 1)',
-        // Efecto de blur dinámico
-        backdropFilter: isScrolled ? `blur(${Math.min(opacity * 10, 8)}px)` : 'none',
-        // Altura con transición suave
-        height: isScrolled ? '4rem' : '6rem',
-      }}
     >
       <div className="px-4 sm:px-6 lg:px-40 h-full transition-all duration-500">
         <div className="flex items-center justify-between h-full">
-          {/* Logo con animación de escala */}
           <div className="flex-shrink-0 transition-transform duration-500 hover:scale-105">
             <a href={ROUTES.HOME} className="block">
               <Image
@@ -201,7 +181,7 @@ const NavbarComponent: React.FC = () => {
             <DropdownButtonComponent textButton="text-white hover:text-teal-400 transition-colors duration-300" />
             
             {/* Redes sociales con animaciones */}
-            <div className="flex items-center space-x-4 ml-4">
+            {/* <div className="flex items-center space-x-4 ml-4">
               {[
                 { 
                   href: "https://www.facebook.com/HotelesGrupoMundoMaya", 
@@ -238,7 +218,7 @@ const NavbarComponent: React.FC = () => {
             <button className="group relative bg-teal-700 hover:bg-teal-600 text-white font-medium py-2 px-6 rounded-full transition-all duration-300 ease-out transform hover:scale-105 overflow-hidden">
               <span className="relative z-10">Contactános</span>
               <span className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            </button>
+            </button> */}
           </div>
         </div>
 

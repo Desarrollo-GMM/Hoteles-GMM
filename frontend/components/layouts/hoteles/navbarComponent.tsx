@@ -7,40 +7,8 @@ import { ROUTES, EXTERNAL_LINKS } from "../../../app/constants/routes";
 import { usePathname } from "next/navigation";
 import DropdownButtonComponent from "../../ui/buttons/dropdownButtonComponent";
 
-const useScrollDetection = (threshold: number = 10) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
-      setIsScrolled(currentScrollY > threshold);
-    };
-
-    const debouncedHandleScroll = debounce(handleScroll, 10);
-
-    window.addEventListener('scroll', debouncedHandleScroll);
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', debouncedHandleScroll);
-    };
-  }, [threshold]);
-
-  return { isScrolled, scrollY };
-};
-
-function debounce<T extends (...args: any[]) => any>(
-  func: T,
-  wait: number
-): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout;
-  return (...args: Parameters<T>) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), wait);
-  };
-}
+//import de Hooks personalizados
+import { useScrollDetection } from "@/lib/hooks/useScrollDetection";
 
 const NavbarComponent: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

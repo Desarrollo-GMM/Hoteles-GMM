@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import WeatherComponent from "@/components/ui/weatherComponent";
 
+import { useScrollDetection } from "@/lib/hooks/useScrollDetection";
+
 interface ReservationComponentProps {
     option: 1 | 2 | 3;
     title?: string;
@@ -130,6 +132,8 @@ const Option2: React.FC<{
 
         const today = new Date().toISOString().split('T')[0];
         const tomorrow = new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split('T')[0];
+
+        const { isScrolled, scrollY } = useScrollDetection(20);
 
         return (
             <div className="relative lg:min-h-screen">
@@ -292,7 +296,8 @@ const Option2: React.FC<{
                         </div>
 
                         {/* Widget de clima dentro del formulario */}
-                        <div className="w-full">
+
+                        <div>
                             <div className="hidden w-1/6 justify-center mt-20 mx-auto lg:block">
                                 <WeatherComponent city={selectedHotel} variant="compact" />
                             </div>
@@ -318,6 +323,8 @@ const Option3: React.FC<{
     extraStyles,
     defaultLocation
 }) => {
+        const [selectedHotel, setSelectedHotel] = useState(defaultLocation);
+        const { isScrolled, scrollY } = useScrollDetection(20);
         return (
             <div className="relative min-h-screen">
                 <div className="absolute inset-0">
@@ -333,9 +340,12 @@ const Option3: React.FC<{
                 </div>
                 <div className={`absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent ${extraStyles}`}></div>
 
-                {/* Widget de clima en esquina superior derecha */}
-                <div className="absolute top-6 right-6 z-20 hidden md:block">
-                    <WeatherComponent city={defaultLocation} variant="compact" />
+
+
+                <div className={`${isScrolled ? "fixed top-0 right-4 z-50 translate-y-4 transition-all duration-700" : "hidden"}`}>
+                    <div className="w-32">
+                        <WeatherComponent city={selectedHotel} variant="compact" />
+                    </div>
                 </div>
 
                 <div className={`relative z-10 flex flex-col md:flex-row min-h-screen items-center ${extraStyles}`}>
@@ -347,7 +357,7 @@ const Option3: React.FC<{
                             {description}
                         </p>
 
-                        {/* Widget de clima detallado */}
+
                         <div className="max-w-md">
                             <WeatherComponent
                                 city={defaultLocation}
@@ -357,9 +367,9 @@ const Option3: React.FC<{
                         </div>
 
                         {/* Widget de clima para móvil */}
-                        <div className="mt-6 md:hidden">
-                            <WeatherComponent city={defaultLocation} variant="compact" />
-                        </div>
+
+
+
                     </div>
 
                     <div className="flex-1 flex items-center justify-center p-6 md:p-12">
@@ -367,7 +377,7 @@ const Option3: React.FC<{
                             <h3 className="text-2xl font-bold text-gray-700 mb-6 text-center">
                                 Reserva tu estadía
                             </h3>
-                            <form className="space-y-4">
+                            <div className="space-y-4">
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Check-in</label>
@@ -404,13 +414,33 @@ const Option3: React.FC<{
                                         </select>
                                     </div>
                                 </div>
+                                <div className="block text-sm font-medium mb-2">
+                                    <form className="max-w-sm mx-auto">
+                                        <label htmlFor="hotels" className="block mb-2.5 text-sm font-medium text-white">Hoteles</label>
+                                        <select
+                                            id="hotels"
+                                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-gray-800 bg-white"
+                                            value={selectedHotel}
+                                            onChange={(e) => setSelectedHotel(e.target.value)}
+                                        >
+                                            <option value="Selecciona un Hotel">Selecciona un Hotel</option>
+                                            <option value="Tulum">Hotel Tulum</option>
+                                            <option value="Tulum Aeropuerto">Hotel Tulum Aeropuerto</option>
+                                            <option value="Chichen Itzá">Hotel Chichen Itzá</option>
+                                            <option value="Calakmul">Hotel Calakmul</option>
+                                            <option value="Edzná">Hotel Edzná</option>
+                                            <option value="Nuevo Uxmal">Hotel Nuevo Uxmal</option>
+                                            <option value="Palenque">Hotel Palenque</option>
+                                        </select>
+                                    </form>
+                                </div>
                                 <button
                                     type="button"
                                     className="w-full p-4 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
                                 >
                                     Buscar disponibilidad
                                 </button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,3 @@
-// components/weather/useWeather.ts
 import { useState, useEffect } from "react";
 
 interface WeatherData {
@@ -73,7 +72,6 @@ export const useWeather = (initialCity: string = "Tulum") => {
     } catch (err) {
       console.error("Error fetching weather:", err);
       setError("No se pudo cargar la información del clima");
-      // Datos de ejemplo como fallback
       setWeather({
         temperature: 28,
         weathercode: 0,
