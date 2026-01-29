@@ -3,7 +3,7 @@ export const ROUTES = {
   PROMOTIONS: '/promociones',
   SUMMER_PACKAGES: '/paquetes',
   HOTELS: {
-    TULUM: '/hoteles/tulum',
+    TULUM: '/hoteles',
     CHICHEN_ITZA: '/hoteles/chichen-itza',
     NUEVO_UXMA: '/hoteles/nuevo-uxmal',
     EDZNA: '/hoteles/edzna',
@@ -58,4 +58,14 @@ export const IMAGES_ROUTES = {
       "/images/hoteles/verticales/HOTEL_TULUM/HOTEL_TULUM_854.jpg",
     ]
   }
-}
+} as const;
+
+export const hotelLocations = [
+  { city: "Tulum", lat: 20.211, lon: -87.465 },
+  { city: "Chichen Itzá", lat: 20.696206, lon: -88.557398},
+  { city: "Palenque", lat: 17.4956991, lon: -92.0244067 },
+  { city: "Calakmul", lat: 18.184355, lon: -89.747168},
+  { city: "Edzná", lat: 19.6014604, lon: -90.2227569 },
+  { city: "Nuevo Uxmal", lat: 20.3366876, lon: -89.8243936 },
+  { city: "Tulum Aeropuerto", lat: 20.232, lon: -87.430 }
+] as const;
