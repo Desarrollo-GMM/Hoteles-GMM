@@ -62,7 +62,7 @@ const NavbarComponent: React.FC = () => {
     } else {
       document.body.style.overflow = 'unset';
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -86,21 +86,26 @@ const NavbarComponent: React.FC = () => {
   const opacity = getOpacity();
 
   return (
-    <nav 
-      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ease-out bg-gradient-to-b from-black/60 via-black/40 to-transparent ${
-        isScrolled 
-          ? 'h-16' 
-          : 'h-24'
-      }`}
+    <nav
+      className={`fixed max-w-[100%] top-0 left-0 right-0 lg-full z-50 w-full transition-all duration-500 ease-out bg-gradient-to-b from-black/60 via-black/40 to-transparent
+    ${isScrolled
+          ? 'lg:h-16 h-12'
+          : 'lg:h-28 h-16'
+        }`}
     >
-      <div className="px-4 sm:px-6 lg:px-40 h-full transition-all duration-500">
-        <div className="flex items-center justify-between h-full">
-          <div className="flex-shrink-0 transition-transform duration-500 hover:scale-105">
-            <a href={ROUTES.HOME} className="block">
+      <div className="px-4 sm:px-6 h-full transition-all duration-500">
+        <div className={`grid grid-flow-col grid-rows-3 transition-all duration-500 
+          ${isScrolled
+            ? "lg:h-16 h-10"
+            : "lg:h-36 h-16"
+          }`}>
+          <div className={`row-span-3 flex-none transition-all duration-500 hover:scale-105 border-white border 
+            ${isScrolled ? "lg:h-16 h-12" : "lg:h-28 h-16"}`}>
+            <a href={ROUTES.HOME} className="flex justify-center align-middle h-full">
               <Image
-                className={`w-auto object-contain transition-all duration-500 ${
-                  isScrolled ? 'h-12' : 'h-16'
-                }`}
+                className={`w-auto object-contain transition-all duration-500 my-auto 
+                  ${isScrolled ? 'h-12' : 'lg:h-20 h-16'
+                  }`}
                 alt="Logo GMM"
                 src="/images/GMM blanco.png"
                 width={180}
@@ -110,141 +115,122 @@ const NavbarComponent: React.FC = () => {
             </a>
           </div>
 
-          {/* Menú móvil - Botón Hamburguesa */}
-          <button
-            type="button"
-            className="lg:hidden text-white p-2 focus:outline-none z-60 transition-transform duration-300 hover:scale-110"
-            aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <div className="relative w-6 h-6">
-              <span className={`absolute left-0 top-1/2 w-6 h-0.5 bg-white transform transition-all duration-300 ${
-                isMenuOpen ? 'rotate-45 -translate-y-1/2' : '-translate-y-2'
-              }`}></span>
-              <span className={`absolute left-0 top-1/2 w-6 h-0.5 bg-white transform transition-all duration-300 ${
-                isMenuOpen ? 'opacity-0' : 'opacity-100'
-              }`}></span>
-              <span className={`absolute left-0 top-1/2 w-6 h-0.5 bg-white transform transition-all duration-300 ${
-                isMenuOpen ? '-rotate-45 -translate-y-1/2' : 'translate-y-2'
-              }`}></span>
-            </div>
-          </button>
+          <div className={`col-span-2 border-b border-white transition-all duration-500 
+            ${isScrolled
+              ? "h-2"
+              : "lg:h-8 h-2"}`}>
+          </div>
 
-          {/* Menú desktop */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <Link
-              href={ROUTES.HOME}
-              className={`relative text-sm font-medium transition-all duration-300 hover:text-teal-400 group
+          <div className="col-span-2">
+            {/* Menú desktop */}
+            <div className="hidden lg:flex items-center justify-around space-x-8 pl-5">
+              <Link
+                href={ROUTES.HOME}
+                className={`relative text-sm font-medium transition-all duration-300 text-center hover:text-teal-400 group border-white border px-4 py-2.5 w-full 
                 ${isActive(ROUTES.HOME) ? "text-teal-500" : "text-white"}
               `}
-            >
-              Inicio
-              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${
-                isActive(ROUTES.HOME) ? 'w-full' : ''
-              }`}></span>
-            </Link>
-            
-            <a
-              href={EXTERNAL_LINKS.ABOUT}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative text-white hover:text-teal-400 transition-all duration-300 text-sm font-medium group"
-            >
-              ¿Quiénes Somos?
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            
-            <Link
-              href={ROUTES.PROMOTIONS}
-              className={`relative transition-all duration-300 text-sm font-medium group
+              >
+                Inicio
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.HOME) ? 'w-full' : ''
+                  }`}></span>
+              </Link>
+
+              <a
+                href={EXTERNAL_LINKS.ABOUT}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative text-white hover:text-teal-400 text-center transition-all duration-300 text-sm font-medium group border-white border px-4 py-2.5 w-full"
+              >
+                ¿Quiénes Somos?
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+
+              <Link
+                href={ROUTES.PROMOTIONS}
+                className={`relative transition-all duration-300 text-sm text-center font-medium group border-white border px-4 py-2.5 w-full
                 ${isActive(ROUTES.PROMOTIONS) ? "text-teal-500" : "text-white hover:text-teal-400"}
               `}
-            >
-              Promociones
-              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${
-                isActive(ROUTES.PROMOTIONS) ? 'w-full' : ''
-              }`}></span>
-            </Link>
-            
-            <Link
-              href={ROUTES.SUMMER_PACKAGES}
-              className={`relative text-white hover:text-teal-400 transition-all duration-300 text-sm font-medium group
+              >
+                Promociones
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.PROMOTIONS) ? 'w-full' : ''
+                  }`}></span>
+              </Link>
+
+              <Link
+                href={ROUTES.SUMMER_PACKAGES}
+                className={`relative text-white hover:text-teal-400 text-center transition-all duration-300 text-sm font-medium group border-white border px-4 py-2.5 w-full 
                 ${isActive(ROUTES.SUMMER_PACKAGES) ? "text-teal-500" : ""}
               `}
-            >
-              Paquetes de verano
-              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${
-                isActive(ROUTES.SUMMER_PACKAGES) ? 'w-full' : ''
-              }`}></span>
-            </Link>
+              >
+                Paquetes de verano
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full border-white border ${isActive(ROUTES.SUMMER_PACKAGES) ? 'w-full' : ''
+                  }`}></span>
+              </Link>
 
-            <DropdownButtonComponent textButton="text-white hover:text-teal-400 transition-colors duration-300" />
-            
-            {/* Redes sociales con animaciones */}
-            {/* <div className="flex items-center space-x-4 ml-4">
-              {[
-                { 
-                  href: "https://www.facebook.com/HotelesGrupoMundoMaya", 
-                  icon: FacebookIcon, 
-                  color: "hover:text-blue-600",
-                  label: "Facebook page"
-                },
-                { 
-                  href: "https://x.com/HGrupomundomaya", 
-                  icon: TwitterIcon, 
-                  color: "hover:text-white",
-                  label: "Twitter page"
-                },
-                { 
-                  href: "https://www.instagram.com/hotelesgrupomundomaya/", 
-                  icon: InstagramIcon, 
-                  color: "hover:text-pink-500",
-                  label: "Instagram page"
-                }
-              ].map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`text-slate-300 ${social.color} transform transition-all duration-300 hover:scale-110 hover:-translate-y-0.5`}
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-6 h-6" />
-                </a>
-              ))}
+              <DropdownButtonComponent textButton="text-white hover:text-teal-400 transition-colors duration-300 border-white border w-full" />
+
+
             </div>
-            
-            <button className="group relative bg-teal-700 hover:bg-teal-600 text-white font-medium py-2 px-6 rounded-full transition-all duration-300 ease-out transform hover:scale-105 overflow-hidden">
-              <span className="relative z-10">Contactános</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            </button> */}
+            {/* Menú móvil - Botón Hamburguesa */}
+            <button
+              type="button"
+              className="lg:hidden block text-white p-2 focus:outline-none z-60 transition-transform duration-300 hover:scale-110"
+              aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <div className="relative w-6 h-6">
+                <span className={`absolute left-0 top-1/2 w-6 h-0.5 bg-white transform transition-all duration-300 ${isMenuOpen ? 'rotate-45 -translate-y-1/2' : '-translate-y-2'
+                  }`}></span>
+                <span className={`absolute left-0 top-1/2 w-6 h-0.5 bg-white transform transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'
+                  }`}></span>
+                <span className={`absolute left-0 top-1/2 w-6 h-0.5 bg-white transform transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1/2' : 'translate-y-2'
+                  }`}></span>
+              </div>
+            </button>
           </div>
         </div>
-
         {/* Menú móvil - Dropdown */}
         <div className={`
-          lg:hidden fixed top-0 left-0 right-0 h-screen bg-gradient-to-b from-black via-black/95 to-black/90 backdrop-blur-lg
+          lg:hidden fixed top-0 left-0 right-0 h-screen bg-gradient-to-b from-black/40 via-black/95 to-black/90 backdrop-blur-lg
           transform transition-all duration-500 ease-in-out z-40
-          ${isMenuOpen 
-            ? 'translate-y-0 opacity-100 visible' 
+          ${isMenuOpen
+            ? 'translate-y-0 opacity-100 visible'
             : '-translate-y-full opacity-0 invisible'
           }
         `}>
           <div className="px-4 py-6 space-y-6 max-h-screen overflow-y-auto pt-20">
             <div className="flex flex-col items-center space-y-8">
+              <button
+                className="absolute top-4 right-4 p-2"
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Cerrar menú"
+              >
+                <svg
+                  className="w-8 h-8 text-teal-700"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
               <Link
                 href={ROUTES.HOME}
                 className={`text-xl font-medium transition-all duration-300 transform hover:scale-105
-                  ${isActive(ROUTES.HOME) 
-                    ? "text-teal-500" 
+                  ${isActive(ROUTES.HOME)
+                    ? "text-teal-500"
                     : "text-white hover:text-teal-400"
                   }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Inicio
               </Link>
-              
+
               <a
                 href={EXTERNAL_LINKS.ABOUT}
                 target="_blank"
@@ -254,19 +240,19 @@ const NavbarComponent: React.FC = () => {
               >
                 ¿Quiénes Somos?
               </a>
-              
+
               <Link
                 href={ROUTES.PROMOTIONS}
                 className={`text-xl transition-all duration-300 transform hover:scale-105
-                  ${isActive(ROUTES.PROMOTIONS) 
-                    ? "text-teal-500" 
+                  ${isActive(ROUTES.PROMOTIONS)
+                    ? "text-teal-500"
                     : "text-white hover:text-teal-400"
                   }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Promociones
               </Link>
-              
+
               <Link
                 href={ROUTES.SUMMER_PACKAGES}
                 className={`text-xl text-white hover:text-teal-400 transition-all duration-300 transform hover:scale-105
@@ -278,27 +264,27 @@ const NavbarComponent: React.FC = () => {
               </Link>
 
               <div className="py-4">
-                <DropdownButtonComponent />
+                <DropdownButtonComponent textColor="text-white" />
               </div>
 
               {/* Redes sociales móviles */}
               <div className="flex items-center justify-center space-x-8 pt-6 border-t border-gray-800">
                 {[
-                  { 
-                    href: "https://www.facebook.com/HotelesGrupoMundoMaya", 
-                    icon: FacebookIcon, 
+                  {
+                    href: "https://www.facebook.com/HotelesGrupoMundoMaya",
+                    icon: FacebookIcon,
                     color: "hover:text-blue-600",
                     label: "Facebook"
                   },
-                  { 
-                    href: "https://x.com/HGrupomundomaya", 
-                    icon: TwitterIcon, 
+                  {
+                    href: "https://x.com/HGrupomundomaya",
+                    icon: TwitterIcon,
                     color: "hover:text-white",
                     label: "Twitter"
                   },
-                  { 
-                    href: "https://www.instagram.com/hotelesgrupomundomaya/", 
-                    icon: InstagramIcon, 
+                  {
+                    href: "https://www.instagram.com/hotelesgrupomundomaya/",
+                    icon: InstagramIcon,
                     color: "hover:text-pink-500",
                     label: "Instagram"
                   }
@@ -317,7 +303,7 @@ const NavbarComponent: React.FC = () => {
                 ))}
               </div>
 
-              <button 
+              <button
                 className="group relative bg-teal-700 hover:bg-teal-600 text-white font-medium py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 mt-8 w-full max-w-xs"
                 onClick={() => setIsMenuOpen(false)}
               >
