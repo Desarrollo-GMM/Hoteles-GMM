@@ -48,37 +48,35 @@ const NavbarComponent: React.FC = () => {
   const scrollProgress = getScrollProgress();
 
   return (
-    <nav 
-      className="fixed top-0 right-0 left-0 z-50 transition-all duration-500 ease-out"
-      style={{
-        height: isScrolled ? '4rem' : '6rem',
-      }}
-    >
-      <div className="px-4 sm:px-6 lg:px-40 h-full transition-all duration-500">
+    <nav
+      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ease-out ${isScrolled ? "lg:h-16 h-14" : "lg:h-24 h-16"}`}>
+      <div className="px-4 sm:px-6 lg:px-40 h-full flex justify-center transition-all duration-500">
         <div className={`
-          rounded-b-3xl h-full w-full transition-all duration-500 ease-out shadow-lg
-          ${isScrolled 
-            ? 'bg-white/95 backdrop-blur-md shadow-xl' 
-            : 'bg-white shadow-md'
+          rounded-b-3xl h-full  transition-all duration-500 ease-out shadow-lg
+          ${isScrolled
+            ? 'bg-white backdrop-blur-md shadow-xl w-1/3 lg:w-full'
+            : 'bg-white shadow-md lg:w-full w-1/2'
           }
         `}>
-          <div className="w-full h-full relative">
+          <div className="flex justify-center w-full h-full relative">
             <button
               type="button"
-              className="lg:hidden p-2 focus:outline-none z-60 absolute top-1/2 left-4 transform -translate-y-1/2"
+              className="lg:hidden p-2 focus:outline-none z-60 absolute top-1/2 left-0 lg:left-4 transform -translate-y-1/2"
               aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <div className="relative w-6 h-6">
-                <span className={`absolute left-0 top-1/2 w-6 h-0.5 bg-teal-700 transform transition-all duration-300 ${
-                  isMenuOpen ? 'rotate-45 -translate-y-1/2' : '-translate-y-2'
-                }`}></span>
-                <span className={`absolute left-0 top-1/2 w-6 h-0.5 bg-teal-700 transform transition-all duration-300 ${
-                  isMenuOpen ? 'opacity-0' : 'opacity-100'
-                }`}></span>
-                <span className={`absolute left-0 top-1/2 w-6 h-0.5 bg-teal-700 transform transition-all duration-300 ${
-                  isMenuOpen ? '-rotate-45 -translate-y-1/2' : 'translate-y-2'
-                }`}></span>
+              <div className="flex-shrink-0 transition-transform duration-500 hover:scale-105">
+                <a href="#" className="block">
+                  <Image
+                    className={`w-auto object-contain transition-all duration-500 ${isScrolled ? 'h-12' : 'h-20'
+                      }`}
+                    alt="Logo GMM"
+                    src="/images/Copia-de-Hoteles-general-01.png"
+                    width={180}
+                    height={80}
+                    priority
+                  />
+                </a>
               </div>
             </button>
 
@@ -87,17 +85,16 @@ const NavbarComponent: React.FC = () => {
                 <Link
                   href={ROUTES.HOME}
                   className={`relative text-sm font-medium transition-all duration-300 group
-                    ${isActive(ROUTES.HOME) 
-                      ? "text-teal-500" 
+                    ${isActive(ROUTES.HOME)
+                      ? "text-teal-500"
                       : "text-gray-600 hover:text-teal-500"
                     }`}
                 >
                   Galería
-                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${
-                    isActive(ROUTES.HOME) ? 'w-full' : ''
-                  }`}></span>
+                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.HOME) ? 'w-full' : ''
+                    }`}></span>
                 </Link>
-                
+
                 <a
                   href={EXTERNAL_LINKS.ABOUT}
                   target="_blank"
@@ -107,21 +104,20 @@ const NavbarComponent: React.FC = () => {
                   Servicios
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                
+
                 <Link
                   href={ROUTES.PROMOTIONS}
                   className={`relative transition-all duration-300 text-sm font-medium group
-                    ${isActive(ROUTES.PROMOTIONS) 
-                      ? "text-teal-500" 
+                    ${isActive(ROUTES.PROMOTIONS)
+                      ? "text-teal-500"
                       : "text-gray-600 hover:text-teal-500"
                     }`}
                 >
                   Contactos
-                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${
-                    isActive(ROUTES.PROMOTIONS) ? 'w-full' : ''
-                  }`}></span>
+                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.PROMOTIONS) ? 'w-full' : ''
+                    }`}></span>
                 </Link>
-                
+
                 <div className="transform transition-all duration-300 hover:scale-105">
                   <DropdownButtonComponent textColor="text-gray-600 hover:text-teal-500 transition-colors duration-300" />
                 </div>
@@ -131,9 +127,8 @@ const NavbarComponent: React.FC = () => {
                 <div className="flex-shrink-0 transition-transform duration-500 hover:scale-105">
                   <a href={ROUTES.HOME} className="block">
                     <Image
-                      className={`w-auto object-contain transition-all duration-500 ${
-                        isScrolled ? 'h-12' : 'h-20'
-                      }`}
+                      className={`w-auto object-contain transition-all duration-500 ${isScrolled ? 'h-12' : 'h-20'
+                        }`}
                       alt="Logo GMM"
                       src="/images/Copia-de-Hoteles-general-01.png"
                       width={180}
@@ -149,21 +144,21 @@ const NavbarComponent: React.FC = () => {
                 <div className="flex items-center gap-4">
                   {/* Redes sociales con animaciones */}
                   {[
-                    { 
-                      href: "https://www.facebook.com/HotelesGrupoMundoMaya", 
-                      icon: FacebookIcon, 
+                    {
+                      href: "https://www.facebook.com/HotelesGrupoMundoMaya",
+                      icon: FacebookIcon,
                       color: "hover:text-blue-600",
                       label: "Facebook"
                     },
-                    { 
-                      href: "https://x.com/HGrupomundomaya", 
-                      icon: TwitterIcon, 
+                    {
+                      href: "https://x.com/HGrupomundomaya",
+                      icon: TwitterIcon,
                       color: "hover:text-teal-600",
                       label: "Twitter"
                     },
-                    { 
-                      href: "https://www.instagram.com/hotelesgrupomundomaya/", 
-                      icon: InstagramIcon, 
+                    {
+                      href: "https://www.instagram.com/hotelesgrupomundomaya/",
+                      icon: InstagramIcon,
                       color: "hover:text-pink-500",
                       label: "Instagram"
                     }
@@ -180,7 +175,7 @@ const NavbarComponent: React.FC = () => {
                     </a>
                   ))}
                 </div>
-                
+
                 <button className="group relative bg-teal-700 hover:bg-teal-600 text-white font-medium py-2 px-6 rounded-full transition-all duration-300 ease-out transform hover:scale-105 overflow-hidden">
                   <span className="relative z-10">Contáctanos</span>
                   <span className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
@@ -195,8 +190,8 @@ const NavbarComponent: React.FC = () => {
       <div className={`
         lg:hidden fixed top-0 left-0 right-0 h-screen bg-gradient-to-b from-white via-white/95 to-white/90 backdrop-blur-lg
         transform transition-all duration-500 ease-in-out z-40
-        ${isMenuOpen 
-          ? 'translate-y-0 opacity-100 visible' 
+        ${isMenuOpen
+          ? 'translate-y-0 opacity-100 visible'
           : '-translate-y-full opacity-0 invisible'
         }
       `}>
@@ -225,15 +220,15 @@ const NavbarComponent: React.FC = () => {
             <Link
               href={ROUTES.HOME}
               className={`text-xl font-medium transition-all duration-300 transform hover:scale-105
-                ${isActive(ROUTES.HOME) 
-                  ? "text-teal-500" 
+                ${isActive(ROUTES.HOME)
+                  ? "text-teal-500"
                   : "text-gray-700 hover:text-teal-500"
                 }`}
               onClick={() => setIsMenuOpen(false)}
             >
               Galería
             </Link>
-            
+
             <a
               href={EXTERNAL_LINKS.ABOUT}
               target="_blank"
@@ -243,12 +238,12 @@ const NavbarComponent: React.FC = () => {
             >
               Servicios
             </a>
-            
+
             <Link
               href={ROUTES.PROMOTIONS}
               className={`text-xl transition-all duration-300 transform hover:scale-105
-                ${isActive(ROUTES.PROMOTIONS) 
-                  ? "text-teal-500" 
+                ${isActive(ROUTES.PROMOTIONS)
+                  ? "text-teal-500"
                   : "text-gray-700 hover:text-teal-500"
                 }`}
               onClick={() => setIsMenuOpen(false)}
@@ -262,21 +257,21 @@ const NavbarComponent: React.FC = () => {
 
             <div className="flex items-center justify-center space-x-8 pt-6 border-t border-gray-300">
               {[
-                { 
-                  href: "https://www.facebook.com/HotelesGrupoMundoMaya", 
-                  icon: FacebookIcon, 
+                {
+                  href: "https://www.facebook.com/HotelesGrupoMundoMaya",
+                  icon: FacebookIcon,
                   color: "hover:text-blue-600",
                   label: "Facebook"
                 },
-                { 
-                  href: "https://x.com/HGrupomundomaya", 
-                  icon: TwitterIcon, 
+                {
+                  href: "https://x.com/HGrupomundomaya",
+                  icon: TwitterIcon,
                   color: "hover:text-teal-600",
                   label: "Twitter"
                 },
-                { 
-                  href: "https://www.instagram.com/hotelesgrupomundomaya/", 
-                  icon: InstagramIcon, 
+                {
+                  href: "https://www.instagram.com/hotelesgrupomundomaya/",
+                  icon: InstagramIcon,
                   color: "hover:text-pink-500",
                   label: "Instagram"
                 }
@@ -295,7 +290,7 @@ const NavbarComponent: React.FC = () => {
               ))}
             </div>
 
-            <button 
+            <button
               className="group relative bg-teal-700 hover:bg-teal-600 text-white font-medium py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 mt-8 w-full max-w-xs"
               onClick={() => setIsMenuOpen(false)}
             >
@@ -307,13 +302,13 @@ const NavbarComponent: React.FC = () => {
       </div>
 
       {/* Barra decorativa superior dinámica */}
-      <div 
+      <div
         className={`fixed top-0 left-0 w-full bg-white z-50 transition-all duration-500 
-            ${isActive(ROUTES.PROMOTIONS) 
-                  ? "h-4" 
-                  : "h-3"
-            }`}
-        
+            ${isActive(ROUTES.PROMOTIONS)
+            ? "lg:h-4 h-3"
+            : "lg:h-3 h-2"
+          }`}
+
       />
     </nav>
   );

@@ -66,6 +66,11 @@ const DropdownButtonComponent = ({ textColor = "text-black", textButton = "text-
                         </a>
                     </li>
                     <li className='hover:bg-slate-200'>
+                        <a href={ROUTES.HOTELS.TULUM} className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
+                            Tulum Aeropuertos
+                        </a>
+                    </li>
+                    <li className='hover:bg-slate-200'>
                         <a href={ROUTES.HOTELS.CHICHEN_ITZA} className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
                             Chechen Itzá
                         </a>

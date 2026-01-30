@@ -348,17 +348,17 @@ const Option3: React.FC<{
                     </div>
                 </div>
 
-                <div className={`relative z-10 flex flex-col md:flex-row min-h-screen items-center ${extraStyles}`}>
-                    <div className="flex-1 flex flex-col justify-center text-white p-6 md:p-12 lg:p-16">
+                <div className={`relative z-10 flex flex-col md:flex-row min-h-screen items-center my-auto ${extraStyles}`}>
+                    <div className="flex-1 flex flex-col justify-center text-white pt-16 pb-0 max-h-40 lg:h-full px-6 md:p-12 lg:p-16">
                         <p className="uppercase font-bold text-3xl md:text-4xl lg:text-6xl mb-4">
                             {title}
                         </p>
-                        <p className="font-light text-base md:text-xl lg:text-2xl max-w-xl mb-8">
+                        <p className="font-light text-base md:text-xl lg:text-2xl max-w-xl lg:mb-8 ">
                             {description}
                         </p>
 
 
-                        <div className="max-w-md">
+                        <div className="max-w-md hidden md:block">
                             <WeatherComponent
                                 city={defaultLocation}
                                 variant="detailed"
@@ -366,13 +366,11 @@ const Option3: React.FC<{
                             />
                         </div>
 
-                        {/* Widget de clima para móvil */}
-
 
 
                     </div>
 
-                    <div className="flex-1 flex items-center justify-center p-6 md:p-12">
+                    <div className="flex-1 flex items-center justify-center p-2 md:p-12">
                         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl p-6 md:p-8 w-full max-w-md transform transition-all duration-300 hover:shadow-3xl">
                             <h3 className="text-2xl font-bold text-gray-700 mb-6 text-center">
                                 Reserva tu estadía
