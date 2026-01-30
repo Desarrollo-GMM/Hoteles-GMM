@@ -87,7 +87,7 @@ const NavbarComponent: React.FC = () => {
 
   return (
     <nav
-      className={`fixed max-w-[100%] top-0 left-0 right-0 lg-full z-50 w-full transition-all duration-500 ease-out bg-gradient-to-b from-black/60 via-black/40 to-transparent
+      className={`fixed max-w-[100%] top-0 left-0 right-0 lg-full z-50 w-full transition-all duration-500 ease-out bg-gradient-to-b from-black/80 via-black/50 to-transparent
     ${isScrolled
           ? 'lg:h-16 h-12'
           : 'lg:h-28 h-16'
@@ -99,11 +99,11 @@ const NavbarComponent: React.FC = () => {
             ? "lg:h-16 h-10"
             : "lg:h-36 h-16"
           }`}>
-          <div className={`row-span-3 flex-none transition-all duration-500 hover:scale-105 border-white border 
+          <div className={`row-span-3 flex-none transition-all duration-500  border-white border 
             ${isScrolled ? "lg:h-16 h-12" : "lg:h-28 h-16"}`}>
             <a href={ROUTES.HOME} className="flex justify-center align-middle h-full">
               <Image
-                className={`w-auto object-contain transition-all duration-500 my-auto 
+                className={`w-auto object-contain transition-all duration-500 my-auto hover:scale-105 
                   ${isScrolled ? 'h-12' : 'lg:h-20 h-16'
                   }`}
                 alt="Logo GMM"

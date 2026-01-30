@@ -62,10 +62,85 @@ export const IMAGES_ROUTES = {
 
 export const hotelLocations = [
   { city: "Tulum", lat: 20.211, lon: -87.465 },
-  { city: "Chichen Itzá", lat: 20.696206, lon: -88.557398},
+  { city: "Chichen Itzá", lat: 20.696206, lon: -88.557398 },
   { city: "Palenque", lat: 17.4956991, lon: -92.0244067 },
-  { city: "Calakmul", lat: 18.184355, lon: -89.747168},
+  { city: "Calakmul", lat: 18.184355, lon: -89.747168 },
   { city: "Edzná", lat: 19.6014604, lon: -90.2227569 },
   { city: "Nuevo Uxmal", lat: 20.3366876, lon: -89.8243936 },
   { city: "Tulum Aeropuerto", lat: 20.232, lon: -87.430 }
 ] as const;
+
+export const PROMOTIONS = [
+  {
+    packageName: "Nombre Creativo",
+    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
+    roomType: 'tulum', 
+    limitDate: '30 Noviembre 2025.', 
+    estimatedStay: '4 noches consecutivas.',
+    termsAndConditions: [
+      "Haz tu reserva en las fechas (7,8,9, 28 y 29 de julio) (20 y 21 de agosto).",
+      "Reserva mínima con 15 días de anticipación.",
+      "Hospedaje gratuito aplicable en la cuarta noche.",
+      "Promoción exclusiva en reservas en línea (pagina web oficial) o vía Call center.",
+      "Sujeto a disponibilidad.",
+      "No acumulable con otras promociones, descuentos o beneficios.",
+      "Promoción no reembolsable, una vez confirmada la reserva.",
+      "Válido para llegadas únicamente de lunes a jueves.",
+      "Máximo 2 habitaciones por cupón.",
+      "Los cambios y cancelaciones estarán sujetas a las políticas de cada hotel participante.",
+      "No aplica en temporada alta: Días festivos, puentes y vacaciones de invierno."
+    ],
+    reservationContact: {
+      webSite: "https://www.hotelesgrupomundomaya.com/",
+      callCenter: "5544400662"
+    }
+  },
+  {
+    packageName: "Nombre Creativo",
+    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
+    roomType: 'tulum', 
+    limitDate: '30 Noviembre 2025.', 
+    estimatedStay: '4 noches consecutivas.',
+    termsAndConditions: [
+      "Haz tu reserva en las fechas (7,8,9, 28 y 29 de julio) (20 y 21 de agosto).",
+      "Reserva mínima con 15 días de anticipación.",
+      "Hospedaje gratuito aplicable en la cuarta noche.",
+      "Promoción exclusiva en reservas en línea (pagina web oficial) o vía Call center.",
+      "Sujeto a disponibilidad.",
+      "No acumulable con otras promociones, descuentos o beneficios.",
+      "Promoción no reembolsable, una vez confirmada la reserva.",
+      "Válido para llegadas únicamente de lunes a jueves.",
+      "Máximo 2 habitaciones por cupón.",
+      "Los cambios y cancelaciones estarán sujetas a las políticas de cada hotel participante.",
+      "No aplica en temporada alta: Días festivos, puentes y vacaciones de invierno."
+    ],
+    reservationContact: {
+      webSite: "https://www.hotelesgrupomundomaya.com/",
+      callCenter: "5544400662"
+    }
+  },
+  {
+    packageName: "Nombre Creativo",
+    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
+    roomType: 'tulum', 
+    limitDate: '30 Noviembre 2025.', 
+    estimatedStay: '4 noches consecutivas.',
+    termsAndConditions: [
+      "Haz tu reserva en las fechas (7,8,9, 28 y 29 de julio) (20 y 21 de agosto).",
+      "Reserva mínima con 15 días de anticipación.",
+      "Hospedaje gratuito aplicable en la cuarta noche.",
+      "Promoción exclusiva en reservas en línea (pagina web oficial) o vía Call center.",
+      "Sujeto a disponibilidad.",
+      "No acumulable con otras promociones, descuentos o beneficios.",
+      "Promoción no reembolsable, una vez confirmada la reserva.",
+      "Válido para llegadas únicamente de lunes a jueves.",
+      "Máximo 2 habitaciones por cupón.",
+      "Los cambios y cancelaciones estarán sujetas a las políticas de cada hotel participante.",
+      "No aplica en temporada alta: Días festivos, puentes y vacaciones de invierno."
+    ],
+    reservationContact: {
+      webSite: "https://www.hotelesgrupomundomaya.com/",
+      callCenter: "5544400662"
+    }
+  },
+];
