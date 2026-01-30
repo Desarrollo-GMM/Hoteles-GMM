@@ -20,7 +20,7 @@ interface ComponentProps {
 
 const Page: React.FC<ComponentProps> = ({ destino = "Tulum" }) => {
     return (
-        <div className="m-4">
+        <div className="lg:m-4 m-2">
             <NavbarComponent />
 
             <ReservationComponent

@@ -4,11 +4,11 @@ export const ROUTES = {
   SUMMER_PACKAGES: '/paquetes',
   HOTELS: {
     TULUM: '/hoteles',
-    CHICHEN_ITZA: '/hoteles/chichen-itza',
-    NUEVO_UXMA: '/hoteles/nuevo-uxmal',
-    EDZNA: '/hoteles/edzna',
-    CALAKMUL: '/hoteles/calakmul',
-    PALENQUE: '/hoteles/palenque',
+    CHICHEN_ITZA: '/hoteles',
+    NUEVO_UXMA: '/hoteles',
+    EDZNA: '/hoteles',
+    CALAKMUL: '/hoteles',
+    PALENQUE: '/hoteles',
   },
   CONTACT: '/contacto',
 } as const;
