@@ -11,7 +11,7 @@ const Page: React.FC = () => {
 
             <div className="min-h-screen">
 
-                <div className="mt-28 h-full">
+                <div className="mt-24 h-full">
                     <div className="">
                         <PromotionComponent></PromotionComponent>
                     </div>
