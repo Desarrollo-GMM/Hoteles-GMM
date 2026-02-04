@@ -87,7 +87,7 @@ const NavbarComponent: React.FC = () => {
 
   return (
     <nav
-      className={`fixed max-w-[100%] top-0 left-0 right-0 lg-full z-50 w-full transition-all duration-500 ease-out bg-gradient-to-b from-black/80 via-black/50 to-transparent
+      className={`fixed max-w-[100%] top-0 left-0 right-0 lg-full z-50 w-full transition-all duration-500 ease-out bg-gradient-to-b backdrop-blur-md bg-black/50 transparent
     ${isScrolled
           ? 'lg:h-16 h-12'
           : 'lg:h-28 h-16'
