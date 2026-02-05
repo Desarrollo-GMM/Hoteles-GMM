@@ -12,11 +12,19 @@ import { useSearchParams } from "next/navigation"
 import { IMAGES_ROUTES } from "@/app/constants/routes";
 import { COMODIDADES } from "@/app/constants/services"
 
-// Creamos un componente separado para el contenido que usa useSearchParams
+const limpiarConCaracteresEspecificos = (texto: string) => {
+    return texto
+        .toUpperCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '') // Eliminar todos los acentos
+        .replace(/[^A-Z0-9\s-_]/g, '') // Mantener también guiones
+        .replace(/\s+/g, '_')
+        .trim();
+};
+
 function HotelContent() {
     const [destino, setDestino] = useState<string>("Tulum")
     const searchParams = useSearchParams();
-
     useEffect(() => {
         const destinoParam = searchParams?.get('destino');
         if(destinoParam){
@@ -26,6 +34,10 @@ function HotelContent() {
 
     console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>")
     console.log(destino)
+
+    const destinoNormalizado = limpiarConCaracteresEspecificos(destino);
+    const img_horizontales = IMAGES_ROUTES.HORIZONTAL_IMAGES[destinoNormalizado as keyof typeof IMAGES_ROUTES.HORIZONTAL_IMAGES] || IMAGES_ROUTES.HORIZONTAL_IMAGES.TULUM;
+    const img_verticales = IMAGES_ROUTES.VERTICAL_IMAGES[destinoNormalizado as keyof typeof IMAGES_ROUTES.VERTICAL_IMAGES] || IMAGES_ROUTES.VERTICAL_IMAGES.TULUM;
 
     return (
         <div className="lg:m-4 m-2">
@@ -67,7 +79,7 @@ function HotelContent() {
                         className="py-4 h-auto"
                         gap={0}
                     >
-                        {IMAGES_ROUTES.VERTICAL_IMAGES.TULUM.map((image, index) => (
+                        {img_horizontales.map((image, index) => (
                             <div
                                 key={index}
                                 className="mx-4 relative group cursor-pointer transform transition-transform duration-500 hover:scale-105"
@@ -93,7 +105,7 @@ function HotelContent() {
                         className="py-4 h-auto"
                         gap={0}
                     >
-                        {IMAGES_ROUTES.HORIZONTAL_IMAGES.TULUM.map((image, index) => (
+                        {img_verticales.map((image, index) => (
                             <div
                                 key={index}
                                 className="mx-4 relative group cursor-pointer transform transition-transform duration-500 hover:scale-105"

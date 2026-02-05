@@ -36,7 +36,9 @@ const getLocationByDestino = (destino: string) => {
 
 const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
     const destinoNormalizado = limpiarConCaracteresEspecificos(destino);
+    console.log(destinoNormalizado)
     const imagenes = IMAGES_ROUTES.HORIZONTAL_IMAGES[destinoNormalizado as keyof typeof IMAGES_ROUTES.HORIZONTAL_IMAGES] || IMAGES_ROUTES.HORIZONTAL_IMAGES.TULUM;
+    console.log(imagenes)
     const imagenAleatoria = imagenes[Math.floor(Math.random() * imagenes.length)];
     
     const locations = getLocationByDestino(destino);

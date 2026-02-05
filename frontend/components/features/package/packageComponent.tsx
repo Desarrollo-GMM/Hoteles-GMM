@@ -9,6 +9,8 @@ import WhatsappIcon from '@/components/ui/icons/whatsapp';
 import CalloutIcon from '@/components/ui/icons/callout';
 import CashIcon from '@/components/ui/icons/cash';
 
+import { IMAGES_ROUTES } from '@/app/constants/routes';
+
 interface ComponentProps { }
 
 const PackageComponent: React.FC<ComponentProps> = () => {
@@ -20,56 +22,6 @@ const PackageComponent: React.FC<ComponentProps> = () => {
     const handleMouseLeave = () => {
         if (!isDropdownOpen) setIsHovered(false);
     };
-
-    const tabs = [
-        {
-            id: 'tulum', label: 'Tulum', active_color: 'bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600',
-            images: [
-                "/images/PAQUETES-TURISTICOS/TULUM/2 NOCHES 3 DÍAS/Paquete Turístico Tulum_.png",
-                "/images/PAQUETES-TURISTICOS/TULUM/3 NOCHES 4 DÍAS/Copia de Paquete Turístico Tulum_.png"
-            ],
-            link: "https://forms.cloud.microsoft/r/siFvxDkdRs?origin=lprLink"
-        },
-        {
-            id: 'chichen', label: 'Chichén Itzá', active_color: 'bg-gradient-to-r from-red-400 via-red-500 to-red-600',
-            images: [
-                "/images/PAQUETES-TURISTICOS/CHICHÉN ITZÁ/2 NOCHES 3 DIAS/CHICHEN HORIZONTAL 02.png",
-                "/images/PAQUETES-TURISTICOS/CHICHÉN ITZÁ/4 NOCHES 5 DÍAS/PORTAL DE KUKULKAN.png"
-            ],
-            link: "https://forms.cloud.microsoft/r/mUkfDkLCNH?origin=lprLink"
-        },
-        {
-            id: 'uxmal', label: 'Nuevo Uxmal', active_color: 'bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700',
-            images: [
-                "/images/PAQUETES_TURISTICOS/NUEVO UXMAL/3 DÍAS 2 NOCHES/paquete nuevo uxmal 3 dias 2 noches.png",
-                "/images/PAQUETES_TURISTICOS/NUEVO UXMAL/4 DÍAS 3 NOCHES/paquete nuevo uxmal 5 dias 4 noches.png"
-            ],
-            link: "https://forms.cloud.microsoft/r/hcrmxe0W14?origin=lprLink"
-        },
-        {
-            id: 'edza', label: 'Edzná', active_color: 'bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700',
-            images: [
-                "/images/PAQUETES-TURISTICOS/EDZNÁ/2 NOCHES 3 DIAS/EDZNA 2 N 3 D HOR.png",
-                "/images/PAQUETES-TURISTICOS/EDZNÁ/4 NOCHES 5 DIAS/EDZNA 4 N 5 D HOR.png"
-            ],
-            link: "https://forms.cloud.microsoft/r/5geEFYW4Lp?origin=lprLink"
-        },
-        {
-            id: 'palenque', label: 'Palenque', active_color: 'bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700',
-            images: [
-                "/images/PAQUETES-TURISTICOS/PALENQUE/2 NOCHES 3 DÍAS/Paquete turistico palenque 2 noches 3 dias.png",
-                "/images/PAQUETES-TURISTICOS/PALENQUE/3 NOCHES 4 DÍAS/Paquete turistico palenque 3 noches 4 dias.png"
-            ],
-            link: "https://forms.cloud.microsoft/r/6SPw6Vtm5d?origin=lprLink"
-        },
-        {
-            id: 'calakmul', label: 'Calakmul', active_color: 'bg-gradient-to-r from-green-400 via-green-500 to-green-600 ',
-            images: [
-                "/images/PAQUETES-TURISTICOS/CALAKMUL/5 DÍAS 6 NOCHES/propuesta calakmul 2 .png",
-            ],
-            link: "https://forms.cloud.microsoft/r/9LJF5VuWT3?origin=lprLink"
-        },
-    ];
 
     return (
         <div className="relative min-h-screen mt-14">
@@ -85,30 +37,33 @@ const PackageComponent: React.FC<ComponentProps> = () => {
                 </p>
             </div>
 
-            <div className="mb-4 border-b border-gray-300">
-                <ul className="flex flex-wrap justify-center text-sm gap-1 lg:gap-0 font-medium text-center"
-                    role="tablist">
-                    {tabs.map((tab) => (
-                        <li key={tab.id} className="" role="presentation">
-                            <button
-                                className={`inline-block py-2 px-4 border-b-2  rounded-t-base text-white ${tab.active_color}  ${activeTab === tab.id
-                                    ? 'text-fg-brand border-brand scale-110 duration-75'
-                                    : 'border-transparent hover:text-fg-brand hover:border-brand'
-                                    }`}
-                                onClick={() => setActiveTab(tab.id)}
-                                type="button"
-                                role="tab"
-                                aria-selected={activeTab === tab.id}
-                            >
-                                {tab.label}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
+
+            <div className="sticky top-14 z-40 bg-white shadow-sm mb-6 md:mb-8">
+                <div className="max-w-6xl mx-auto px-4">
+                    <ul className="flex flex-wrap justify-center gap-1 md:gap-2 font-medium text-center overflow-x-auto py-2"
+                        role="tablist">
+                        {IMAGES_ROUTES.PAQUETES_DATA.map((tab) => (
+                            <li key={tab.id} className="flex-shrink-0" role="presentation">
+                                <button
+                                    className={`inline-flex items-center justify-center py-3 px-4 md:px-6 border-b-2 rounded-t-lg transition-all duration-300 ${activeTab === tab.id
+                                        ? `text-white ${tab.active_color} border-transparent shadow-lg transform scale-105`
+                                        : 'text-gray-700 bg-gray-50 hover:bg-gray-100 border-transparent hover:border-gray-300'
+                                        }`}
+                                    onClick={() => setActiveTab(tab.id)}
+                                    type="button"
+                                    role="tab"
+                                    aria-selected={activeTab === tab.id}
+                                >
+                                    <span className="font-semibold whitespace-nowrap">{tab.label}</span>
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
 
             <div className=''>
-                {tabs.map((tab) => (
+                {IMAGES_ROUTES.PAQUETES_DATA.map((tab) => (
                     <div key={tab.id} className={`px-10 rounded-base bg-neutral-secondary-soft grid grid-cols-1 lg:grid-cols-2 gap-5 ${activeTab === tab.id ? 'block' : 'hidden'}`} role="tabpanel">
                         {tab.images.map((image, index) => (
                             <Image key={index} src={image} alt='' width={1000} height={1000} className="shadow-xl rounded-md lg:hover:scale-105 lg:duration-150 lg:hover:shadow-gray-500"></Image>
@@ -167,7 +122,7 @@ const PackageComponent: React.FC<ComponentProps> = () => {
                                             </a>
                                         </li>
 
-                                        {tabs.map((tab) => (
+                                        {IMAGES_ROUTES.PAQUETES_DATA.map((tab) => (
                                             <li key={tab.id} className={`text-gray-800 hover:text-yellow-500 ${activeTab === tab.id ? 'block' : 'hidden'}`}>
                                                 <a href={tab.link} target='_blank' className="flex align-middle w-full p-2 hover:bg-neutral-tertiary-medium text-fg-danger rounded-md hover:bg-white hover:scale-105 transition-all duration-200">
                                                     <CashIcon /> Cotizar
