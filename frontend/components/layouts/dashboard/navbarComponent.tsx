@@ -87,7 +87,7 @@ const NavbarComponent: React.FC = () => {
 
   return (
     <nav
-      className={`fixed max-w-[100%] top-0 left-0 right-0 lg-full z-50 w-full transition-all duration-500 ease-out bg-gradient-to-b backdrop-blur-md bg-black/50 transparent
+      className={`fixed max-w-[100%] top-0 left-0 right-0 lg-full z-50 w-full transition-all duration-500 ease-out bg-gradient-to-b backdrop-blur-sm from-black/80 via-black/50 to-transparent
     ${isScrolled
           ? 'lg:h-16 h-12'
           : 'lg:h-28 h-16'
@@ -158,12 +158,12 @@ const NavbarComponent: React.FC = () => {
 
               <Link
                 href={ROUTES.SUMMER_PACKAGES}
-                className={`relative text-white hover:text-teal-400 text-center transition-all duration-300 text-sm font-medium group border-white border px-4 py-2.5 w-full 
-                ${isActive(ROUTES.SUMMER_PACKAGES) ? "text-teal-500" : ""}
+                className={`relative hover:text-teal-400 text-center transition-all duration-300 text-sm font-medium group border border px-4 py-2.5 w-full 
+                ${isActive(ROUTES.SUMMER_PACKAGES) ? "text-teal-500" : "text-white hover:text-teal-400"}
               `}
               >
                 Paquetes de verano
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full border-white border ${isActive(ROUTES.SUMMER_PACKAGES) ? 'w-full' : ''
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.SUMMER_PACKAGES) ? 'w-full' : ''
                   }`}></span>
               </Link>
 

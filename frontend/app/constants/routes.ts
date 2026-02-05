@@ -2,14 +2,15 @@ export const ROUTES = {
   HOME: '/',
   PROMOTIONS: '/promociones',
   SUMMER_PACKAGES: '/paquetes',
-  HOTELS: {
-    TULUM: '/hoteles',
-    CHICHEN_ITZA: '/hoteles',
-    NUEVO_UXMA: '/hoteles',
-    EDZNA: '/hoteles',
-    CALAKMUL: '/hoteles',
-    PALENQUE: '/hoteles',
-  },
+  HOTELS: [
+    { name: 'Tulum', route: "/hoteles"},
+    { name: 'Tulum Aeropuertos', route: "/hoteles" },
+    { name: 'Chechen Itzá', route: "/hoteles" },
+    { name: 'Nuevo Uxmal', route: "/hoteles" },
+    { name: 'Edzná', route: "/hoteles"},
+    { name: 'Calakmul', route: "/hoteles" },
+    { name: 'Palenque', route: "/hoteles" }
+  ],
   CONTACT: '/contacto',
 } as const;
 
@@ -61,158 +62,15 @@ export const IMAGES_ROUTES = {
 } as const;
 
 export const hotelLocations = [
-  { city: "Tulum", lat: 20.211, lon: -87.465 },
+  { city: "Tulum", lat: 20.2307657, lon: -87.4478299 },
   { city: "Chichen Itzá", lat: 20.696206, lon: -88.557398 },
   { city: "Palenque", lat: 17.4956991, lon: -92.0244067 },
   { city: "Calakmul", lat: 18.184355, lon: -89.747168 },
   { city: "Edzná", lat: 19.6014604, lon: -90.2227569 },
-  { city: "Nuevo Uxmal", lat: 20.3366876, lon: -89.8243936 },
-  { city: "Tulum Aeropuerto", lat: 20.232, lon: -87.430 }
+  { city: "Nuevo Uxmal", lat: 20.3766903, lon: -89.7720407},
+  { city: "Tulum Aeropuerto", lat: 20.163853, lon: -87.656876}
 ] as const;
 
-export const PROMOTIONS = [
-  {
-    packageName: "Suspiro del Mar",
-    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
-    roomType: 'tulum', 
-    limitDate: '17 Agosto 2025.', 
-    estimatedStay: '4 noches consecutivas.',
-    termsAndConditions: [
-      "Haz tu reserva en las fechas (7,8,9, 28 y 29 de julio) (20 y 21 de agosto).",
-      "Reserva mínima con 15 días de anticipación.",
-      "Hospedaje gratuito aplicable en la cuarta noche.",
-      "Promoción exclusiva en reservas en línea (pagina web oficial) o vía Call center.",
-      "Sujeto a disponibilidad.",
-      "No acumulable con otras promociones, descuentos o beneficios.",
-      "Promoción no reembolsable, una vez confirmada la reserva.",
-      "Válido para llegadas únicamente de lunes a jueves.",
-      "Máximo 2 habitaciones por cupón.",
-      "Los cambios y cancelaciones estarán sujetas a las políticas de cada hotel participante.",
-      "No aplica en temporada alta: Días festivos, puentes y vacaciones de invierno."
-    ],
-    reservationContact: {
-      webSite: "https://www.hotelesgrupomundomaya.com/",
-      callCenter: "5544400662"
-    }
-  },
-  {
-    packageName: "El Tiempo en Pausa",
-    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
-    roomType: 'tulum', 
-    limitDate: '28 de Septiembre 2026.', 
-    estimatedStay: '4 noches consecutivas.',
-    termsAndConditions: [
-      "Haz tu reserva en las fechas (7,8,9, 28 y 29 de julio) (20 y 21 de agosto).",
-      "Reserva mínima con 15 días de anticipación.",
-      "Hospedaje gratuito aplicable en la cuarta noche.",
-      "Promoción exclusiva en reservas en línea (pagina web oficial) o vía Call center.",
-      "Sujeto a disponibilidad.",
-      "No acumulable con otras promociones, descuentos o beneficios.",
-      "Promoción no reembolsable, una vez confirmada la reserva.",
-      "Válido para llegadas únicamente de lunes a jueves.",
-      "Máximo 2 habitaciones por cupón.",
-      "Los cambios y cancelaciones estarán sujetas a las políticas de cada hotel participante.",
-      "No aplica en temporada alta: Días festivos, puentes y vacaciones de invierno."
-    ],
-    reservationContact: {
-      webSite: "https://www.hotelesgrupomundomaya.com/",
-      callCenter: "5544400662"
-    }
-  },
-  {
-    packageName: "Tierra de Mitos",
-    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
-    roomType: 'tulum', 
-    limitDate: '14 Febrero 2026.', 
-    estimatedStay: '4 noches consecutivas.',
-    termsAndConditions: [
-      "Haz tu reserva en las fechas (7,8,9, 28 y 29 de julio) (20 y 21 de agosto).",
-      "Reserva mínima con 15 días de anticipación.",
-      "Hospedaje gratuito aplicable en la cuarta noche.",
-      "Promoción exclusiva en reservas en línea (pagina web oficial) o vía Call center.",
-      "Sujeto a disponibilidad.",
-      "No acumulable con otras promociones, descuentos o beneficios.",
-      "Promoción no reembolsable, una vez confirmada la reserva.",
-      "Válido para llegadas únicamente de lunes a jueves.",
-      "Máximo 2 habitaciones por cupón.",
-      "Los cambios y cancelaciones estarán sujetas a las políticas de cada hotel participante.",
-      "No aplica en temporada alta: Días festivos, puentes y vacaciones de invierno."
-    ],
-    reservationContact: {
-      webSite: "https://www.hotelesgrupomundomaya.com/",
-      callCenter: "5544400662"
-    }
-  },
-  {
-    packageName: "Misión en la Naturaleza",
-    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
-    roomType: 'tulum', 
-    limitDate: '01 Mayo 2026.', 
-    estimatedStay: '4 noches consecutivas.',
-    termsAndConditions: [
-      "Haz tu reserva en las fechas (7,8,9, 28 y 29 de julio) (20 y 21 de agosto).",
-      "Reserva mínima con 15 días de anticipación.",
-      "Hospedaje gratuito aplicable en la cuarta noche.",
-      "Promoción exclusiva en reservas en línea (pagina web oficial) o vía Call center.",
-      "Sujeto a disponibilidad.",
-      "No acumulable con otras promociones, descuentos o beneficios.",
-      "Promoción no reembolsable, una vez confirmada la reserva.",
-      "Válido para llegadas únicamente de lunes a jueves.",
-      "Máximo 2 habitaciones por cupón.",
-      "Los cambios y cancelaciones estarán sujetas a las políticas de cada hotel participante.",
-      "No aplica en temporada alta: Días festivos, puentes y vacaciones de invierno."
-    ],
-    reservationContact: {
-      webSite: "https://www.hotelesgrupomundomaya.com/",
-      callCenter: "5544400662"
-    }
-  },
-  {
-    packageName: "El Octavo Color",
-    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
-    roomType: 'tulum', 
-    limitDate: '30 Noviembre 2026.', 
-    estimatedStay: '4 noches consecutivas.',
-    termsAndConditions: [
-      "Haz tu reserva en las fechas (7,8,9, 28 y 29 de julio) (20 y 21 de agosto).",
-      "Reserva mínima con 15 días de anticipación.",
-      "Hospedaje gratuito aplicable en la cuarta noche.",
-      "Promoción exclusiva en reservas en línea (pagina web oficial) o vía Call center.",
-      "Sujeto a disponibilidad.",
-      "No acumulable con otras promociones, descuentos o beneficios.",
-      "Promoción no reembolsable, una vez confirmada la reserva.",
-      "Válido para llegadas únicamente de lunes a jueves.",
-      "Máximo 2 habitaciones por cupón.",
-      "Los cambios y cancelaciones estarán sujetas a las políticas de cada hotel participante.",
-      "No aplica en temporada alta: Días festivos, puentes y vacaciones de invierno."
-    ],
-    reservationContact: {
-      webSite: "https://www.hotelesgrupomundomaya.com/",
-      callCenter: "5544400662"
-    }
-  },
-  {
-    packageName: "Raíces Compartidas",
-    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
-    roomType: 'tulum', 
-    limitDate: '15 Junio 2025.', 
-    estimatedStay: '4 noches consecutivas.',
-    termsAndConditions: [
-      "Haz tu reserva en las fechas (7,8,9, 28 y 29 de julio) (20 y 21 de agosto).",
-      "Reserva mínima con 15 días de anticipación.",
-      "Hospedaje gratuito aplicable en la cuarta noche.",
-      "Promoción exclusiva en reservas en línea (pagina web oficial) o vía Call center.",
-      "Sujeto a disponibilidad.",
-      "No acumulable con otras promociones, descuentos o beneficios.",
-      "Promoción no reembolsable, una vez confirmada la reserva.",
-      "Válido para llegadas únicamente de lunes a jueves.",
-      "Máximo 2 habitaciones por cupón.",
-      "Los cambios y cancelaciones estarán sujetas a las políticas de cada hotel participante.",
-      "No aplica en temporada alta: Días festivos, puentes y vacaciones de invierno."
-    ],
-    reservationContact: {
-      webSite: "https://www.hotelesgrupomundomaya.com/",
-      callCenter: "5544400662"
-    }
-  },
-];
+export const GMM = {
+  jaguar: "/images/Jaguar-GMM.png"
+}

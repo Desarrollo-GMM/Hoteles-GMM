@@ -1,6 +1,7 @@
 'use client'
 import { useState, useRef, useEffect, RefObject } from 'react';
 import { ROUTES, EXTERNAL_LINKS } from '@/app/constants/routes';
+import Link from 'next/link';
 
 interface DropdownButtonProps {
     textColor?: string,
@@ -11,20 +12,22 @@ const DropdownButtonComponent = ({ textColor = "text-black", textButton = "text-
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-    // Cerrar dropdown al hacer clic fuera
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
                 setIsOpen(false);
             }
-
         };
-
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+
+    const buildUrl = (baseRoute: string, name: string) => {
+        const separator = baseRoute.includes('?') ? '&' : '?';
+        return `${baseRoute}${separator}destino=${encodeURIComponent(name)}`;
+    };
 
     return (
         <div className="relative my-auto" ref={dropdownRef}>
@@ -60,41 +63,14 @@ const DropdownButtonComponent = ({ textColor = "text-black", textButton = "text-
                 onMouseLeave={() => setIsOpen(false)}
             >
                 <ul className="backdrop-blur-md bg-black/80  rounded-md text-sm text-body font-medium">
-                    <li className='hover:bg-slate-200'>
-                        <a href={ROUTES.HOTELS.TULUM} className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
-                            Tulum
-                        </a>
-                    </li>
-                    <li className='hover:bg-slate-200'>
-                        <a href={ROUTES.HOTELS.TULUM} className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
-                            Tulum Aeropuertos
-                        </a>
-                    </li>
-                    <li className='hover:bg-slate-200'>
-                        <a href={ROUTES.HOTELS.CHICHEN_ITZA} className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
-                            Chechen Itzá
-                        </a>
-                    </li>
-                    <li className='hover:bg-slate-200'>
-                        <a href={ROUTES.HOTELS.NUEVO_UXMA} className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
-                            Nuevo Uxmal
-                        </a>
-                    </li>
-                    <li className='hover:bg-slate-200'>
-                        <a href={ROUTES.HOTELS.EDZNA} className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
-                            Edzná
-                        </a>
-                    </li>
-                    <li className='hover:bg-slate-200'>
-                        <a href={ROUTES.HOTELS.CALAKMUL} className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
-                            Calakmul
-                        </a>
-                    </li>
-                    <li className='hover:bg-slate-200'>
-                        <a href={ROUTES.HOTELS.PALENQUE} className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
-                            Palenque
-                        </a>
-                    </li>
+                    {ROUTES.HOTELS.map((hotel, index) => (
+                        <li key={index} className='hover:bg-slate-200'>
+                            <a href={buildUrl(hotel.route, hotel.name)} className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
+                                {hotel.name}
+                            </a>
+                        </li>
+                    ))}
+
                 </ul>
             </div>
         </div>
