@@ -46,14 +46,14 @@ const WeatherComponent: React.FC<WeatherComponentProps> = ({
     switch(variant) {
       case 'compact':
         return (
-          <div className="flex items-center gap-2 animate-pulse">
+          <div className="flex items-center gap-2">
             <div className="h-8 w-8 bg-black/30 rounded-full"></div>
             <div className="h-6 w-16 bg-black/30 rounded"></div>
           </div>
         );
       case 'medium':
         return (
-          <div className="bg-black/40 backdrop-blur-sm rounded-xl p-4 border border-white/20 animate-pulse">
+          <div className="bg-black/40 backdrop-blur-sm rounded-xl p-4 border border-white/20">
             <div className="h-6 w-32 bg-white/20 rounded mb-3"></div>
             <div className="flex items-center justify-between mb-4">
               <div className="h-12 w-12 bg-white/20 rounded-full"></div>
@@ -64,7 +64,7 @@ const WeatherComponent: React.FC<WeatherComponentProps> = ({
         );
       case 'detailed':
         return (
-          <div className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-white/20 animate-pulse">
+          <div className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-white/20">
             <div className="h-7 w-40 bg-white/20 rounded mb-4"></div>
             <div className="flex items-center justify-between mb-6">
               <div className="h-16 w-16 bg-white/20 rounded-full"></div>
