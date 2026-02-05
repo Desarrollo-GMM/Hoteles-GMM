@@ -6,19 +6,27 @@ import InformationComponent from "@/components/features/hotels/tulum/information
 import AutoScrollComponent from "@/components/ui/autoScrollComponent"
 import HotelLocationComponent from "@/components/features/hotels/hotelLocationComponent"
 import ServiceComponent from "@/components/features/hotels/serviceComponent"
-
-
 import Image from "next/image"
-import { useState } from "react"
-
+import { useState, useEffect, Suspense } from "react"
+import { useSearchParams } from "next/navigation"
 import { IMAGES_ROUTES } from "@/app/constants/routes";
 import { COMODIDADES } from "@/app/constants/services"
 
-interface ComponentProps {
-    destino: string,
-}
+// Creamos un componente separado para el contenido que usa useSearchParams
+function HotelContent() {
+    const [destino, setDestino] = useState<string>("Tulum")
+    const searchParams = useSearchParams();
 
-const Page: React.FC<ComponentProps> = ({ destino = "Tulum" }) => {
+    useEffect(() => {
+        const destinoParam = searchParams?.get('destino');
+        if(destinoParam){
+            setDestino(decodeURIComponent(destinoParam));
+        }
+    }, [searchParams])
+
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>")
+    console.log(destino)
+
     return (
         <div className="lg:m-4 m-2">
             <NavbarComponent />
@@ -30,8 +38,7 @@ const Page: React.FC<ComponentProps> = ({ destino = "Tulum" }) => {
                 title={`Hotel en ${destino}`}
                 extraStyles="rounded-2xl h-[96vh]" />
 
-
-            <HotelLocationComponent />
+            <HotelLocationComponent destino={destino}/>
 
             <ServiceComponent COMODIDADES={COMODIDADES} destino={destino} />
 
@@ -102,9 +109,20 @@ const Page: React.FC<ComponentProps> = ({ destino = "Tulum" }) => {
                     </AutoScrollComponent>
                 </div>
             </div>
-
-            
         </div>
+    )
+}
+
+// Componente principal envuelto en Suspense
+const Page = () => {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="text-xl">Cargando información del hotel...</div>
+            </div>
+        }>
+            <HotelContent />
+        </Suspense>
     )
 }
 
