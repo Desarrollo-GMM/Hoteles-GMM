@@ -243,16 +243,10 @@ const MapComponent: React.FC<ComponentProps> = ({position}) => {
             currentPosition[1] !== position[1]
         ) {
             console.log("Nueva posición recibida:", position);
-            
-            // Actualizar posición con efecto de transición
             setCurrentPosition(position);
-            
-            // Forzar re-render del contenedor del mapa
             setMapKey(Date.now());
             
-            // Añadir efecto visual de actualización
             const timer = setTimeout(() => {
-                // Resetear el anillo de pulso para nueva animación
                 const markerElements = document.querySelectorAll('.custom-marker');
                 markerElements.forEach(marker => {
                     const ring = marker.querySelector('.pulse-ring');
@@ -314,7 +308,7 @@ const MapComponent: React.FC<ComponentProps> = ({position}) => {
                         scrollWheelZoom={true}
                         className="rounded-xl transition-all duration-500"
                     >
-                        {/* Componente para animar la vista del mapa */}
+                        
                         <AnimateMapView position={currentPosition} />
 
                         <TileLayer
@@ -339,7 +333,6 @@ const MapComponent: React.FC<ComponentProps> = ({position}) => {
                             ))}
                         </LayersControl>
 
-                        {/* Marcador animado */}
                         <AnimatedMarker position={currentPosition} icon={customIcon}>
                             <Popup className="rounded-xl shadow-lg">
                                 <div className="p-4 max-w-xs">
@@ -378,7 +371,7 @@ const MapComponent: React.FC<ComponentProps> = ({position}) => {
                     </div>
 
                     {/* Indicador de actualización */}
-                    <div className="absolute top-4 right-4 bg-teal-100 text-teal-800 text-xs px-3 py-1 rounded-full animate-pulse">
+                    <div className="absolute top-4 right-4 bg-teal-100 text-teal-800 text-xs px-3 py-1 rounded-full">
                         Posición actualizada
                     </div>
                 </div>

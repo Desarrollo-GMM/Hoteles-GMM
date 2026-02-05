@@ -3,13 +3,13 @@ export const ROUTES = {
   PROMOTIONS: '/promociones',
   SUMMER_PACKAGES: '/paquetes',
   HOTELS: [
-    { name: 'Tulum', route: "/hoteles" },
-    { name: 'Tulum Aeropuertos', route: "/hoteles" },
-    { name: 'Chechen Itzá', route: "/hoteles" },
-    { name: 'Nuevo Uxmal', route: "/hoteles" },
-    { name: 'Edzná', route: "/hoteles" },
-    { name: 'Calakmul', route: "/hoteles" },
-    { name: 'Palenque', route: "/hoteles" }
+    { name: 'Tulum', route: "/hoteles", banner: "/images/hoteles/banner/TULUM/Tulum_BANNER.webp" },
+    { name: 'Tulum Aeropuertos', route: "/hoteles", banner: "/images/hoteles/banner/TULUM_AEROPUERTOS/Tulum_Aeropuerto_BANNER.webp" },
+    { name: 'Chechen Itzá', route: "/hoteles", banner: "/images/hoteles/banner/CHICHEN_ITZA/CHICHEN_ITZA_BANNER.webp" },
+    { name: 'Nuevo Uxmal', route: "/hoteles", banner: "/images/hoteles/banner/NUEVO_UXMAL/Nuevo_Uxmal_BANNER.webp" },
+    { name: 'Edzná', route: "/hoteles", banner: "/images/hoteles/banner/EDZNA/Edzna_BANNER.webp" },
+    { name: 'Calakmul', route: "/hoteles", banner: "/images/hoteles/banner/CALAKMUL/Calakmul_BANNER.webp" },
+    { name: 'Palenque', route: "/hoteles", banner: "/images/hoteles/banner/PALENQUE/Palenque-BANNER.webp" }
   ],
   CONTACT: '/contacto',
 } as const;
