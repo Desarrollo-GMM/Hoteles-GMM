@@ -20,18 +20,19 @@ const limpiarConCaracteresEspecificos = (texto: string) => {
     return texto
         .toUpperCase()
         .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '') // Eliminar todos los acentos
-        .replace(/[^A-Z0-9\s-_]/g, '') // Mantener también guiones
+        .replace(/[\u0300-\u036f]/g, '') 
+        .replace(/[^A-Z0-9\s-_]/g, '')
         .replace(/\s+/g, '_')
         .trim();
 };
 
 
 const getLocationByDestino = (destino: string) => {
+    console.log("Destino: "+destino)
     return hotelLocations.find((hotel) => 
         hotel.city.includes(destino) ||
         destino.includes(hotel.city)
-    ) || hotelLocations[0]; // Fallback a Tulum si no encuentra
+    ) || hotelLocations[0];
 };
 
 const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
@@ -48,7 +49,7 @@ const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
     }
     
     return (
-        <div className="bg-gradient-to-br from-white to-teal-50 rounded-2xl h-[90vh] p-6 my-8 shadow-lg">
+        <div className="bg-gradient-to-br from-white to-teal-50 rounded-2xl h-[80vh] p-6 my-8 shadow-lg">
             <div className="w-full text-center mb-8">
                 <h2 className="text-4xl font-bold text-gray-800 mb-2">
                     Descubre Nuestro Entorno
@@ -74,7 +75,7 @@ const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
                 </div>
 
                 <div className="space-y-6">
-                    <MapComponent position={[Coordinates?.lat, Coordinates?.lng]}/>
+                    <MapComponent position={[Coordinates?.lat, Coordinates?.lng]} destino={destino}/>
 
                     <div className="grid grid-cols-1 gap-4">
                         <div className="bg-teal-100/50 rounded-xl p-4">
@@ -82,7 +83,7 @@ const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                                 </svg>
-                                Ubicación Privilegiada
+                                Ubicación 
                             </h4>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 'use client'
 
 import NavbarComponent from "../../components/layouts/dashboard/navbarComponent"
+import NavbarComponent2 from "@/components/layouts/dashboard/navbarComponent2"
 import ReservationComponent from "../../components/features/dashboard/reservationComponent"
 import OurPackageComponent from "../../components/features/dashboard/ourPackageComponent"
 import FooterComponent from "../../components/layouts/dashboard/footerComponent"
@@ -15,7 +16,7 @@ const Page: React.FC = () => {
 
     return (
         <div className="relative">
-            <NavbarComponent />
+            <NavbarComponent design={1} />
 
             <div className="min-h-screen">
 

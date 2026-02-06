@@ -53,7 +53,7 @@ const WeatherComponent: React.FC<WeatherComponentProps> = ({
         );
       case 'medium':
         return (
-          <div className="bg-black/40 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+          <div className="bg-black/40 backdrop-blur-sm rounded-xl p-4 ">
             <div className="h-6 w-32 bg-white/20 rounded mb-3"></div>
             <div className="flex items-center justify-between mb-4">
               <div className="h-12 w-12 bg-white/20 rounded-full"></div>
@@ -64,7 +64,7 @@ const WeatherComponent: React.FC<WeatherComponentProps> = ({
         );
       case 'detailed':
         return (
-          <div className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+          <div className="bg-black/40 backdrop-blur-sm rounded-xl p-6 ">
             <div className="h-7 w-40 bg-white/20 rounded mb-4"></div>
             <div className="flex items-center justify-between mb-6">
               <div className="h-16 w-16 bg-white/20 rounded-full"></div>
@@ -87,7 +87,7 @@ const WeatherComponent: React.FC<WeatherComponentProps> = ({
   switch(variant) {
     case 'compact':
       return (
-        <div className={`flex items-center gap-2 mx-auto bg-black/50 backdrop-blur-sm px-2 py-2 rounded-xl border border-white/20 ${className}`}>
+        <div className={`flex items-center gap-2 mx-auto bg-black/50 backdrop-blur-sm px-2 py-2 rounded-xl ${className}`}>
           <div className={`text-3xl ${weatherInfo.color}`}>
             {getIconComponent(weatherInfo.icon)}
           </div>
@@ -100,14 +100,14 @@ const WeatherComponent: React.FC<WeatherComponentProps> = ({
 
     case 'medium':
       return (
-        <div className={`bg-black/40 backdrop-blur-sm rounded-xl p-4 border border-white/20 ${className}`}>
+        <div className={`bg-black/40 backdrop-blur-sm rounded-xl p-4  ${className}`}>
           {showCitySelector && (
             <div className="flex justify-between items-center mb-3">
               <h3 className="text-white font-bold text-lg">Clima Actual</h3>
               <select 
                 value={selectedCity}
                 onChange={(e) => handleCityChange(e.target.value)}
-                className="text-sm bg-white/20 text-white border border-white/30 rounded-lg px-2 py-1 focus:outline-none"
+                className="text-sm bg-white/20 text-white  rounded-lg px-2 py-1 focus:outline-none"
               >
                 {hotelLocations.map((hotel) => (
                   <option key={hotel.value} value={hotel.name}>
@@ -143,14 +143,14 @@ const WeatherComponent: React.FC<WeatherComponentProps> = ({
 
     case 'detailed':
       return (
-        <div className={`bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-white/20 ${className}`}>
+        <div className={`bg-black/40 backdrop-blur-sm rounded-xl p-6 ${className}`}>
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-white font-bold text-xl">Pronóstico del Clima</h3>
             {showCitySelector && (
               <select 
                 value={selectedCity}
                 onChange={(e) => handleCityChange(e.target.value)}
-                className="text-sm bg-white/20 text-white border border-white/30 rounded-xl px-3 py-2 focus:outline-none"
+                className="text-sm bg-black/20 text-white rounded-xl px-3 py-2 focus:outline-none"
               >
                 {hotelLocations.map((hotel) => (
                   <option key={hotel.value} value={hotel.name} className="bg-black/40 backdrop-blur-sm text-black">

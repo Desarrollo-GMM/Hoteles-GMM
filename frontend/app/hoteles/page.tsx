@@ -24,16 +24,26 @@ const limpiarConCaracteresEspecificos = (texto: string) => {
 
 function HotelContent() {
     const [destino, setDestino] = useState<string>("Tulum")
+    const [banner, setBanner] = useState<string>("")
+
     const searchParams = useSearchParams();
     useEffect(() => {
         const destinoParam = searchParams?.get('destino');
+        const bannerImage = searchParams?.get('banner')
+
         if(destinoParam){
             setDestino(decodeURIComponent(destinoParam));
+        }
+
+        if(bannerImage){
+            setBanner(decodeURIComponent(bannerImage));
         }
     }, [searchParams])
 
     console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>")
     console.log(destino)
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>BANNER")
+    console.log(banner)
 
     const destinoNormalizado = limpiarConCaracteresEspecificos(destino);
     const img_horizontales = IMAGES_ROUTES.HORIZONTAL_IMAGES[destinoNormalizado as keyof typeof IMAGES_ROUTES.HORIZONTAL_IMAGES] || IMAGES_ROUTES.HORIZONTAL_IMAGES.TULUM;
@@ -44,9 +54,9 @@ function HotelContent() {
             <NavbarComponent />
 
             <ReservationComponent
-                imageUrl="/images/686d5354c468605f89c569ae_calidad 5.jpg"
+                imageUrl={banner}
                 option={3}
-                description={`Disfruta de la naturaleza y la tranquilidad en nuestro hotel de ${destino}`}
+                description={`Disfruta de la naturaleza y la tranquilidad en nuestro Hotel ${destino}`}
                 title={`Hotel en ${destino}`}
                 extraStyles="rounded-2xl h-[96vh]" />
 

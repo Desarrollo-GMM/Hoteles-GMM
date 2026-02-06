@@ -180,13 +180,13 @@ const Option2: React.FC<{
                                             onChange={(e) => setSelectedHotel(e.target.value)}
                                         >
                                             <option value="Selecciona un Hotel">Selecciona un Hotel</option>
-                                            <option value="Tulum">Hotel Tulum</option>
-                                            <option value="Tulum Aeropuerto">Hotel Tulum Aeropuerto</option>
-                                            <option value="Chichen Itzá">Hotel Chichen Itzá</option>
-                                            <option value="Calakmul">Hotel Calakmul</option>
-                                            <option value="Edzná">Hotel Edzná</option>
-                                            <option value="Nuevo Uxmal">Hotel Nuevo Uxmal</option>
-                                            <option value="Palenque">Hotel Palenque</option>
+                                            <option value="Tulum">Tulum</option>
+                                            <option value="Tulum Aeropuerto">Tulum Aeropuerto</option>
+                                            <option value="Chichen Itzá">Chichen Itzá</option>
+                                            <option value="Calakmul">Calakmul</option>
+                                            <option value="Edzná">Edzná</option>
+                                            <option value="Nuevo Uxmal">Nuevo Uxmal</option>
+                                            <option value="Palenque">Palenque</option>
                                         </select>
                                     </form>
                                 </div>
@@ -288,7 +288,7 @@ const Option2: React.FC<{
                                         Reservar Ahora
                                     </label>
                                     <button className="p-3 bg-gradient-to-r from-teal-700 to-teal-600 hover:from-teal-600 hover:to-teal-500 text-white font-semibold rounded-lg transition-all duration-300 h-[52px] transform hover:scale-[1.02] shadow-lg hover:shadow-xl">
-                                        Icono qutzal
+                                        Reservar
                                     </button>
                                 </div>
                             </div>
@@ -337,7 +337,7 @@ const Option3: React.FC<{
                         style={{ objectFit: 'cover' }}
                     />
                 </div>
-                <div className={`absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent ${extraStyles}`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent ${extraStyles}`}></div>
 
 
 
@@ -370,21 +370,21 @@ const Option3: React.FC<{
                     </div>
 
                     <div className="flex-1 flex items-center justify-center p-2 md:p-12">
-                        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl p-6 md:p-8 w-full max-w-md transform transition-all duration-300 hover:shadow-3xl">
-                            <h3 className="text-2xl font-bold text-gray-700 mb-6 text-center">
+                        <div className="bg-black/40 backdrop-blur-sm rounded-2xl shadow-2xl p-6 md:p-8 w-full max-w-md transform transition-all duration-300 hover:shadow-3xl">
+                            <h3 className="text-2xl font-bold text-white mb-6 text-center">
                                 Reserva tu estadía
                             </h3>
                             <div className="space-y-4">
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Check-in</label>
+                                        <label className="block text-sm font-medium text-white mb-1">Check-in</label>
                                         <input
                                             type="date"
                                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Check-out</label>
+                                        <label className="block text-sm font-medium text-white mb-1">Check-out</label>
                                         <input
                                             type="date"
                                             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
@@ -393,7 +393,7 @@ const Option3: React.FC<{
                                 </div>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Adultos</label>
+                                        <label className="block text-sm font-medium text-white mb-1">Adultos</label>
                                         <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500">
                                             <option>1</option>
                                             <option>2</option>
@@ -402,7 +402,7 @@ const Option3: React.FC<{
                                         </select>
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Niños</label>
+                                        <label className="block text-sm font-medium text-white mb-1">Niños</label>
                                         <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500">
                                             <option>0</option>
                                             <option>1</option>
