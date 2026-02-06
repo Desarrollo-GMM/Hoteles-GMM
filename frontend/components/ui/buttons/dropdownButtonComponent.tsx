@@ -24,9 +24,9 @@ const DropdownButtonComponent = ({ textColor = "text-black", textButton = "text-
         };
     }, []);
 
-    const buildUrl = (baseRoute: string, name: string) => {
+    const buildUrl = (baseRoute: string, name: string, banner: string) => {
         const separator = baseRoute.includes('?') ? '&' : '?';
-        return `${baseRoute}${separator}destino=${encodeURIComponent(name)}`;
+        return `${baseRoute}?destino=${encodeURIComponent(name)}&banner=${encodeURIComponent(banner)}`;
     };
 
     return (
@@ -65,7 +65,7 @@ const DropdownButtonComponent = ({ textColor = "text-black", textButton = "text-
                 <ul className="backdrop-blur-md bg-black/80  rounded-md text-sm text-body font-medium">
                     {ROUTES.HOTELS.map((hotel, index) => (
                         <li key={index} className='hover:bg-slate-200'>
-                            <a href={buildUrl(hotel.route, hotel.name)} className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
+                            <a href={buildUrl(hotel.route, hotel.name, hotel.banner)} className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
                                 {hotel.name}
                             </a>
                         </li>

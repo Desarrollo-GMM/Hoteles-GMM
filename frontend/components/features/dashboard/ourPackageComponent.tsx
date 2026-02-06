@@ -68,7 +68,7 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
                 </div>
                 <div className="flex items-start lg:items-center">
                     <p className="text-lg md:text-xl text-gray-700 px-5 lg:px-20 text-center font-light">
-                        Experimenta el lujo entre la majestuosa selva maya, donde el legado ancestral y la comodidad de un hotel de cuatro estrellas se fusionan en una experiencia única. Vive
+                        Experimenta el lujo entre la majestuosa selva maya, donde el legado ancestral y la comodidad de un hotel se fusionan en una experiencia única. Vive
                         <span className="font-bold text-teal-700"> #UnVeranoEnElMundoMaya.</span>
                     </p>
                 </div>

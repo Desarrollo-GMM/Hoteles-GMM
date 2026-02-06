@@ -21,7 +21,8 @@ import {
 } from 'react-icons/fa'
 
 interface ComponentProps {
-    position: [number, number]
+    position: [number, number],
+    destino: string
 }
 
 // Evitar error de tipos: _getIconUrl es una propiedad privada no tipada en las definiciones
@@ -230,11 +231,14 @@ const mapStyles = [
 ];
 const { BaseLayer } = LayersControl;
 
-const MapComponent: React.FC<ComponentProps> = ({position}) => {
+const MapComponent: React.FC<ComponentProps> = ({position, destino}) => {
     const [selectedStyle, setSelectedStyle] = useState(mapStyles[0]);
     const [currentPosition, setCurrentPosition] = useState<[number, number]>(position);
     const [mapKey, setMapKey] = useState(Date.now()); // Key para forzar re-render del mapa
     const customIcon = createCustomIcon('#10b981');
+
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>")
+    console.log(position)
 
     // Efecto para actualizar posición y animar cuando cambie la prop
     useEffect(() => {
@@ -273,10 +277,6 @@ const MapComponent: React.FC<ComponentProps> = ({position}) => {
                             Ubicación del Hotel
                         </h3>
                         <p className="text-gray-600 text-sm">Selecciona un estilo de mapa</p>
-                        <div className="mt-2 text-xs text-gray-500">
-                            <span className="font-medium">Coordenadas:</span> 
-                            {currentPosition[0].toFixed(6)}, {currentPosition[1].toFixed(6)}
-                        </div>
                     </div>
                     <div className="flex gap-2">
                         {mapStyles.map((style) => (
@@ -336,7 +336,7 @@ const MapComponent: React.FC<ComponentProps> = ({position}) => {
                         <AnimatedMarker position={currentPosition} icon={customIcon}>
                             <Popup className="rounded-xl shadow-lg">
                                 <div className="p-4 max-w-xs">
-                                    <h3 className="font-bold text-lg text-teal-700 mb-2">🏝️ Hotel Tulum</h3>
+                                    <h3 className="font-bold text-lg text-teal-700 mb-2">🏝️ Hotel {destino}</h3>
                                     <p className="text-gray-700 mb-3">
                                         Ubicación privilegiada en Tulum, rodeado de naturaleza y a minutos
                                         de las mejores playas y ruinas mayas.
@@ -349,7 +349,7 @@ const MapComponent: React.FC<ComponentProps> = ({position}) => {
                                         href={`https://maps.google.com/?q=${currentPosition[0]},${currentPosition[1]}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="mt-2 inline-block w-full text-center bg-teal-600 text-white py-2 px-4 rounded-lg hover:bg-teal-700 transition-colors duration-300 font-bold"
+                                        className="mt-2 inline-block w-full text-center text-white py-2 px-4 rounded-lg hover:bg-teal-300 duration-300 font-bold"
                                     >
                                         Ver en Google Maps
                                     </a>
