@@ -295,12 +295,7 @@ const Option2: React.FC<{
 
                         </div>
 
-                        {/* Widget de clima dentro del formulario */}
-                        <div>
-                            <div className="hidden w-1/6 justify-center mt-20 mx-auto lg:block">
-                                <WeatherComponent city={selectedHotel} variant="compact" />
-                            </div>
-                        </div>
+                        
 
                     </div>
                 </div>

@@ -40,11 +40,6 @@ function HotelContent() {
         }
     }, [searchParams])
 
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>")
-    console.log(destino)
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>BANNER")
-    console.log(banner)
-
     const destinoNormalizado = limpiarConCaracteresEspecificos(destino);
     const img_horizontales = IMAGES_ROUTES.HORIZONTAL_IMAGES[destinoNormalizado as keyof typeof IMAGES_ROUTES.HORIZONTAL_IMAGES] || IMAGES_ROUTES.HORIZONTAL_IMAGES.TULUM;
     const img_verticales = IMAGES_ROUTES.VERTICAL_IMAGES[destinoNormalizado as keyof typeof IMAGES_ROUTES.VERTICAL_IMAGES] || IMAGES_ROUTES.VERTICAL_IMAGES.TULUM;
