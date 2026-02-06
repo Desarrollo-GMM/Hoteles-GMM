@@ -7,7 +7,7 @@ import PackageComponent from "../../components/features/package/packageComponent
 const Page: React.FC = () => {
     return (
         <div className="relative">
-            <NavbarComponent design={1}></NavbarComponent>
+            <NavbarComponent design={2}></NavbarComponent>
 
             <div className="min-h-screen">
 

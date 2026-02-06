@@ -16,7 +16,7 @@ const Page: React.FC = () => {
 
     return (
         <div className="relative">
-            <NavbarComponent design={1} />
+            <NavbarComponent design={2} />
 
             <div className="min-h-screen">
 
