@@ -237,16 +237,12 @@ const MapComponent: React.FC<ComponentProps> = ({position, destino}) => {
     const [mapKey, setMapKey] = useState(Date.now()); // Key para forzar re-render del mapa
     const customIcon = createCustomIcon('#10b981');
 
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>")
-    console.log(position)
-
     // Efecto para actualizar posición y animar cuando cambie la prop
     useEffect(() => {
         if (
             currentPosition[0] !== position[0] || 
             currentPosition[1] !== position[1]
         ) {
-            console.log("Nueva posición recibida:", position);
             setCurrentPosition(position);
             setMapKey(Date.now());
             

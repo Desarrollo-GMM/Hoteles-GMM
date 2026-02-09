@@ -33,7 +33,7 @@ const ServiceComponent: React.FC<ComponentProps> = ({ COMODIDADES, destino }) =>
     };
 
     return (
-        <div className="mt-20 mb-7">
+        <div className="mt-20 mb-7" id="servicesSection">
             <div className="text-center m-10">
                 <h2 className="text-4xl font-bold text-gray-800 mb-2">Amenidades y servicios del Hotel {destino}</h2>
                 <p className="text-gray-600">Descubre la magia de {destino} a través de nuestras imágenes</p>

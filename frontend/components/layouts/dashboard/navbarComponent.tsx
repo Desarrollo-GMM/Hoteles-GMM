@@ -421,7 +421,7 @@ const NavbarDesign2: React.FC = () => {
         }`}
     >
       <div className="px-4 sm:px-6 lg:px-40 h-full transition-all duration-500">
-        <div className="flex items-center justify-between lg:justify-normal gap-10 h-full">
+        <div className="flex items-center justify-between gap-10 h-full">
           <div className="flex-shrink-0 transition-transform duration-500 hover:scale-105">
             <a href={ROUTES.HOME} className="block">
               <Image
@@ -454,10 +454,10 @@ const NavbarDesign2: React.FC = () => {
           </button>
 
           {/* Menú desktop */}
-          <div className="hidden lg:flex items-center space-x-8 w-full ml-60">
+          <div className="hidden lg:flex items-center justify-end space-x-8 w-full">
             <Link
               href={ROUTES.HOME}
-              className={`relative text-sm font-bold transition-all duration-300 hover:text-teal-400 group w-full text-center
+              className={`relative text-sm font-bold transition-all duration-300 hover:text-teal-400 group text-center
                 ${isActive(ROUTES.HOME) ? "text-teal-500" : "text-white"}
               `}
             >
@@ -470,7 +470,7 @@ const NavbarDesign2: React.FC = () => {
               href={EXTERNAL_LINKS.ABOUT}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative text-white hover:text-teal-400 transition-all duration-300 text-sm font-bold group w-full text-center"
+              className="relative text-white hover:text-teal-400 transition-all duration-300 text-sm font-bold group text-center"
             >
               ¿Quiénes Somos?
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full"></span>
@@ -478,7 +478,7 @@ const NavbarDesign2: React.FC = () => {
 
             <Link
               href={ROUTES.PROMOTIONS}
-              className={`relative transition-all duration-300 text-sm font-bold group w-full text-center 
+              className={`relative transition-all duration-300 text-sm font-bold group text-center 
                 ${isActive(ROUTES.PROMOTIONS) ? "text-teal-500" : "text-white hover:text-teal-400"}
               `}
             >
@@ -489,8 +489,8 @@ const NavbarDesign2: React.FC = () => {
 
             <Link
               href={ROUTES.SUMMER_PACKAGES}
-              className={`relative text-white hover:text-teal-400 transition-all duration-300 text-sm font-bold group w-full text-center
-                ${isActive(ROUTES.SUMMER_PACKAGES) ? "text-teal-500" : ""}
+              className={`relative hover:text-teal-400 transition-all duration-300 text-sm font-bold group text-center
+                ${isActive(ROUTES.SUMMER_PACKAGES) ? "text-teal-500" : "text-white hover:text-teal-400"}
               `}
             >
               Paquetes de verano
@@ -498,7 +498,7 @@ const NavbarDesign2: React.FC = () => {
                 }`}></span>
             </Link>
 
-            <DropdownButtonComponent textButton="text-white hover:text-teal-400 transition-colors duration-300 w-full text-center" />
+            <DropdownButtonComponent textButton="text-white hover:text-teal-400 transition-colors duration-300 text-center" />
 
 
           </div>
@@ -515,6 +515,26 @@ const NavbarDesign2: React.FC = () => {
         `}>
           <div className="px-4 py-6 space-y-6 max-h-screen overflow-y-auto pt-20">
             <div className="flex flex-col items-center space-y-8">
+            <button
+              className="absolute top-4 right-4 p-2"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Cerrar menú"
+            >
+              <svg
+                className="w-8 h-8 text-teal-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+
               <Link
                 href={ROUTES.HOME}
                 className={`text-xl font-bold transition-all duration-300 transform hover:scale-105
