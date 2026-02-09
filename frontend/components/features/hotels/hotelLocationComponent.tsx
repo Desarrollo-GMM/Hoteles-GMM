@@ -1,11 +1,10 @@
 'use client'
 
-import React from "react"
+import React, { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import dynamic from 'next/dynamic'
 const MapComponent = dynamic(() => import('@/components/ui/mapComponent'), { ssr: false })
-import { IMAGES_ROUTES, hotelLocations } from "@/app/constants/routes";
-import { Long_Cang } from "next/font/google";
+import { IMAGES_ROUTES, ROUTES, hotelLocations } from "@/app/constants/routes";
 
 interface ComponentProps {
     destino: string
@@ -26,30 +25,88 @@ const limpiarConCaracteresEspecificos = (texto: string) => {
         .trim();
 };
 
-
 const getLocationByDestino = (destino: string) => {
-    console.log("Destino: "+destino)
-    return hotelLocations.find((hotel) => 
-        hotel.city.includes(destino) ||
-        destino.includes(hotel.city)
-    ) || hotelLocations[0];
+    const destinoNormalizado = destino.trim().toLowerCase();
+    const exactMatch = hotelLocations.find(hotel => 
+        hotel.city.toLowerCase() === destinoNormalizado
+    );
+
+    if (exactMatch) return exactMatch;
+    const contieneCiudad = hotelLocations.find(hotel => 
+        destinoNormalizado.includes(hotel.city.toLowerCase())
+    );
+    if (contieneCiudad) return contieneCiudad;
+    
+    if (destinoNormalizado.length >= 3) {
+        const ciudadContieneDestino = hotelLocations.find(hotel => 
+            hotel.city.toLowerCase().includes(destinoNormalizado)
+        );
+        if (ciudadContieneDestino) return ciudadContieneDestino;
+    }
+    const palabrasDestino = destinoNormalizado.split(' ');
+    const matchParcial = hotelLocations.find(hotel => {
+        const palabrasCiudad = hotel.city.toLowerCase().split(' ');
+        return palabrasDestino.some(palabra => 
+            palabra.length >= 3 && palabrasCiudad.includes(palabra)
+        );
+    });
+    if (matchParcial) return matchParcial;
+    
+    return hotelLocations[0];
 };
 
 const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
     const destinoNormalizado = limpiarConCaracteresEspecificos(destino);
-    console.log(destinoNormalizado)
     const imagenes = IMAGES_ROUTES.HORIZONTAL_IMAGES[destinoNormalizado as keyof typeof IMAGES_ROUTES.HORIZONTAL_IMAGES] || IMAGES_ROUTES.HORIZONTAL_IMAGES.TULUM;
-    console.log(imagenes)
-    const imagenAleatoria = imagenes[Math.floor(Math.random() * imagenes.length)];
     
+    // Estado para la imagen actual
+    const [imagenActual, setImagenActual] = useState<string>(imagenes[0]);
+    // Referencia para el intervalo
+    const intervaloRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Función para obtener índice aleatorio
+    const obtenerIndiceAleatorio = (max: number): number => {
+        return Math.floor(Math.random() * max);
+    };
+
+    useEffect(() => {
+        // Limpiar intervalo previo si existe
+        if (intervaloRef.current) {
+            clearInterval(intervaloRef.current);
+        }
+
+        // Configurar nuevo intervalo
+        intervaloRef.current = setInterval(() => {
+            if (imagenes.length > 0) {
+                const indiceAleatorio = obtenerIndiceAleatorio(imagenes.length);
+                setImagenActual(imagenes[indiceAleatorio]);
+            }
+        }, 3000); // Cambia cada 3 segundos (3000ms)
+
+        // Limpiar intervalo al desmontar el componente
+        return () => {
+            if (intervaloRef.current) {
+                clearInterval(intervaloRef.current);
+            }
+        };
+    }, [imagenes]); // Se re-ejecuta si cambian las imágenes
+
+    // Para evitar errores si no hay imágenes
+    useEffect(() => {
+        if (imagenes.length > 0) {
+            setImagenActual(imagenes[0]);
+        }
+    }, [imagenes]);
+
     const locations = getLocationByDestino(destino);
-    const Coordinates: Coordinates = {
+
+    const coordinates: Coordinates = {
         lat: locations.lat,
         lng: locations.lon
-    }
+    };
     
     return (
-        <div className="bg-gradient-to-br from-white to-teal-50 rounded-2xl h-[80vh] p-6 my-8 shadow-lg">
+        <div className="bg-gradient-to-br from-white to-teal-50 rounded-2xl h-[80vh] p-6 my-8 shadow-lg" id="mapSection">
             <div className="w-full text-center mb-8">
                 <h2 className="text-4xl font-bold text-gray-800 mb-2">
                     Descubre Nuestro Entorno
@@ -62,11 +119,12 @@ const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-4">
                 <div className="relative h-full overflow-hidden rounded-xl shadow-2xl">
                     <Image
-                        src={imagenAleatoria}
+                        src={imagenActual}
                         alt={`Vista del Hotel de ${destino}`}
                         fill
                         className="object-cover rounded-xl hover:scale-105 transition-transform duration-700"
                         sizes="(max-width: 768px) 100vw, 50vw"
+                        priority
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
                         <h3 className="text-white text-2xl font-bold">Vistas del Hotel</h3>
@@ -75,7 +133,10 @@ const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
                 </div>
 
                 <div className="space-y-6">
-                    <MapComponent position={[Coordinates?.lat, Coordinates?.lng]} destino={destino}/>
+                    <MapComponent 
+                        position={[coordinates.lat, coordinates.lng]} 
+                        destino={destino}
+                    />
 
                     <div className="grid grid-cols-1 gap-4">
                         <div className="bg-teal-100/50 rounded-xl p-4">
@@ -83,14 +144,14 @@ const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                                 </svg>
-                                Ubicación 
+                                Ubicación en {locations.city}
                             </h4>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default HotelLocationComponent;

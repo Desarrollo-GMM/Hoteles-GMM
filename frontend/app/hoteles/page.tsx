@@ -9,7 +9,7 @@ import ServiceComponent from "@/components/features/hotels/serviceComponent"
 import Image from "next/image"
 import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
-import { IMAGES_ROUTES } from "@/app/constants/routes";
+import { IMAGES_ROUTES, ROUTES } from "@/app/constants/routes";
 import { COMODIDADES } from "@/app/constants/services"
 
 const limpiarConCaracteresEspecificos = (texto: string) => {
@@ -25,6 +25,7 @@ const limpiarConCaracteresEspecificos = (texto: string) => {
 function HotelContent() {
     const [destino, setDestino] = useState<string>("Tulum")
     const [banner, setBanner] = useState<string>("")
+    const [isLoading, setIsLoading] = useState(true)
 
     const searchParams = useSearchParams();
     useEffect(() => {
@@ -38,7 +39,19 @@ function HotelContent() {
         if(bannerImage){
             setBanner(decodeURIComponent(bannerImage));
         }
+
+        setIsLoading(false);
     }, [searchParams])
+
+    if (isLoading) {
+        return (
+            <div className="lg:m-4 m-2">
+                <div className="min-h-screen flex items-center justify-center">
+                    <div className="text-xl">Cargando información del hotel...</div>
+                </div>
+            </div>
+        );
+    }
 
     const destinoNormalizado = limpiarConCaracteresEspecificos(destino);
     const img_horizontales = IMAGES_ROUTES.HORIZONTAL_IMAGES[destinoNormalizado as keyof typeof IMAGES_ROUTES.HORIZONTAL_IMAGES] || IMAGES_ROUTES.HORIZONTAL_IMAGES.TULUM;
@@ -68,7 +81,7 @@ function HotelContent() {
                 </div>
             </div>
 
-            <div className="my-12">
+            <div className="my-12" id='galerySection'>
                 <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-gray-800 mb-2">Galería Visual</h2>
                     <p className="text-gray-600">Descubre la magia de {destino} a través de nuestras imágenes</p>

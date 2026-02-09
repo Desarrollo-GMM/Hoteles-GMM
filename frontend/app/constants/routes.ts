@@ -4,7 +4,7 @@ export const ROUTES = {
   SUMMER_PACKAGES: '/paquetes',
   HOTELS: [
     { name: 'Tulum', route: "/hoteles", banner: "/images/hoteles/banner/TULUM/Tulum_BANNER.webp"},
-    { name: 'Tulum Aeropuertos', route: "/hoteles", banner: "/images/hoteles/banner/TULUM_AEROPUERTOS/Tulum_Aeropuerto_BANNER.webp"},
+    { name: 'Tulum Aeropuerto', route: "/hoteles", banner: "/images/hoteles/banner/TULUM_AEROPUERTO/Tulum_Aeropuerto_BANNER.webp"},
     { name: 'Chichen Itzá', route: "/hoteles", banner: "/images/hoteles/banner/CHICHEN_ITZA/CHICHEN_ITZA_BANNER.webp"},
     { name: 'Nuevo Uxmal', route: "/hoteles", banner: "/images/hoteles/banner/NUEVO_UXMAL/Nuevo_Uxmal_BANNER.webp" },
     { name: 'Edzná', route: "/hoteles", banner: "/images/hoteles/banner/EDZNA/Edzna_BANNER.webp"},
@@ -12,6 +12,10 @@ export const ROUTES = {
     { name: 'Palenque', route: "/hoteles", banner: "/images/hoteles/banner/PALENQUE/Palenque-BANNER.webp"}
   ],
   CONTACT: '/contacto',
+  MAP: '#mapSection',
+  SERVICES: '#servicesSection',
+  GALLERY: '#galerySection',
+  INIT: '#initSection'
 } as const;
 
 export const EXTERNAL_LINKS = {
@@ -70,7 +74,7 @@ export const IMAGES_ROUTES = {
       "/images/hoteles/horizontales/HOTEL_EDZNA/EDZNA_4.jpg",
       "/images/hoteles/horizontales/HOTEL_EDZNA/EDZNA_5.jpeg",
     ],
-    TULUM_AEROPUERTOS: [
+    TULUM_AEROPUERTO: [
       "/images/hoteles/horizontales/HOTEL_TULUM_AEROPUERTO/HOTEL AT_391.jpg",
       "/images/hoteles/horizontales/HOTEL_TULUM_AEROPUERTO/HOTEL AT_395.jpg",
       "/images/hoteles/horizontales/HOTEL_TULUM_AEROPUERTO/HOTEL AT_398.jpg",
@@ -121,7 +125,7 @@ export const IMAGES_ROUTES = {
       "/images/hoteles/verticales/HOTEL_UXMAL/HOTEL UXMAL_03.jpg",
       "/images/hoteles/verticales/HOTEL_UXMAL/HOTEL UXMAL_640.jpg",
     ],
-    TULUM_AEROPUERTOS: [
+    TULUM_AEROPUERTO: [
       "/images/hoteles/verticales/HOTEL_TULUM_AEROPUERTO/HOTEL AEROPUERTO TULUM_011.jpg",
       "/images/hoteles/verticales/HOTEL_TULUM_AEROPUERTO/HOTEL AEROPUERTO TULUM_103.jpg",
       "/images/hoteles/verticales/HOTEL_TULUM_AEROPUERTO/HOTEL AEROPUERTO TULUM_139.jpg",

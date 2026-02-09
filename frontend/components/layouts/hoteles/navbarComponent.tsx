@@ -10,6 +10,8 @@ import DropdownButtonComponent from "../../ui/buttons/dropdownButtonComponent";
 //import de Hooks personalizados
 import { useScrollDetection } from "@/lib/hooks/useScrollDetection";
 
+import { IoHome } from "react-icons/io5";
+
 const NavbarComponent: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -84,39 +86,68 @@ const NavbarComponent: React.FC = () => {
               <div className="flex items-center justify-start gap-8 mx-5 h-full">
                 <Link
                   href={ROUTES.HOME}
-                  className={`relative text-sm font-medium transition-all duration-300 group
-                    ${isActive(ROUTES.HOME)
+                  className={`relative transition-all duration-300 text-3xl font-medium group
+                    ${isActive(ROUTES.INIT)
                       ? "text-teal-500"
                       : "text-gray-600 hover:text-teal-500"
                     }`}
                 >
-                  Galería
+                  <IoHome></IoHome>
+                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.PROMOTIONS) ? 'w-full' : ''
+                    }`}></span>
+                </Link>
+                <span className="mx-0 text-gray-300">|</span>
+                <Link
+                  href={ROUTES.INIT}
+                  className={`relative transition-all duration-300 text-sm font-medium group
+                    ${isActive(ROUTES.INIT)
+                      ? "text-teal-500"
+                      : "text-gray-600 hover:text-teal-500"
+                    }`}
+                >
+                  Inicio
+                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.PROMOTIONS) ? 'w-full' : ''
+                    }`}></span>
+                </Link>
+                <Link
+                  href={ROUTES.MAP}
+                  className={`relative text-sm font-medium transition-all duration-300 group
+                    ${isActive(ROUTES.MAP)
+                      ? "text-teal-500"
+                      : "text-gray-600 hover:text-teal-500"
+                    }`}
+                >
+                  Ubicación
                   <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.HOME) ? 'w-full' : ''
                     }`}></span>
                 </Link>
 
-                <a
-                  href={EXTERNAL_LINKS.ABOUT}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative text-gray-600 hover:text-teal-500 transition-all duration-300 text-sm font-medium group"
-                >
-                  Servicios
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full"></span>
-                </a>
-
                 <Link
-                  href={ROUTES.PROMOTIONS}
+                  href={ROUTES.SERVICES}
                   className={`relative transition-all duration-300 text-sm font-medium group
-                    ${isActive(ROUTES.PROMOTIONS)
+                    ${isActive(ROUTES.SERVICES)
                       ? "text-teal-500"
                       : "text-gray-600 hover:text-teal-500"
                     }`}
                 >
-                  Contactos
+                  Servicios
                   <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.PROMOTIONS) ? 'w-full' : ''
                     }`}></span>
                 </Link>
+
+                <Link
+                  href={ROUTES.GALLERY}
+                  className={`relative transition-all duration-300 text-sm font-medium group
+                    ${isActive(ROUTES.GALLERY)
+                      ? "text-teal-500"
+                      : "text-gray-600 hover:text-teal-500"
+                    }`}
+                >
+                  Galeria
+                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.PROMOTIONS) ? 'w-full' : ''
+                    }`}></span>
+                </Link>
+                
 
                 <div className="transform transition-all duration-300 hover:scale-105">
                   <DropdownButtonComponent textColor="text-gray-600 hover:text-teal-500 transition-colors duration-300" />
@@ -218,37 +249,51 @@ const NavbarComponent: React.FC = () => {
             </button>
 
             <Link
-              href={ROUTES.HOME}
+              href={ROUTES.INIT}
               className={`text-xl font-medium transition-all duration-300 transform hover:scale-105
-                ${isActive(ROUTES.HOME)
+                ${isActive(ROUTES.INIT)
+                  ? "text-teal-500"
+                  : "text-gray-700 hover:text-teal-500"
+                }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Inicio
+            </Link>
+
+            <Link
+              href={ROUTES.MAP}
+              className={`text-xl font-medium transition-all duration-300 transform hover:scale-105
+                ${isActive(ROUTES.MAP)
+                  ? "text-teal-500"
+                  : "text-gray-700 hover:text-teal-500"
+                }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Ubicación
+            </Link>
+
+            <Link
+              href={ROUTES.SERVICES}
+              className={`text-xl font-medium transition-all duration-300 transform hover:scale-105
+                ${isActive(ROUTES.SERVICES)
+                  ? "text-teal-500"
+                  : "text-gray-700 hover:text-teal-500"
+                }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Servicios
+            </Link>
+
+            <Link
+              href={ROUTES.GALLERY}
+              className={`text-xl font-medium transition-all duration-300 transform hover:scale-105
+                ${isActive(ROUTES.GALLERY)
                   ? "text-teal-500"
                   : "text-gray-700 hover:text-teal-500"
                 }`}
               onClick={() => setIsMenuOpen(false)}
             >
               Galería
-            </Link>
-
-            <a
-              href={EXTERNAL_LINKS.ABOUT}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xl text-gray-700 hover:text-teal-500 transition-all duration-300 transform hover:scale-105"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Servicios
-            </a>
-
-            <Link
-              href={ROUTES.PROMOTIONS}
-              className={`text-xl transition-all duration-300 transform hover:scale-105
-                ${isActive(ROUTES.PROMOTIONS)
-                  ? "text-teal-500"
-                  : "text-gray-700 hover:text-teal-500"
-                }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contactos
             </Link>
 
             <div className="py-4">
