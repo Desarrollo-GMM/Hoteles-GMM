@@ -25,7 +25,6 @@ interface ComponentProps {
     destino: string
 }
 
-// Evitar error de tipos: _getIconUrl es una propiedad privada no tipada en las definiciones
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
     iconRetinaUrl: '/leaflet/images/marker-icon-2x.png',
@@ -33,7 +32,6 @@ L.Icon.Default.mergeOptions({
     shadowUrl: '/leaflet/images/marker-shadow.png',
 });
 
-// Componente para animar el movimiento del mapa
 function AnimateMapView({ position }: { position: [number, number] }) {
   const map = useMap();
   const previousPosition = useRef<[number, number] | null>(null);
@@ -59,7 +57,6 @@ function AnimateMapView({ position }: { position: [number, number] }) {
   return null;
 }
 
-// Componente para animar el marcador
 function AnimatedMarker({ 
   position, 
   icon,
@@ -108,7 +105,6 @@ function AnimatedMarker({
   return <Marker ref={markerRef} position={position} icon={icon}>{children}</Marker>;
 }
 
-// Configuración del marcador personalizado
 const createCustomIcon = (color = '#10b981') => {
     return L.divIcon({
         html: `
@@ -157,7 +153,6 @@ const createCustomIcon = (color = '#10b981') => {
     });
 }
 
-// Estilos CSS para las animaciones
 const markerStyles = `
   @keyframes pulse {
     0% {
@@ -179,14 +174,12 @@ const markerStyles = `
   }
 `;
 
-// Añadir estilos al documento
 if (typeof document !== 'undefined') {
   const styleSheet = document.createElement("style");
   styleSheet.textContent = markerStyles;
   document.head.appendChild(styleSheet);
 }
 
-// Estilos de mapa predefinidos
 const mapStyles = [
     {
         id: 'voyager',
@@ -234,10 +227,9 @@ const { BaseLayer } = LayersControl;
 const MapComponent: React.FC<ComponentProps> = ({position, destino}) => {
     const [selectedStyle, setSelectedStyle] = useState(mapStyles[0]);
     const [currentPosition, setCurrentPosition] = useState<[number, number]>(position);
-    const [mapKey, setMapKey] = useState(Date.now()); // Key para forzar re-render del mapa
+    const [mapKey, setMapKey] = useState(Date.now()); 
     const customIcon = createCustomIcon('#10b981');
 
-    // Efecto para actualizar posición y animar cuando cambie la prop
     useEffect(() => {
         if (
             currentPosition[0] !== position[0] || 
@@ -266,15 +258,15 @@ const MapComponent: React.FC<ComponentProps> = ({position, destino}) => {
     return (
         <div className="map-component">
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-                <div className="flex items-center justify-between mb-4">
+                <div className="lg:flex lg:items-center lg:justify-between  grid grid-cols-1 lg:grid-cols-2 mb-4">
                     <div>
-                        <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
+                        <h3 className="text-xl font-semibold text-gray-800 flex items-center justify-center gap-2">
                             <FaMapMarkerAlt className="text-teal-600" />
                             Ubicación del Hotel
                         </h3>
-                        <p className="text-gray-600 text-sm">Selecciona un estilo de mapa</p>
+                        <p className="text-gray-600 text-sm text-center">Selecciona un estilo de mapa</p>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex justify-center gap-2">
                         {mapStyles.map((style) => (
                             <button
                                 key={style.id}

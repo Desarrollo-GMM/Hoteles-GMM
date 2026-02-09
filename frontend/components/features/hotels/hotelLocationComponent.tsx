@@ -70,28 +70,23 @@ const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
     };
 
     useEffect(() => {
-        // Limpiar intervalo previo si existe
         if (intervaloRef.current) {
             clearInterval(intervaloRef.current);
         }
 
-        // Configurar nuevo intervalo
         intervaloRef.current = setInterval(() => {
             if (imagenes.length > 0) {
                 const indiceAleatorio = obtenerIndiceAleatorio(imagenes.length);
                 setImagenActual(imagenes[indiceAleatorio]);
             }
-        }, 3000); // Cambia cada 3 segundos (3000ms)
-
-        // Limpiar intervalo al desmontar el componente
+        }, 3000); 
         return () => {
             if (intervaloRef.current) {
                 clearInterval(intervaloRef.current);
             }
         };
-    }, [imagenes]); // Se re-ejecuta si cambian las imágenes
+    }, [imagenes]); 
 
-    // Para evitar errores si no hay imágenes
     useEffect(() => {
         if (imagenes.length > 0) {
             setImagenActual(imagenes[0]);
@@ -106,7 +101,7 @@ const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
     };
     
     return (
-        <div className="bg-gradient-to-br from-white to-teal-50 rounded-2xl h-[80vh] p-6 my-8 shadow-lg" id="mapSection">
+        <div className="bg-gradient-to-br from-white to-teal-50 rounded-2xl h-[80vh] lg:p-6 my-1 lg:my-8 shadow-lg" id="mapSection">
             <div className="w-full text-center mb-8">
                 <h2 className="text-4xl font-bold text-gray-800 mb-2">
                     Descubre Nuestro Entorno
@@ -116,7 +111,7 @@ const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8 lg:p-4 p-2">
                 <div className="relative h-full overflow-hidden rounded-xl shadow-2xl">
                     <Image
                         src={imagenActual}

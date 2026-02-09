@@ -8,6 +8,7 @@ import FooterComponent from "../../components/layouts/dashboard/footerComponent"
 import AdditionalInformationComponent from "../../components/features/dashboard/additionalInformationComponent"
 import VideoBandComponent from "../../components/features/dashboard/videoBandComponent"
 import TextOverImageComponent from "../../components/ui/images/textOverImageComponent"
+import DropButtonContactComponent from "@/components/ui/buttons/dropButtonContactComponent"
 
 import SimpleParallax from "simple-parallax-js"
 import Image from "next/image"
@@ -79,6 +80,10 @@ const Page: React.FC = () => {
                 <div className="">
                     <VideoBandComponent />
                 </div>
+
+                <DropButtonContactComponent />
+
+                
             </div>
 
             <FooterComponent />

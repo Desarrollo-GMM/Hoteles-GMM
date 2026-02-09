@@ -580,7 +580,7 @@ const NavbarDesign2: React.FC = () => {
               </Link>
 
               <div className="py-4">
-                <DropdownButtonComponent />
+                <DropdownButtonComponent textButton="text-white text-xl" />
               </div>
 
               {/* Redes sociales móviles */}
