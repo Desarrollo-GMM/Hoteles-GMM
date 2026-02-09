@@ -140,17 +140,17 @@ export const IMAGES_ROUTES = {
     ],
   },
   PAQUETES: [
-      "/images/hoteles/paquetes/PAQUETE_TULUM_1.png",
-      "/images/hoteles/paquetes/PAQUETE_TULUM_2.png",
-      "/images/hoteles/paquetes/PAQUETE_CHICHEN_1.png",
-      "/images/hoteles/paquetes/PAQUETE_CHICHEN_2.png",
-      "/images/hoteles/paquetes/PAQUETE_NUEVO UXMAL_1.png",
-      "/images/hoteles/paquetes/PAQUETE_NUEVO UXMAL_2.png",
-      "/images/hoteles/paquetes/PAQUETE_EDZNA_1.png",
-      "/images/hoteles/paquetes/PAQUETE_EDZNA_2.png",
-      "/images/hoteles/paquetes/PAQUETE_PALENQUE_1.png",
-      "/images/hoteles/paquetes/PAQUETE_PALENQUE_2.png",
-      "/images/hoteles/paquetes/PAQUETE_CALAKMUL.png"
+      "/images/hoteles/paquetes/TULUM/tulum1.png",
+      "/images/hoteles/paquetes/TULUM/tulum2.png",
+      "/images/hoteles/paquetes/CHICHEN_ITZA/chichen1.png",
+      "/images/hoteles/paquetes/CHICHEN_ITZA/chichen2.png",
+      "/images/hoteles/paquetes/NUEVO_UXMAL/nuevo uxmal1.png",
+      "/images/hoteles/paquetes/NUEVO_UXMAL/nuevo uxmal2.png",
+      "/images/hoteles/paquetes/EDZNA/edzna1.png",
+      "/images/hoteles/paquetes/EDZNA/edzna2.png",
+      "/images/hoteles/paquetes/PALENQUE/palenque1.png",
+      "/images/hoteles/paquetes/PALENQUE/palenque2.png",
+      "/images/hoteles/paquetes/CALAKMUL/calakmul OLR.png"
   ],
   PAQUETES_DATA: [
     {
@@ -158,8 +158,8 @@ export const IMAGES_ROUTES = {
       label: 'Tulum',
       active_color: 'bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600',
       images: [
-        "/images/hoteles/paquetes/PAQUETE_TULUM_1.png",
-        "/images/hoteles/paquetes/PAQUETE_TULUM_2.png",
+        "/images/hoteles/paquetes/TULUM/tulum1.png",
+        "/images/hoteles/paquetes/TULUM/tulum2.png",
       ],
       link: "https://forms.cloud.microsoft/r/siFvxDkdRs?origin=lprLink",
       description: "Descubre las playas de arena blanca y ruinas mayas frente al mar Caribe."
@@ -169,8 +169,8 @@ export const IMAGES_ROUTES = {
       label: 'Chichén Itzá',
       active_color: 'bg-gradient-to-r from-red-400 via-red-500 to-red-600',
       images: [
-        "/images/hoteles/paquetes/PAQUETE_CHICHEN_1.png",
-        "/images/hoteles/paquetes/PAQUETE_CHICHEN_2.png",
+        "/images/hoteles/paquetes/CHICHEN_ITZA/chichen1.png",
+        "/images/hoteles/paquetes/CHICHEN_ITZA/chichen2.png",
       ],
       link: "https://forms.cloud.microsoft/r/mUkfDkLCNH?origin=lprLink",
       description: "Maravilla del mundo moderno, hogar de la pirámide de Kukulkán."
@@ -180,8 +180,8 @@ export const IMAGES_ROUTES = {
       label: 'Nuevo Uxmal',
       active_color: 'bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700',
       images: [
-        "/images/hoteles/paquetes/PAQUETE_NUEVO UXMAL_1.png",
-        "/images/hoteles/paquetes/PAQUETE_NUEVO UXMAL_2.png",
+        "/images/hoteles/paquetes/NUEVO_UXMAL/nuevo uxmal1.png",
+        "/images/hoteles/paquetes/NUEVO_UXMAL/nuevo uxmal2.png",
       ],
       link: "https://forms.cloud.microsoft/r/hcrmxe0W14?origin=lprLink",
       description: "Arquitectura maya Puuc en todo su esplendor."
@@ -191,8 +191,8 @@ export const IMAGES_ROUTES = {
       label: 'Edzná',
       active_color: 'bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700',
       images: [
-        "/images/hoteles/paquetes/PAQUETE_EDZNA_1.png",
-        "/images/hoteles/paquetes/PAQUETE_EDZNA_2.png",
+        "/images/hoteles/paquetes/EDZNA/edzna1.png",
+        "/images/hoteles/paquetes/EDZNA/edzna2.png",
       ],
       link: "https://forms.cloud.microsoft/r/5geEFYW4Lp?origin=lprLink",
       description: "La 'Casa de los Itzáes', famosa por su sistema hidráulico."
@@ -202,8 +202,8 @@ export const IMAGES_ROUTES = {
       label: 'Palenque',
       active_color: 'bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700',
       images: [
-        "/images/hoteles/paquetes/PAQUETE_PALENQUE_1.png",
-        "/images/hoteles/paquetes/PAQUETE_PALENQUE_2.png",
+        "/images/hoteles/paquetes/PALENQUE/palenque1.png",
+        "/images/hoteles/paquetes/PALENQUE/palenque2.png",
       ],
       link: "https://forms.cloud.microsoft/r/6SPw6Vtm5d?origin=lprLink",
       description: "Joyas arquitectónicas en medio de la selva tropical."
@@ -213,7 +213,7 @@ export const IMAGES_ROUTES = {
       label: 'Calakmul',
       active_color: 'bg-gradient-to-r from-green-400 via-green-500 to-green-600',
       images: [
-        "/images/hoteles/paquetes/PAQUETE_CALAKMUL.png",
+        "/images/hoteles/paquetes/CALAKMUL/calakmul OLR.png",
       ],
       link: "https://forms.cloud.microsoft/r/9LJF5VuWT3?origin=lprLink",
       description: "Antigua ciudad maya escondida en la Reserva de la Biosfera."

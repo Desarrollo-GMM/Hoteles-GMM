@@ -10,7 +10,7 @@ const FooterComponent = () => {
                     <div className="mb-6 md:mb-0">
                         <a href="#" className="flex items-center">
                             <Image
-                                className="w-15 h-24"
+                                className="w-auto h-24"
                                 alt="Logo GMM"
                                 src={"/images/GMM blanco.png"}
                                 width={200}

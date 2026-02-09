@@ -8,7 +8,7 @@ interface DropdownButtonProps {
     textButton?: string,
 }
 
-const DropdownButtonComponent = ({ textColor = "text-black", textButton = "text-black" }: DropdownButtonProps) => {
+const DropdownButtonComponent = ({ textColor = "", textButton = "" }: DropdownButtonProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 

@@ -1,143 +1,237 @@
 'use client'
 
-import { colors } from 'flowbite-react/plugin/tailwindcss/colors';
-import { useState } from 'react';
-import Image from 'next/image';
+import { useState, useCallback, useRef, useEffect } from 'react'
+import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
 
-import CalendarIcon from '@/components/ui/icons/calendar';
-import WhatsappIcon from '@/components/ui/icons/whatsapp';
-import CalloutIcon from '@/components/ui/icons/callout';
-import CashIcon from '@/components/ui/icons/cash';
+import CalendarIcon from '@/components/ui/icons/calendar'
+import WhatsappIcon from '@/components/ui/icons/whatsapp'
+import CalloutIcon from '@/components/ui/icons/callout'
+import CashIcon from '@/components/ui/icons/cash'
+import { IMAGES_ROUTES } from '@/app/constants/routes'
+import { cn } from '@/lib/utils'
 
-import { IMAGES_ROUTES } from '@/app/constants/routes';
+interface PackageTab {
+  id: string
+  label: string
+  images: string[]
+  link?: string
+  active_color?: string
+}
 
-interface ComponentProps { }
+interface ReservationOption {
+  id: string
+  label: string
+  icon: React.ReactNode
+  href: string
+  color: string
+  target?: string
+  rel?: string
+}
 
-const PackageComponent: React.FC<ComponentProps> = () => {
-    const [activeTab, setActiveTab] = useState<string>('tulum');
+const PackageComponent: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<string>('tulum')
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
+  // Cerrar dropdown al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false)
+      }
+    }
 
-    const handleMouseLeave = () => {
-        if (!isDropdownOpen) setIsHovered(false);
-    };
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
-    return (
-        <div className="relative min-h-screen mt-14">
-            <div className="mt-28">
-                <p className="w-full text-4xl lg:text-6xl text-center font-bold uppercase">
-                    ¡Explora el Mundo Maya!
-                </p>
-                <p className="w-full text-bold text-center my-8">
-                    Desde la comodidad de nuestros 6 hoteles turísticos, cada espacio ha sido diseñado para ofrecerte una experiencia auténtica, rodeada de historia, naturaleza y cultura, con la calidad y calidez que nos distingue.
-                </p>
-                <p className="w-full font-extrabold text-center italic my-4">
-                    ¡Hospédate con nosotros y vive el legado maya como nunca antes!
-                </p>
-            </div>
+  // Manejar cambio de tab
+  const handleTabChange = useCallback((tabId: string) => {
+    setActiveTab(tabId)
+  }, [])
 
+  const activeTabData = IMAGES_ROUTES.PAQUETES_DATA.find(tab => tab.id === activeTab)
 
-            <div className="sticky top-14 z-40 bg-white shadow-sm mb-6 md:mb-8">
-                <div className="max-w-6xl mx-auto px-4">
-                    <ul className="flex flex-wrap justify-center gap-1 md:gap-2 font-medium text-center overflow-x-auto py-2"
-                        role="tablist">
-                        {IMAGES_ROUTES.PAQUETES_DATA.map((tab) => (
-                            <li key={tab.id} className="flex-shrink-0" role="presentation">
-                                <button
-                                    className={`inline-flex items-center justify-center py-3 px-4 md:px-6 border-b-2 rounded-t-lg transition-all duration-300 ${activeTab === tab.id
-                                        ? `text-white ${tab.active_color} border-transparent shadow-lg transform scale-105`
-                                        : 'text-gray-700 bg-gray-50 hover:bg-gray-100 border-transparent hover:border-gray-300'
-                                        }`}
-                                    onClick={() => setActiveTab(tab.id)}
-                                    type="button"
-                                    role="tab"
-                                    aria-selected={activeTab === tab.id}
-                                >
-                                    <span className="font-semibold whitespace-nowrap">{tab.label}</span>
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
+  // Opciones de reserva
+  const reservationOptions: ReservationOption[] = [
+    {
+      id: 'whatsapp',
+      label: 'WhatsApp',
+      icon: <WhatsappIcon className="w-4 h-4 mr-2" />,
+      href: 'https://wa.me/5523328695',
+      color: 'hover:text-green-600 hover:bg-green-50',
+      target: '_blank',
+      rel: 'noopener noreferrer'
+    },
+    {
+      id: 'call',
+      label: 'Llamar',
+      icon: <CalloutIcon className="w-4 h-4 mr-2" />,
+      href: 'tel:5513935091',
+      color: 'hover:text-blue-600 hover:bg-blue-50'
+    },
+    {
+      id: 'quote',
+      label: 'Cotizar',
+      icon: <CashIcon className="w-4 h-4 mr-2" />,
+      href: activeTabData?.link || '#',
+      color: 'hover:text-amber-600 hover:bg-amber-50',
+      target: '_blank',
+      rel: 'noopener noreferrer'
+    }
+  ]
 
-            <div className=''>
-                {IMAGES_ROUTES.PAQUETES_DATA.map((tab) => (
-                    <div key={tab.id} className={`px-10 rounded-base bg-neutral-secondary-soft grid grid-cols-1 lg:grid-cols-2 gap-5 ${activeTab === tab.id ? 'block' : 'hidden'}`} role="tabpanel">
-                        {tab.images.map((image, index) => (
-                            <Image key={index} src={image} alt='' width={1000} height={1000} className="shadow-xl rounded-md lg:hover:scale-105 lg:duration-150 lg:hover:shadow-gray-500"></Image>
-                        ))}
+  return (
+    <div className="min-h-screen pt-28 pb-20">
+      {/* Header */}
+      <div className="container px-4 mx-auto mb-12 text-center">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6 text-4xl font-bold uppercase md:text-5xl lg:text-6xl "
+        >
+          ¡Explora el Mundo Maya!
+        </motion.h1>
+        
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="max-w-3xl mx-auto mb-6 text-lg text-gray-600"
+        >
+          Desde la comodidad de nuestros 6 hoteles turísticos, cada espacio ha sido diseñado para ofrecerte una experiencia auténtica, rodeada de historia, naturaleza y cultura.
+        </motion.p>
+        
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-xl font-bold italic text-cyan-700"
+        >
+          ¡Hospédate con nosotros y vive el legado maya como nunca antes!
+        </motion.p>
+      </div>
 
-                    </div>
-                ))}
-
-            </div>
-
-            <div className="fixed bottom-0 sm:bottom-8 left-0 sm:left-8 z-50 mt-6 px-2 sm:px-0">
-                <div className="relative">
-                    <button
-                        className={`hidden sm:inline-flex items-center w-full box-border ${isHovered || isDropdownOpen ? "border-transparent bg-gradient-to-tr from-cyan-400 to-teal-600 shadow-xs" : "border-gray-300"
-                            } hover:shadow-lg transition-all duration-300 group focus:ring-4 focus:ring-brand-medium font-medium leading-5 rounded-lg text-sm `}
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={handleMouseLeave}
-                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        type="button"
-                    >
-                        <div className="flex items-center justify-between w-full p-5">
-                            <div className="flex items-center space-x-3">
-                                <div className="w-8 h-8 bg-gradient-to-r from-blue-700 to-emerald-500 rounded-full flex items-center justify-center text-white font-medium">
-                                    <CalendarIcon />
-                                </div>
-                                <div className="text-left">
-                                    <h3 className="font-bold text-gray-800 group-hover:text-gray-900 transition-colors text-sm">RESERVAR</h3>
-                                </div>
-                            </div>
-                            <div
-                                className={`text-gray-400 group-hover:text-black transition-colors transform ${isDropdownOpen ? "rotate-180 transition-transform duration-150" : ""
-                                    } duration-300 ml-2`}
-                            >
-                                ▼
-                            </div>
-                        </div>
-                    </button>
-                    {isDropdownOpen && (
-                        <div
-                            className="absolute hidden sm:block bottom-full left-0 mb-2 z-10 bg-gray-100 border border-gray-200 rounded-lg shadow-lg w-72"
-                            onMouseEnter={() => setIsHovered(true)}
-                            onMouseLeave={handleMouseLeave}
-                        >
-                            <div className="p-3">
-                                <div className="flex items-center space-x-3 text-sm">
-
-                                    <ul className="p-2 text-sm text-body font-medium w-full" aria-labelledby="avatarButton">
-                                        <li className='text-gray-800 hover:text-green-500'>
-                                            <a href="https://wa.me/5523328695" target='_blank' className="flex align-middle w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded-md hover:bg-white hover:scale-105 transition-all duration-200">
-                                                <WhatsappIcon /> WhatsApp
-                                            </a>
-                                        </li>
-                                        <li className='text-gray-800 hover:text-blue-500'>
-                                            <a href="tel:5513935091" target='_blank' className="flex align-middle w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded-md hover:bg-white hover:scale-105 transition-all duration-200">
-                                                <CalloutIcon /> Llamar
-                                            </a>
-                                        </li>
-
-                                        {IMAGES_ROUTES.PAQUETES_DATA.map((tab) => (
-                                            <li key={tab.id} className={`text-gray-800 hover:text-yellow-500 ${activeTab === tab.id ? 'block' : 'hidden'}`}>
-                                                <a href={tab.link} target='_blank' className="flex align-middle w-full p-2 hover:bg-neutral-tertiary-medium text-fg-danger rounded-md hover:bg-white hover:scale-105 transition-all duration-200">
-                                                    <CashIcon /> Cotizar
-                                                </a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            </div>
+      {/* Tabs Navigation */}
+      <div className="sticky top-0 z-30 bg-white shadow-md">
+        <div className="container px-4 mx-auto">
+          <div className="flex overflow-x-auto scrollbar-hide">
+            {IMAGES_ROUTES.PAQUETES_DATA.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => handleTabChange(tab.id)}
+                className={cn(
+                  "flex-shrink-0 px-6 py-4 font-semibold transition-all duration-300 border-b-2",
+                  activeTab === tab.id
+                    ? "border-cyan-500 text-cyan-700 bg-gradient-to-b from-cyan-50 to-white"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                )}
+                aria-selected={activeTab === tab.id}
+                role="tab"
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
-    );
-};
+      </div>
 
-export default PackageComponent;
+      {/* Content */}
+      <div className="container px-4 py-8 mx-auto">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-1 gap-6 lg:grid-cols-2"
+          >
+            {activeTabData?.images.map((image, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="overflow-hidden rounded-xl shadow-lg group"
+              >
+                <div className="relative aspect-auto">
+                  <Image
+                    src={image}
+                    alt={`${activeTabData.label} - Imagen ${index + 1}`}
+                    width={1000} 
+                    height={1000}
+                    className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    priority={index < 3}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Floating Action Button */}
+      <div className="fixed bottom-6 right-6 z-50" ref={dropdownRef}>
+        {/* Dropdown Menu */}
+        <AnimatePresence>
+          {isDropdownOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+              className="absolute bottom-full right-0 mb-2 overflow-hidden bg-white rounded-xl shadow-xl w-72"
+            >
+              <div className="p-2">
+                <div className="mb-2 px-3 py-2 text-sm font-semibold text-gray-700 border-b">
+                  Opciones de reserva
+                </div>
+                {reservationOptions.map((option) => (
+                  <a
+                    key={option.id}
+                    href={option.href}
+                    target={option.target}
+                    rel={option.rel}
+                    className={cn(
+                      "flex items-center px-3 py-3 text-sm font-medium transition-colors duration-200 rounded-lg",
+                      option.color
+                    )}
+                    onClick={() => setIsDropdownOpen(false)}
+                  >
+                    {option.icon}
+                    {option.label}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Main Button */}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          className={cn(
+            "flex items-center justify-center w-14 h-14 md:w-auto md:h-auto md:px-6 md:py-4",
+            "bg-gradient-to-r from-cyan-600 to-emerald-600 text-white rounded-full shadow-lg",
+            "hover:shadow-xl transition-all duration-300"
+          )}
+          aria-label="Opciones de reserva"
+        >
+          <div className="hidden md:flex items-center space-x-3">
+            <CalendarIcon className="w-5 h-5" />
+            <span className="font-semibold">RESERVAR</span>
+          </div>
+          <div className="flex md:hidden">
+            <CalendarIcon className="w-6 h-6" />
+          </div>
+        </motion.button>
+      </div>
+    </div>
+  )
+}
+
+export default PackageComponent
