@@ -1,70 +1,136 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  MapContainer, 
-  TileLayer, 
-  Marker, 
-  Popup, 
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
   LayersControl,
-  useMap 
+  useMap
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import * as L from 'leaflet';
-import { 
-  FaMapMarkedAlt, 
-  FaSun, 
-  FaMoon, 
-  FaMountain, 
-  FaPalette, 
-  FaMapMarkerAlt 
-} from 'react-icons/fa'
+import {
+  FaMapMarkedAlt,
+  FaSun,
+  FaMoon,
+  FaMountain,
+  FaPalette,
+  FaMapMarkerAlt
+} from 'react-icons/fa';
+
+// ------------------------------------------------------------
+// TIPOS
+// ------------------------------------------------------------
+export type MarkerData = {
+  lat: number;
+  lng: number;
+  /** URL de imagen, string SVG o instancia de L.Icon / L.DivIcon */
+  marker?: string | L.Icon | L.DivIcon;
+  /** Contenido React para el popup (opcional) */
+  popup?: React.ReactNode;
+  /** Identificador único para key (opcional) */
+  id?: string | number;
+};
 
 interface ComponentProps {
-    position: [number, number],
-    destino: string
+  /** Modo single: coordenadas [lat, lng] */
+  position?: [number, number];
+  /** Nombre del destino (solo modo single) */
+  destino?: string;
+  /** Modo múltiple: array de marcadores */
+  markers?: MarkerData[];
+  /** Nivel de zoom inicial / por defecto (por defecto 16) */
+  zoom?: number;
+  /** Mostrar u ocultar el control de capas (LayersControl) */
+  showLayersControl?: boolean;
 }
 
+// ------------------------------------------------------------
+// CONFIGURACIÓN INICIAL DE ICONOS POR DEFECTO
+// ------------------------------------------------------------
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
-    iconRetinaUrl: '/leaflet/images/marker-icon-2x.png',
-    iconUrl: '/leaflet/images/marker-icon.png',
-    shadowUrl: '/leaflet/images/marker-shadow.png',
+  iconRetinaUrl: '/leaflet/images/marker-icon-2x.png',
+  iconUrl: '/leaflet/images/marker-icon.png',
+  shadowUrl: '/leaflet/images/marker-shadow.png',
 });
 
-function AnimateMapView({ position }: { position: [number, number] }) {
+// ------------------------------------------------------------
+// COMPONENTES AUXILIARES DE ANIMACIÓN Y AJUSTE
+// ------------------------------------------------------------
+/**
+ * Vuela a una posición cuando cambia (modo single)
+ */
+function AnimateMapView({
+  position,
+  defaultZoom
+}: {
+  position: [number, number];
+  defaultZoom: number;
+}) {
   const map = useMap();
   const previousPosition = useRef<[number, number] | null>(null);
 
   useEffect(() => {
     if (!previousPosition.current) {
-      // Primera carga, centrar sin animación
-      map.setView(position, map.getZoom());
+      // Primera carga: usar el zoom proporcionado
+      map.setView(position, defaultZoom);
     } else if (
-      previousPosition.current[0] !== position[0] || 
+      previousPosition.current[0] !== position[0] ||
       previousPosition.current[1] !== position[1]
     ) {
-      // Nueva posición, animar con transición suave
+      // Cambio de posición: animar conservando el zoom actual
       map.flyTo(position, map.getZoom(), {
-        duration: 1.5, // Duración de la animación en segundos
+        duration: 1.5,
         easeLinearity: 0.25
       });
     }
-    
     previousPosition.current = position;
-  }, [position, map]);
+  }, [position, map, defaultZoom]);
 
   return null;
 }
 
-function AnimatedMarker({ 
-  position, 
+/**
+ * Ajusta los límites del mapa para mostrar todos los marcadores (modo múltiple)
+ */
+function FitBoundsToMarkers({
+  positions,
+  defaultZoom
+}: {
+  positions: [number, number][];
+  defaultZoom: number;
+}) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (positions.length === 0) return;
+    if (positions.length === 1) {
+      // Un solo marcador: usar zoom por defecto
+      map.setView(positions[0], defaultZoom);
+    } else {
+      // Múltiples marcadores: ajustar bounds
+      const bounds = L.latLngBounds(positions);
+      map.fitBounds(bounds, { padding: [50, 50] });
+    }
+  }, [positions, map, defaultZoom]);
+
+  return null;
+}
+
+/**
+ * Marcador con animación CSS en el movimiento
+ */
+function AnimatedMarker({
+  position,
   icon,
   children
-}: { 
-  position: [number, number], 
-  icon: L.DivIcon,
-  children?: React.ReactNode
+}: {
+  position: [number, number];
+  icon: L.Icon;
+  children?: React.ReactNode;
 }) {
   const markerRef = useRef<L.Marker | null>(null);
   const previousPosition = useRef<[number, number] | null>(null);
@@ -72,42 +138,34 @@ function AnimatedMarker({
   useEffect(() => {
     if (markerRef.current) {
       if (!previousPosition.current) {
-        // Primera carga, establecer posición
         markerRef.current.setLatLng(position);
       } else if (
-        previousPosition.current[0] !== position[0] || 
+        previousPosition.current[0] !== position[0] ||
         previousPosition.current[1] !== position[1]
       ) {
-        // Animar movimiento del marcador
         const marker = markerRef.current;
         const markerElement = marker.getElement();
-        
         if (markerElement) {
-          // Añadir clase de animación
           markerElement.classList.add('marker-transition');
-          
-          // Establecer nueva posición
           marker.setLatLng(position);
-          
-          // Remover clase después de la animación
           setTimeout(() => {
-            if (markerElement) {
-              markerElement.classList.remove('marker-transition');
-            }
-          }, 1500); // Duración de la animación en ms
+            markerElement.classList.remove('marker-transition');
+          }, 1500);
         }
       }
     }
-    
     previousPosition.current = position;
   }, [position]);
 
   return <Marker ref={markerRef} position={position} icon={icon}>{children}</Marker>;
 }
 
-const createCustomIcon = (color = '#10b981') => {
-    return L.divIcon({
-        html: `
+// ------------------------------------------------------------
+// FÁBRICA DE ICONOS
+// ------------------------------------------------------------
+const createCustomIcon = (color = '#10b981'): L.DivIcon => {
+  return L.divIcon({
+    html: `
       <div class="marker-container" style="
         background-color: ${color};
         width: 32px;
@@ -146,226 +204,284 @@ const createCustomIcon = (color = '#10b981') => {
         "></div>
       </div>
     `,
-        className: 'custom-marker',
-        iconSize: [32, 32],
-        iconAnchor: [16, 32],
-        popupAnchor: [0, -32]
-    });
-}
+    className: 'custom-marker',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
+  });
+};
 
-const markerStyles = `
-  @keyframes pulse {
-    0% {
-      transform: rotate(-45deg) scale(1);
-      opacity: 1;
+const createImageIcon = (url: string): L.Icon => {
+  return L.icon({
+    iconUrl: url,
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32],
+    shadowUrl: '/leaflet/images/marker-shadow.png'
+  });
+};
+
+const createSvgIcon = (svgString: string): L.DivIcon => {
+  return L.divIcon({
+    html: svgString,
+    className: 'custom-svg-marker',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
+  });
+};
+
+const createIconFromMarkerData = (markerData: MarkerData): L.Icon => {
+  if (markerData.marker) {
+    if (markerData.marker instanceof L.Icon) {
+      return markerData.marker;
     }
-    100% {
-      transform: rotate(-45deg) scale(1.5);
-      opacity: 0;
+    if (typeof markerData.marker === 'string') {
+      if (markerData.marker.trim().startsWith('<svg')) {
+        return createSvgIcon(markerData.marker);
+      }
+      return createImageIcon(markerData.marker);
     }
   }
-  
+  return createCustomIcon();
+};
+
+// ------------------------------------------------------------
+// ESTILOS GLOBALES PARA ANIMACIONES
+// ------------------------------------------------------------
+const markerStyles = `
+  @keyframes pulse {
+    0% { transform: rotate(-45deg) scale(1); opacity: 1; }
+    100% { transform: rotate(-45deg) scale(1.5); opacity: 0; }
+  }
   .marker-transition .marker-container {
     transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  
   .leaflet-marker-icon.custom-marker {
     transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 `;
 
 if (typeof document !== 'undefined') {
-  const styleSheet = document.createElement("style");
+  const styleSheet = document.createElement('style');
   styleSheet.textContent = markerStyles;
   document.head.appendChild(styleSheet);
 }
 
+// ------------------------------------------------------------
+// ESTILOS DE MAPA
+// ------------------------------------------------------------
 const mapStyles = [
-    {
-        id: 'voyager',
-        name: 'Voyager',
-        url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-        attribution: '© OpenStreetMap, CARTO',
-        icon: <FaMapMarkedAlt />,
-        description: 'Colores vibrantes y modernos'
-    },
-    {
-        id: 'dark',
-        name: 'Modo Oscuro',
-        url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-        attribution: '© OpenStreetMap, CARTO',
-        icon: <FaMoon />,
-        description: 'Perfecto para uso nocturno'
-    },
-    {
-        id: 'light',
-        name: 'Modo Claro',
-        url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-        attribution: '© OpenStreetMap, CARTO',
-        icon: <FaSun />,
-        description: 'Estilo limpio y minimalista'
-    },
-    {
-        id: 'topo',
-        name: 'Topográfico',
-        url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
-        attribution: '© OpenStreetMap, OpenTopoMap',
-        icon: <FaMountain />,
-        description: 'Con relieve y curvas de nivel'
-    },
-    {
-        id: 'watercolor',
-        name: 'Acuarela',
-        url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg',
-        attribution: '© Stamen Design, OpenStreetMap',
-        icon: <FaPalette />,
-        description: 'Estilo artístico y único'
-    }
+  {
+    id: 'voyager',
+    name: 'Voyager',
+    url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+    attribution: '© OpenStreetMap, CARTO',
+    icon: <FaMapMarkedAlt />,
+    description: 'Colores vibrantes y modernos'
+  },
+  {
+    id: 'dark',
+    name: 'Modo Oscuro',
+    url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+    attribution: '© OpenStreetMap, CARTO',
+    icon: <FaMoon />,
+    description: 'Perfecto para uso nocturno'
+  },
+  {
+    id: 'light',
+    name: 'Modo Claro',
+    url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    attribution: '© OpenStreetMap, CARTO',
+    icon: <FaSun />,
+    description: 'Estilo limpio y minimalista'
+  },
+  {
+    id: 'topo',
+    name: 'Topográfico',
+    url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+    attribution: '© OpenStreetMap, OpenTopoMap',
+    icon: <FaMountain />,
+    description: 'Con relieve y curvas de nivel'
+  },
+  {
+    id: 'watercolor',
+    name: 'Acuarela',
+    url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg',
+    attribution: '© Stamen Design, OpenStreetMap',
+    icon: <FaPalette />,
+    description: 'Estilo artístico y único'
+  }
 ];
 const { BaseLayer } = LayersControl;
 
-const MapComponent: React.FC<ComponentProps> = ({position, destino}) => {
-    const [selectedStyle, setSelectedStyle] = useState(mapStyles[0]);
-    const [currentPosition, setCurrentPosition] = useState<[number, number]>(position);
-    const [mapKey, setMapKey] = useState(Date.now()); 
-    const customIcon = createCustomIcon('#10b981');
+// ------------------------------------------------------------
+// COMPONENTE PRINCIPAL
+// ------------------------------------------------------------
+const MapComponent: React.FC<ComponentProps> = ({
+  position,
+  destino,
+  markers,
+  zoom = 16,
+  showLayersControl = true
+}) => {
+  const [selectedStyle, setSelectedStyle] = useState(mapStyles[0]);
 
-    useEffect(() => {
-        if (
-            currentPosition[0] !== position[0] || 
-            currentPosition[1] !== position[1]
-        ) {
-            setCurrentPosition(position);
-            setMapKey(Date.now());
-            
-            const timer = setTimeout(() => {
-                const markerElements = document.querySelectorAll('.custom-marker');
-                markerElements.forEach(marker => {
-                    const ring = marker.querySelector('.pulse-ring');
-                    if (ring instanceof HTMLElement) {
-                        ring.style.animation = 'none';
-                        setTimeout(() => {
-                            ring.style.animation = 'pulse 1.5s ease-out';
-                        }, 10);
-                    }
-                });
-            }, 500);
-            
-            return () => clearTimeout(timer);
-        }
-    }, [position, currentPosition]);
+  const hasMultipleMarkers = !!(markers && markers.length > 0);
 
-    return (
-        <div className="map-component">
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-                <div className="lg:flex lg:items-center lg:justify-between  grid grid-cols-1 lg:grid-cols-2 mb-4">
-                    <div>
-                        <h3 className="text-xl font-semibold text-gray-800 flex items-center justify-center gap-2">
-                            <FaMapMarkerAlt className="text-teal-600" />
-                            Ubicación del Hotel
-                        </h3>
-                        <p className="text-gray-600 text-sm text-center">Selecciona un estilo de mapa</p>
-                    </div>
-                    <div className="flex justify-center gap-2">
-                        {mapStyles.map((style) => (
-                            <button
-                                key={style.id}
-                                onClick={() => setSelectedStyle(style)}
-                                className={`p-2 rounded-lg transition-all duration-300 ${selectedStyle.id === style.id
-                                    ? 'bg-teal-600 text-white shadow-md'
-                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                                    }`}
-                                title={style.description}
-                            >
-                                <span className="flex items-center gap-2">
-                                    {style.icon}
-                                    <span className="hidden md:inline">{style.name}</span>
-                                </span>
-                            </button>
-                        ))}
-                    </div>
-                </div>
+  const allPositions: [number, number][] = hasMultipleMarkers
+    ? markers!.map(m => [m.lat, m.lng])
+    : position
+      ? [position]
+      : [];
 
-                <div className="relative rounded-xl overflow-hidden border-2 border-white">
-                    <MapContainer
-                        key={mapKey}
-                        center={currentPosition}
-                        zoom={16}
-                        style={{ height: '400px', width: '100%' }}
-                        zoomControl={true}
-                        scrollWheelZoom={true}
-                        className="rounded-xl transition-all duration-500"
-                    >
-                        
-                        <AnimateMapView position={currentPosition} />
-
-                        <TileLayer
-                            attribution={selectedStyle.attribution}
-                            url={selectedStyle.url}
-                            maxZoom={20}
-                            minZoom={3}
-                        />
-
-                        <LayersControl position="topright">
-                            {mapStyles.map((style) => (
-                                <BaseLayer
-                                    key={style.id}
-                                    name={style.name}
-                                    checked={selectedStyle.id === style.id}
-                                >
-                                    <TileLayer
-                                        attribution={style.attribution}
-                                        url={style.url}
-                                    />
-                                </BaseLayer>
-                            ))}
-                        </LayersControl>
-
-                        <AnimatedMarker position={currentPosition} icon={customIcon}>
-                            <Popup className="rounded-xl shadow-lg">
-                                <div className="p-4 max-w-xs">
-                                    <h3 className="font-bold text-lg text-teal-700 mb-2">🏝️ Hotel {destino}</h3>
-                                    <p className="text-gray-700 mb-3">
-                                        Ubicación privilegiada en Tulum, rodeado de naturaleza y a minutos
-                                        de las mejores playas y ruinas mayas.
-                                    </p>
-                                    <div className="text-sm text-gray-600 mb-3">
-                                        <p><span className="font-medium">Lat:</span> {currentPosition[0].toFixed(6)}</p>
-                                        <p><span className="font-medium">Lng:</span> {currentPosition[1].toFixed(6)}</p>
-                                    </div>
-                                    <a
-                                        href={`https://maps.google.com/?q=${currentPosition[0]},${currentPosition[1]}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="mt-2 inline-block w-full text-center text-white py-2 px-4 rounded-lg hover:bg-teal-300 duration-300 font-bold"
-                                    >
-                                        Ver en Google Maps
-                                    </a>
-                                </div>
-                            </Popup>
-                        </AnimatedMarker>
-                    </MapContainer>
-
-                    <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
-                        <div className="flex items-center gap-2">
-                            <span className="text-teal-600">
-                                {selectedStyle.icon}
-                            </span>
-                            <div>
-                                <p className="font-semibold text-gray-800 text-sm">{selectedStyle.name}</p>
-                                <p className="text-xs text-gray-600">{selectedStyle.description}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Indicador de actualización */}
-                    <div className="absolute top-4 right-4 bg-teal-100 text-teal-800 text-xs px-3 py-1 rounded-full">
-                        Posición actualizada
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="map-component">
+      <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
+        <div className="lg:flex lg:items-center lg:justify-between grid grid-cols-1 lg:grid-cols-2 mb-4">
+          <div>
+            <h3 className="text-xl font-semibold text-gray-800 flex items-center justify-center gap-2">
+              <FaMapMarkerAlt className="text-teal-600" />
+              {hasMultipleMarkers ? 'Múltiples ubicaciones' : 'Ubicación del Hotel'}
+            </h3>
+            <p className="text-gray-600 text-sm text-center">Selecciona un estilo de mapa</p>
+          </div>
+          <div className="flex justify-center gap-2">
+            {mapStyles.map((style) => (
+              <button
+                key={style.id}
+                onClick={() => setSelectedStyle(style)}
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  selectedStyle.id === style.id
+                    ? 'bg-teal-600 text-white shadow-md'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+                title={style.description}
+              >
+                <span className="flex items-center gap-2">
+                  {style.icon}
+                  <span className="hidden md:inline">{style.name}</span>
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
-    )
-}
+
+        <div className="relative rounded-xl overflow-hidden border-2 border-white">
+          <MapContainer
+            center={hasMultipleMarkers ? allPositions[0] || [0, 0] : position || [0, 0]}
+            zoom={zoom}
+            style={{ height: '400px', width: '100%' }}
+            zoomControl={true}
+            scrollWheelZoom={true}
+            className="rounded-xl transition-all duration-500"
+          >
+            <TileLayer
+              attribution={selectedStyle.attribution}
+              url={selectedStyle.url}
+              maxZoom={20}
+              minZoom={3}
+            />
+
+            {showLayersControl && (
+              <LayersControl position="topright">
+                {mapStyles.map((style) => (
+                  <BaseLayer
+                    key={style.id}
+                    name={style.name}
+                    checked={selectedStyle.id === style.id}
+                  >
+                    <TileLayer attribution={style.attribution} url={style.url} />
+                  </BaseLayer>
+                ))}
+              </LayersControl>
+            )}
+
+            {!hasMultipleMarkers && position && (
+              <>
+                <AnimateMapView position={position} defaultZoom={zoom} />
+                <AnimatedMarker position={position} icon={createCustomIcon()}>
+                  <Popup className="rounded-xl shadow-lg">
+                    <div className="p-4 max-w-xs">
+                      <h3 className="font-bold text-lg text-teal-700 mb-2">
+                        🏝️ Hotel {destino || 'destino'}
+                      </h3>
+                      <p className="text-gray-700 mb-3">
+                        Ubicación privilegiada en Tulum, rodeado de naturaleza y a minutos
+                        de las mejores playas y ruinas mayas.
+                      </p>
+                      <div className="text-sm text-gray-600 mb-3">
+                        <p>
+                          <span className="font-medium">Lat:</span> {position[0].toFixed(6)}
+                        </p>
+                        <p>
+                          <span className="font-medium">Lng:</span> {position[1].toFixed(6)}
+                        </p>
+                      </div>
+                      <a
+                        href={`https://maps.google.com/?q=${position[0]},${position[1]}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-block w-full text-center bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 duration-300 font-bold"
+                      >
+                        Ver en Google Maps
+                      </a>
+                    </div>
+                  </Popup>
+                </AnimatedMarker>
+              </>
+            )}
+
+            {hasMultipleMarkers && markers && (
+              <>
+                <FitBoundsToMarkers positions={allPositions} defaultZoom={zoom} />
+                {markers.map((markerData, index) => {
+                  const icon = createIconFromMarkerData(markerData);
+                  const key = markerData.id ?? index;
+                  return (
+                    <AnimatedMarker
+                      key={key}
+                      position={[markerData.lat, markerData.lng]}
+                      icon={icon}
+                    >
+                      {markerData.popup ? (
+                        <Popup className="rounded-xl shadow-lg">{markerData.popup}</Popup>
+                      ) : (
+                        <Popup className="rounded-xl shadow-lg">
+                          <div className="p-2">
+                            <p>
+                              <strong>Lat:</strong> {markerData.lat.toFixed(6)}
+                            </p>
+                            <p>
+                              <strong>Lng:</strong> {markerData.lng.toFixed(6)}
+                            </p>
+                          </div>
+                        </Popup>
+                      )}
+                    </AnimatedMarker>
+                  );
+                })}
+              </>
+            )}
+          </MapContainer>
+
+          <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
+            <div className="flex items-center gap-2">
+              <span className="text-teal-600">{selectedStyle.icon}</span>
+              <div>
+                <p className="font-semibold text-gray-800 text-sm">{selectedStyle.name}</p>
+                <p className="text-xs text-gray-600">{selectedStyle.description}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute top-4 right-4 bg-teal-100 text-teal-800 text-xs px-3 py-1 rounded-full">
+            {hasMultipleMarkers ? `${markers!.length} ubicaciones` : 'Posición actualizada'}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default MapComponent;

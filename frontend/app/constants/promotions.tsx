@@ -1,7 +1,7 @@
 export const PROMOTIONS = [
   {
     packageName: "Suspiro del Mar",
-    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
+    image: "/images/hoteles/promotions/cena 14 de febrero.jpg",
     roomType: 'tulum', 
     limitDate: '17 Agosto 2025.', 
     estimatedStay: '4 noches consecutivas.',
@@ -25,7 +25,7 @@ export const PROMOTIONS = [
   },
   {
     packageName: "El Tiempo en Pausa",
-    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
+    image: "/images/hoteles/promotions/cena 14 de febrero.jpg",
     roomType: 'tulum', 
     limitDate: '28 de Septiembre 2026.', 
     estimatedStay: '4 noches consecutivas.',
@@ -49,7 +49,7 @@ export const PROMOTIONS = [
   },
   {
     packageName: "Tierra de Mitos",
-    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
+    image: "/images/hoteles/promotions/cena 14 de febrero.jpg",
     roomType: 'tulum', 
     limitDate: '14 Febrero 2026.', 
     estimatedStay: '4 noches consecutivas.',
@@ -73,7 +73,7 @@ export const PROMOTIONS = [
   },
   {
     packageName: "Misión en la Naturaleza",
-    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
+    image: "/images/hoteles/promotions/cena 14 de febrero.jpg",
     roomType: 'tulum', 
     limitDate: '01 Mayo 2026.', 
     estimatedStay: '4 noches consecutivas.',
@@ -97,7 +97,7 @@ export const PROMOTIONS = [
   },
   {
     packageName: "El Octavo Color",
-    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
+    image: "/images/hoteles/promotions/cena 14 de febrero.jpg",
     roomType: 'tulum', 
     limitDate: '30 Noviembre 2026.', 
     estimatedStay: '4 noches consecutivas.',
@@ -121,7 +121,7 @@ export const PROMOTIONS = [
   },
   {
     packageName: "Raíces Compartidas",
-    image: "/images/PAQUETES_TURISTICOS/paquete1.png",
+    image: "/images/hoteles/promotions/cena 14 de febrero.jpg",
     roomType: 'tulum', 
     limitDate: '15 Junio 2025.', 
     estimatedStay: '4 noches consecutivas.',

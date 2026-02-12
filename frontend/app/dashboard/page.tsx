@@ -9,6 +9,7 @@ import AdditionalInformationComponent from "../../components/features/dashboard/
 import VideoBandComponent from "../../components/features/dashboard/videoBandComponent"
 import TextOverImageComponent from "../../components/ui/images/textOverImageComponent"
 import DropButtonContactComponent from "@/components/ui/buttons/dropButtonContactComponent"
+import ModalPromotionComponent from '@/components/layouts/promotions/modalPromotionComponent';
 
 import SimpleParallax from "simple-parallax-js"
 import Image from "next/image"
@@ -87,6 +88,8 @@ const Page: React.FC = () => {
             </div>
 
             <FooterComponent />
+
+            <ModalPromotionComponent/>
         </div>
     )
 }

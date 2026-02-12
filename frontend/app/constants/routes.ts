@@ -15,7 +15,7 @@ export const ROUTES = {
   MAP: '#mapSection',
   SERVICES: '#servicesSection',
   GALLERY: '#galerySection',
-  INIT: '#initSection'
+  INIT: '#initSection',
 } as const;
 
 export const EXTERNAL_LINKS = {
@@ -23,6 +23,9 @@ export const EXTERNAL_LINKS = {
   FACEBOOK: 'https://www.facebook.com/HotelesGrupoMundoMaya',
   TWITTER: 'https://x.com/HGrupomundomaya',
   INSTAGRAM: 'https://www.instagram.com/hotelesgrupomundomaya/',
+  CALL_CENTER_CELL: '+52 596 689 0116',
+  CALL_CENTER_WHATSAPP: '+52 566 056 8009'
+
 } as const;
 
 export const IMAGES_ROUTES = {
@@ -218,7 +221,13 @@ export const IMAGES_ROUTES = {
       link: "https://forms.cloud.microsoft/r/9LJF5VuWT3?origin=lprLink",
       description: "Antigua ciudad maya escondida en la Reserva de la Biosfera."
     },
-  ]
+  ],
+  FOOTER: [
+    {src:"/images/footer/MEXICOESTADEMODA_LOGO.png"},
+    {src:"/images/footer/Destino 2.png"}
+  ],
+  LOGO: "/images/GMM blanco.png",
+  MADE_IN_MEXICO: "/images/footer/HechoEnMexico-white.png"
 } as const;
 
 export const hotelLocations = [
@@ -231,6 +240,8 @@ export const hotelLocations = [
   { city: "Tulum Aeropuerto", lat: 20.163853, lon: -87.656876 }
 ] as const;
 
+export const PROMOTIONS = "/images/hoteles/promotions/cena 14 de febrero.jpg"
+
 export const GMM = {
-  jaguar: "/images/Jaguar-GMM.png"
+  jaguar: "/images/Logo-GMM.png"
 }

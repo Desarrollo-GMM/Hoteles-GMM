@@ -25,7 +25,6 @@ const PromotionComponent = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isAccordionOpen, setIsAccordionOpen] = useState(true)
 
-  // Inicializar con la primera promoción al cargar
   useEffect(() => {
     if (PROMOTIONS.length > 0 && !selectedPromotion) {
       setSelectedPromotion(PROMOTIONS[0])
@@ -36,7 +35,6 @@ const PromotionComponent = () => {
     setSelectedPromotion(promotion)
     setActiveIndex(index)
 
-    // Feedback visual (opcional: scroll suave hacia la sección izquierda en móviles)
     if (window.innerWidth < 768) {
       document.querySelector('.info-section')?.scrollIntoView({
         behavior: 'smooth',
@@ -63,14 +61,7 @@ const PromotionComponent = () => {
 
   return (
     <div className="w-full min-h-screen flex flex-col-reverse lg:flex-row pt-24"
-      style={{
-        position: 'relative',
-        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('${GMM.jaguar}')`,
-        backgroundRepeat: 'repeat',
-        backgroundSize: '900px',
-        backgroundPosition: 'calc(-23px - -30px) center',
-        backgroundColor: '#ffffff',
-      }}>
+      >
       <div className="info-section lg:w-1/3 w-full p-4 md:p-8">
         <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 h-full">
           <div className="flex items-center justify-between mb-6 lg:hidden">
@@ -257,7 +248,7 @@ const PromotionComponent = () => {
                     {index + 1}
                   </div>
 
-                  <div className="relative h-[50vh] w-[350px] overflow-hidden rounded-xl">
+                  <div className="relative aspect h-[51vh] w-[400px] overflow-hidden rounded-xl">
                     <Image
                       src={promotion.image}
                       alt={`Promoción ${index + 1}: ${promotion.packageName}`}

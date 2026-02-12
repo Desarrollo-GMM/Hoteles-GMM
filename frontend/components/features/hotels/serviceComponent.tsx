@@ -10,7 +10,9 @@ interface ComponentProps {
 const ServiceComponent: React.FC<ComponentProps> = ({ COMODIDADES, destino }) => {
     const [activeAccordions, setActiveAccordions] = useState<Record<number, boolean>>({});
 
-    const destinoData = COMODIDADES[destino.toUpperCase()];
+    const destinoData = COMODIDADES[destino.toUpperCase().replace(/\s+/g, '_')];
+
+    console.log("El servicio seleccionado es: "+destino)
 
     if (!destinoData) {
         return <div>No hay datos disponibles para {destino}</div>;
