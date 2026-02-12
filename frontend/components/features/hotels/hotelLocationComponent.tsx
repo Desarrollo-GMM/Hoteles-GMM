@@ -131,6 +131,7 @@ const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
                     <MapComponent 
                         position={[coordinates.lat, coordinates.lng]} 
                         destino={destino}
+                        zoom={14}
                     />
 
                     <div className="grid grid-cols-1 gap-4">

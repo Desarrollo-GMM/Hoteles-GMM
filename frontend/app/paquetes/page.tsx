@@ -15,12 +15,8 @@ const Page: React.FC = () => {
                     <div className="">
                         <PackageComponent></PackageComponent>
                     </div>
-
-
-                    
                 </div>
             </div>
-
             <FooterComponent></FooterComponent>
         </div>
     )

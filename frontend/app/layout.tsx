@@ -5,7 +5,7 @@ import './globals.css';
 import './styles/global.css';
 
 import AOSInit from '@/components/AOSInit'
-import ModalPromotionComponent from '@/components/layouts/promotions/modalPromotionComponent';
+
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -30,7 +30,6 @@ export default function RootLayout({
       <body className={roboto.className}>
         <AOSInit />
         {children}
-        <ModalPromotionComponent/>
       </body>
     </html>
   )

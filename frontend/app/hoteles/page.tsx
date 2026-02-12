@@ -66,7 +66,8 @@ function HotelContent() {
                 option={3}
                 description={`Disfruta de la naturaleza y la tranquilidad en nuestro Hotel ${destino}`}
                 title={`Hotel en ${destino}`}
-                extraStyles="rounded-2xl h-[96vh]" />
+                extraStyles="rounded-2xl h-[96vh]"
+                defaultLocation={destino}/>
 
             <HotelLocationComponent destino={destino}/>
 

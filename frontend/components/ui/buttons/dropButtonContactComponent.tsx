@@ -6,6 +6,8 @@ import WhatsappIcon from "../icons/whatsapp"
 import CalloutIcon from "../icons/callout"
 import { IoCall } from "react-icons/io5";
 
+import { EXTERNAL_LINKS } from "@/app/constants/routes";
+
 
 
 interface ComponentProps {
@@ -24,7 +26,7 @@ const DropButtonContactComponent: React.FC<ComponentProps> = () => {
         <div className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 z-50">
             {/* Botón flotante para móvil */}
             <button
-                className="sm:hidden flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-tr from-cyan-500 to-teal-600 shadow-lg hover:shadow-xl text-white focus:outline-none focus:ring-4 focus:ring-cyan-300"
+                className="sm:hidden flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-tr from-cyan-500 to-teal-600 shadow-lg hover:shadow-xl text-white focus:outline-none focus:ring-4 focus:ring-cyan-300"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 type="button"
             >
@@ -43,7 +45,7 @@ const DropButtonContactComponent: React.FC<ComponentProps> = () => {
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     type="button"
                 >
-                    <IoCall className="w-6 h-6" />
+                    <IoCall className="w-6 h-6"/>
                 </button>
 
                 {isDropdownOpen && (
@@ -66,11 +68,11 @@ const DropButtonContactComponent: React.FC<ComponentProps> = () => {
                                         className="flex items-center w-full p-3 bg-green-50 hover:bg-green-100 text-gray-800 hover:text-green-700 rounded-md transition-all duration-200 group"
                                     >
                                         <div className="flex items-center justify-center w-8 h-8 bg-green-500 rounded-full mr-3">
-                                            <WhatsappIcon className="w-4 h-4 text-white" />
+                                            <WhatsappIcon className="w-6 h-6 text-white" />
                                         </div>
                                         <div className="text-left">
                                             <p className="font-semibold text-sm">WhatsApp</p>
-                                            <p className="text-xs text-gray-600 group-hover:text-green-600">+52 552 332 8695</p>
+                                            <p className="text-xs text-gray-600 group-hover:text-green-600">{EXTERNAL_LINKS.CALL_CENTER_WHATSAPP}</p>
                                         </div>
                                     </a>
                                 </li>
@@ -81,11 +83,11 @@ const DropButtonContactComponent: React.FC<ComponentProps> = () => {
                                         className="flex items-center w-full p-3 bg-blue-50 hover:bg-blue-100 text-gray-800 hover:text-blue-700 rounded-md transition-all duration-200 group"
                                     >
                                         <div className="flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full mr-3">
-                                            <CalloutIcon className="w-4 h-4 text-white" />
+                                            <CalloutIcon className="w-6 h-6 text-white" />
                                         </div>
                                         <div className="text-left">
                                             <p className="font-semibold text-sm">Llamar ahora</p>
-                                            <p className="text-xs text-gray-600 group-hover:text-blue-600">+52 551 393 5091</p>
+                                            <p className="text-xs text-gray-600 group-hover:text-blue-600">{EXTERNAL_LINKS.CALL_CENTER_CELL}</p>
                                         </div>
                                     </a>
                                 </li>
@@ -112,7 +114,7 @@ const DropButtonContactComponent: React.FC<ComponentProps> = () => {
                                     className="flex items-center w-full p-3 bg-green-50 hover:bg-green-100 text-gray-800 hover:text-green-700 rounded-md transition-all duration-200 group"
                                 >
                                     <div className="flex items-center justify-center w-8 h-8 bg-green-500 rounded-full mr-3">
-                                        <WhatsappIcon className="w-4 h-4 text-white" />
+                                        <WhatsappIcon className="w-6 h-6 text-white" />
                                     </div>
                                     <div className="text-left">
                                         <p className="font-semibold text-sm">WhatsApp</p>
@@ -127,7 +129,7 @@ const DropButtonContactComponent: React.FC<ComponentProps> = () => {
                                     className="flex items-center w-full p-3 bg-blue-50 hover:bg-blue-100 text-gray-800 hover:text-blue-700 rounded-md transition-all duration-200 group"
                                 >
                                     <div className="flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full mr-3">
-                                        <CalloutIcon className="w-4 h-4 text-white" />
+                                        <CalloutIcon className="w-6 h-6 text-white" />
                                     </div>
                                     <div className="text-left">
                                         <p className="font-semibold text-sm">Llamar ahora</p>

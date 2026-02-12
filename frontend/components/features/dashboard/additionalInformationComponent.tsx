@@ -1,9 +1,35 @@
 'use client'
 import Image from "next/image"
+import MapComponent from "@/components/ui/mapComponent"
+import { hotelLocations } from "@/app/constants/routes"
 
 interface ComponentProps {
 
 }
+
+// Marcador por defecto (primer elemento)
+const defaultSinglePosition: [number, number] = [
+  hotelLocations[0].lat,
+  hotelLocations[0].lon
+];
+
+// Generar marcadores múltiples con icono por defecto y popup
+const defaultMarkers = hotelLocations.map((location) => ({
+  lat: location.lat,
+  lng: location.lon,
+  popup: (
+    <div className="p-3 min-w-[200px]">
+      <h3 className="font-bold text-teal-700 text-lg mb-1">🏨 {location.city}</h3>
+      <p className="text-sm text-gray-600 mb-2">
+        Hotel boutique en zona arqueológica.
+      </p>
+      <div className="text-xs bg-gray-100 p-2 rounded">
+        <p><span className="font-medium">Lat:</span> {location.lat.toFixed(6)}</p>
+        <p><span className="font-medium">Lng:</span> {location.lon.toFixed(6)}</p>
+      </div>
+    </div>
+  )
+}));
 
 const AdditionalInformationComponent: React.FC<ComponentProps> = ({
 
@@ -24,7 +50,7 @@ const AdditionalInformationComponent: React.FC<ComponentProps> = ({
 
                 </div>
                 <div className="w-full flex justify-center" data-aos="fade-up">
-                    <Image src={"/images/686863c67fa8a296d0981f19_1_mapa 1.png"} alt="" className="w-full rounded-xl"  width={1000} height={1000}></Image>
+                    <MapComponent markers={defaultMarkers} showLayersControl={false}/>
                 </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 m-3 lg:m-0 border border-gray-300 rounded-xl lg:border-none">

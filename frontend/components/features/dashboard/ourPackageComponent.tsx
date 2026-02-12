@@ -14,7 +14,6 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
 
     const images = IMAGES_ROUTES.PAQUETES
 
-    // Configurar número de slides según el tamaño de pantalla
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth < 640) {
@@ -35,7 +34,7 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
         if (currentIndex < images.length - slidesToShow) {
             setCurrentIndex(prev => prev + 1);
         } else {
-            setCurrentIndex(0); // Vuelve al inicio
+            setCurrentIndex(0);
         }
     };
 
@@ -43,7 +42,7 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
         if (currentIndex > 0) {
             setCurrentIndex(prev => prev - 1);
         } else {
-            setCurrentIndex(images.length - slidesToShow); // Va al final
+            setCurrentIndex(images.length - slidesToShow);
         }
     };
 

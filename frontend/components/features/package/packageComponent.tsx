@@ -116,7 +116,7 @@ const PackageComponent: React.FC = () => {
       {/* Tabs Navigation */}
       <div className="sticky top-0 z-30 bg-white shadow-md">
         <div className="container px-4 mx-auto">
-          <div className="flex overflow-x-auto scrollbar-hide">
+          <div className="flex justify-center overflow-x-auto scrollbar-hide">
             {IMAGES_ROUTES.PAQUETES_DATA.map((tab) => (
               <button
                 key={tab.id}
@@ -124,7 +124,7 @@ const PackageComponent: React.FC = () => {
                 className={cn(
                   "flex-shrink-0 px-6 py-4 font-semibold transition-all duration-300 border-b-2",
                   activeTab === tab.id
-                    ? "border-cyan-500 text-cyan-700 bg-gradient-to-b from-cyan-50 to-white"
+                    ? `${tab.active_color} rounded-t-lg`
                     : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                 )}
                 aria-selected={activeTab === tab.id}
