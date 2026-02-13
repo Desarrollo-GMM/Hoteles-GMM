@@ -1,7 +1,8 @@
 'use client'
 import Image from "next/image"
-import MapComponent from "@/components/ui/mapComponent"
-import { hotelLocations } from "@/app/constants/routes"
+import { hotelLocations, SVG_ROUTES } from "@/app/constants/routes"
+import dynamic from "next/dynamic"
+const MapComponent = dynamic(() => import("@/components/ui/mapComponent"), {ssr: false})
 
 interface ComponentProps {
 
@@ -50,7 +51,12 @@ const AdditionalInformationComponent: React.FC<ComponentProps> = ({
 
                 </div>
                 <div className="w-full flex justify-center" data-aos="fade-up">
-                    <MapComponent markers={defaultMarkers} showLayersControl={false}/>
+                    <MapComponent 
+                    markers={defaultMarkers} 
+                    showLayersControl={false} 
+                    showMapType={false}
+                    defaultIcon={SVG_ROUTES.GENERAL_MARKER}
+                    zoom={10}/>
                 </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 m-3 lg:m-0 border border-gray-300 rounded-xl lg:border-none">

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useCallback } from "react";
-import { ROUTES, EXTERNAL_LINKS } from "../../../app/constants/routes";
+import { ROUTES, EXTERNAL_LINKS, IMAGES_ROUTES } from "../../../app/constants/routes";
 import { usePathname } from "next/navigation";
 import DropdownButtonComponent from "../../ui/buttons/dropdownButtonComponent";
 
@@ -428,7 +428,7 @@ const NavbarDesign2: React.FC = () => {
                 className={`w-auto object-contain transition-all duration-500 ${isScrolled ? 'h-12' : 'h-16'
                   }`}
                 alt="Logo GMM"
-                src="/images/GMM blanco.png"
+                src={IMAGES_ROUTES.HOTEL_LOGO.WHITE}
                 width={180}
                 height={80}
                 priority

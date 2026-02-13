@@ -18,18 +18,15 @@ import {
     FaSprayCan, FaWind, FaShieldVirus,
     FaStore,
     FaVirusSlash,
-    // Nuevos iconos para TULUM_AEROPUERTOS y NUEVO_UXMAL
     FaPrint, FaBriefcase, FaTv, FaPlane, FaHotTub, FaHandSparkles,
     FaUserNurse, FaGift, FaTimesCircle, FaCreditCard, FaUtensils,
     FaChair, FaUmbrella, FaChild,
     FaSoap, FaTree,
-    //Nuevos iconos para CHICHEN_ITZA
     FaMask, FaSync, FaHeadSideMask, FaShieldAlt, FaTableTennis,
 } from 'react-icons/fa';
 
 export const COMODIDADES = {
     TULUM: {
-        // ... (tu objeto TULUM existente completo)
         accesibilidad: [
             {
                 text: "Estacionamiento accesible",
@@ -309,7 +306,6 @@ export const COMODIDADES = {
         ]
     },
     TULUM_AEROPUERTO: {
-        // ... (tu objeto TULUM_AEROPUERTOS existente)
         accesibilidad: [
             {
                 text: "Estacionamiento accesible",

@@ -10,6 +10,7 @@ import VideoBandComponent from "../../components/features/dashboard/videoBandCom
 import TextOverImageComponent from "../../components/ui/images/textOverImageComponent"
 import DropButtonContactComponent from "@/components/ui/buttons/dropButtonContactComponent"
 import ModalPromotionComponent from '@/components/layouts/promotions/modalPromotionComponent';
+import TermsAndConditionComponent from "@/components/features/hotels/termsAndConditionsComponent"
 
 import SimpleParallax from "simple-parallax-js"
 import Image from "next/image"
@@ -30,7 +31,7 @@ const Page: React.FC = () => {
                     <OurPackageComponent />
                 </div>
 
-                <div className="" data-aos="fade-up">
+                {/* <div className="" data-aos="fade-up">
                     <TextOverImageComponent
                         image_src="/images/686da02b415d79e07d3ebc16_tututututu.jpg"
                         image_alt="Estancia"
@@ -54,7 +55,9 @@ const Page: React.FC = () => {
                         text_align="left"
                         text_size="lg:text-6xl text-3xl"
                     />
-                </div>
+                </div> */}
+
+                
 
 
                 <div className="">
@@ -78,9 +81,9 @@ const Page: React.FC = () => {
                 </div>
 
 
-                <div className="">
+                {/* <div className="">
                     <VideoBandComponent />
-                </div>
+                </div> */}
 
                 <DropButtonContactComponent />
 

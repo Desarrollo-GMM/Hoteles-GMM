@@ -101,9 +101,9 @@ const HotelLocationComponent: React.FC<ComponentProps> = ({ destino }) => {
     };
     
     return (
-        <div className="bg-gradient-to-br from-white to-teal-50 rounded-2xl h-[80vh] lg:p-6 my-1 lg:my-8 shadow-lg" id="mapSection">
+        <div className="bg-gradient-to-br from-white to-teal-50 rounded-2xl h-[80vh] lg:p-6 my-1 lg:my-8" id="mapSection">
             <div className="w-full text-center mb-8">
-                <h2 className="text-4xl font-bold text-gray-800 mb-2">
+                <h2 className="text-3xl font-bold text-gray-800 mb-2">
                     Descubre Nuestro Entorno
                 </h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">

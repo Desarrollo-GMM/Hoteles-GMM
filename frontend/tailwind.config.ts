@@ -3,12 +3,10 @@ import type { Config } from "tailwindcss";
 const config: Config = {
 	darkMode: ['class'],
 	content: [
-		// ESCANEA TODAS ESTAS RUTAS
 		'./app/**/*.{js,ts,jsx,tsx,mdx}',
 		'./components/**/*.{js,ts,jsx,tsx,mdx}',
 		'./hooks/**/*.{js,ts,jsx,tsx,mdx}',
 		'./lib/**/*.{js,ts,jsx,tsx,mdx}',
-		// Agrega explícitamente app/pages si existe
 		'./app/pages/**/*.{js,ts,jsx,tsx,mdx}',
 		'./app/dashboard/**/*.{js,ts,jsx,tsx,mdx}',
 		'./app/schemas/**/*.{js,ts,jsx,tsx,mdx}',
