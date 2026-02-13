@@ -16,6 +16,7 @@ export const ROUTES = {
   SERVICES: '#servicesSection',
   GALLERY: '#galerySection',
   INIT: '#initSection',
+  TERMS_AND_CONDITIONS: "#termsAndConditions"
 } as const;
 
 export const EXTERNAL_LINKS = {
@@ -227,8 +228,17 @@ export const IMAGES_ROUTES = {
     {src:"/images/footer/Destino 2.png"}
   ],
   LOGO: "/images/GMM blanco.png",
-  MADE_IN_MEXICO: "/images/footer/HechoEnMexico-white.png"
+  HOTEL_LOGO: {
+    GREEN: "/images/Copia-de-Hoteles-general-01.png",
+    WHITE: "/images/navbar/LogoHotelesGMM-White.png"
+  },
+  MADE_IN_MEXICO: "/images/footer/HechoEnMexico-white.png",
+  ENREDADERA: "/images/enredadera-verde.png"
 } as const;
+
+export const SVG_ROUTES = {
+  GENERAL_MARKER: "/svg/markers/hotel-location-svgrepo-com.svg"
+}
 
 export const hotelLocations = [
   { city: "Tulum", lat: 20.2307657, lon: -87.4478299 },

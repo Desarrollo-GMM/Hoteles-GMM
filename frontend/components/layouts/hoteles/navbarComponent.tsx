@@ -122,18 +122,6 @@ const NavbarComponent: React.FC = () => {
                     }`}></span>
                 </Link>
 
-                <Link
-                  href={ROUTES.SERVICES}
-                  className={`relative transition-all duration-300 text-sm font-medium group
-                    ${isActive(ROUTES.SERVICES)
-                      ? "text-teal-500"
-                      : "text-gray-600 hover:text-teal-500"
-                    }`}
-                >
-                  Servicios
-                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.PROMOTIONS) ? 'w-full' : ''
-                    }`}></span>
-                </Link>
 
                 <Link
                   href={ROUTES.GALLERY}
@@ -147,7 +135,20 @@ const NavbarComponent: React.FC = () => {
                   <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.PROMOTIONS) ? 'w-full' : ''
                     }`}></span>
                 </Link>
-                
+
+                <Link
+                  href={ROUTES.SERVICES}
+                  className={`relative transition-all duration-300 text-sm font-medium group
+                    ${isActive(ROUTES.SERVICES)
+                      ? "text-teal-500"
+                      : "text-gray-600 hover:text-teal-500"
+                    }`}
+                >
+                  Servicios
+                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.PROMOTIONS) ? 'w-full' : ''
+                    }`}></span>
+                </Link>
+
 
                 <div className="transform transition-all duration-300 hover:scale-105">
                   <DropdownButtonComponent textColor="text-gray-600 hover:text-teal-500 transition-colors duration-300" />
@@ -248,17 +249,17 @@ const NavbarComponent: React.FC = () => {
               </svg>
             </button>
             <Link
-                  href={ROUTES.HOME}
-                  className={`relative transition-all duration-300 text-3xl font-medium group
+              href={ROUTES.HOME}
+              className={`relative transition-all duration-300 text-3xl font-medium group
                     ${isActive(ROUTES.INIT)
-                      ? "text-teal-500"
-                      : "text-gray-600 hover:text-teal-500"
-                    }`}
-                >
-                  <IoHome></IoHome>
-                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.PROMOTIONS) ? 'w-full' : ''
-                    }`}></span>
-                </Link>
+                  ? "text-teal-500"
+                  : "text-gray-600 hover:text-teal-500"
+                }`}
+            >
+              <IoHome></IoHome>
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all duration-300 group-hover:w-full ${isActive(ROUTES.PROMOTIONS) ? 'w-full' : ''
+                }`}></span>
+            </Link>
 
             <Link
               href={ROUTES.INIT}

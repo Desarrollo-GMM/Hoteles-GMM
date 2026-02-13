@@ -79,7 +79,7 @@ export default function FooterComponent() {
             <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm hover:bg-white/10 transition-colors">
               <div className="relative h-20 w-full">
                 <Image
-                  src={IMAGES_ROUTES.LOGO}
+                  src={IMAGES_ROUTES.HOTEL_LOGO.WHITE}
                   alt="Grupo Mundo Maya"
                   fill
                   className="object-contain object-left"
@@ -207,10 +207,6 @@ export default function FooterComponent() {
 
           <div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm hover:bg-white/10 transition-colors h-full flex flex-col">
-              {/* <p className="text-xs text-center font-extrabold tracking-[0.22em] text-white/70">
-                SITIOS OFICIALES RELACIONADOS
-              </p> */}
-              {/* <div className="h-px w-full bg-white/10 my-4" /> */}
               <div className="grid grid-cols-1 gap-4 flex-1 items-center">
                 {IMAGES_ROUTES.FOOTER.map((image, index) => (
                   <a

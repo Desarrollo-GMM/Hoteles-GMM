@@ -6,6 +6,12 @@ import InformationComponent from "@/components/features/hotels/tulum/information
 import AutoScrollComponent from "@/components/ui/autoScrollComponent"
 import HotelLocationComponent from "@/components/features/hotels/hotelLocationComponent"
 import ServiceComponent from "@/components/features/hotels/serviceComponent"
+import TermsAndConditionComponent from "@/components/features/hotels/termsAndConditionsComponent"
+import GaleriaInteractiva from "@/components/features/dashboard/galleryImagesComponent"
+import FooterComponent from "@/components/layouts/dashboard/footerComponent"
+
+import { TERMS_AND_CONDITIONS } from "../constants/termsAndConditions"
+
 import Image from "next/image"
 import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
@@ -32,11 +38,11 @@ function HotelContent() {
         const destinoParam = searchParams?.get('destino');
         const bannerImage = searchParams?.get('banner')
 
-        if(destinoParam){
+        if (destinoParam) {
             setDestino(decodeURIComponent(destinoParam));
         }
 
-        if(bannerImage){
+        if (bannerImage) {
             setBanner(decodeURIComponent(bannerImage));
         }
 
@@ -54,6 +60,7 @@ function HotelContent() {
     }
 
     const destinoNormalizado = limpiarConCaracteresEspecificos(destino);
+    console.log("Prueba de destino 00034: "+destino)
     const img_horizontales = IMAGES_ROUTES.HORIZONTAL_IMAGES[destinoNormalizado as keyof typeof IMAGES_ROUTES.HORIZONTAL_IMAGES] || IMAGES_ROUTES.HORIZONTAL_IMAGES.TULUM;
     const img_verticales = IMAGES_ROUTES.VERTICAL_IMAGES[destinoNormalizado as keyof typeof IMAGES_ROUTES.VERTICAL_IMAGES] || IMAGES_ROUTES.VERTICAL_IMAGES.TULUM;
 
@@ -67,11 +74,26 @@ function HotelContent() {
                 description={`Disfruta de la naturaleza y la tranquilidad en nuestro Hotel ${destino}`}
                 title={`Hotel en ${destino}`}
                 extraStyles="rounded-2xl h-[96vh]"
-                defaultLocation={destino}/>
+                defaultLocation={destino} />
 
-            <HotelLocationComponent destino={destino}/>
+            <HotelLocationComponent destino={destino} />
+
+            <div className="my-12" id='galerySection'>
+                <div className="text-center mb-8">
+                    <h2 className="text-3xl font-bold text-gray-800 mb-2">Galería Visual</h2>
+                    <p className="text-gray-600">Descubre la magia de {destino} a través de nuestras imágenes</p>
+                </div>
+
+                <GaleriaInteractiva
+                    destino={destino}
+                    img_horizontales={img_horizontales}
+                    img_verticales={img_verticales}
+                />
+            </div>
 
             <ServiceComponent COMODIDADES={COMODIDADES} destino={destino} />
+
+            <TermsAndConditionComponent destino={destino} />
 
             <div className="relative">
                 <div className="absolute inset-0 flex items-center">
@@ -82,64 +104,7 @@ function HotelContent() {
                 </div>
             </div>
 
-            <div className="my-12" id='galerySection'>
-                <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-gray-800 mb-2">Galería Visual</h2>
-                    <p className="text-gray-600">Descubre la magia de {destino} a través de nuestras imágenes</p>
-                </div>
-
-                <div className="relative h-[45vh] mb-12 overflow-hidden rounded-2xl">
-                    <div className="absolute inset-0 bg-gradient-to-r from-teal-900/20 to-transparent z-10" />
-                    <AutoScrollComponent
-                        speed="slow"
-                        direction="horizontal"
-                        reverse={false}
-                        pauseOnHover={true}
-                        className="py-4 h-auto"
-                        gap={0}
-                    >
-                        {img_horizontales.map((image, index) => (
-                            <div
-                                key={index}
-                                className="mx-4 relative group cursor-pointer transform transition-transform duration-500 hover:scale-105"
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
-                                <img
-                                    src={image}
-                                    alt={`Tulum ${index}`}
-                                    className="h-[40vh] w-auto object-cover rounded-xl shadow-lg"
-                                />
-                            </div>
-                        ))}
-                    </AutoScrollComponent>
-                </div>
-
-                <div className="relative h-[35vh] overflow-hidden rounded-2xl">
-                    <div className="absolute inset-0 bg-gradient-to-l from-teal-900/20 to-transparent z-10" />
-                    <AutoScrollComponent
-                        speed="medium"
-                        direction="horizontal"
-                        reverse={true}
-                        pauseOnHover={true}
-                        className="py-4 h-auto"
-                        gap={0}
-                    >
-                        {img_verticales.map((image, index) => (
-                            <div
-                                key={index}
-                                className="mx-4 relative group cursor-pointer transform transition-transform duration-500 hover:scale-105"
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
-                                <img
-                                    src={image}
-                                    alt={`Tulum ${index}`}
-                                    className="h-[30vh] w-auto object-cover rounded-xl shadow-lg"
-                                />
-                            </div>
-                        ))}
-                    </AutoScrollComponent>
-                </div>
-            </div>
+            <FooterComponent></FooterComponent>
         </div>
     )
 }
