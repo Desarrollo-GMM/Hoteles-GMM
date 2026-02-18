@@ -8,9 +8,10 @@ interface DropdownButtonProps {
     textButton?: string,
 }
 
-const DropdownButtonComponent = ({ textColor = "", textButton = "" }: DropdownButtonProps) => {
+const DropdownButtonComponent = ({ textColor = "", textButton = ""}: DropdownButtonProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const [selectedHotelKey, setSelectedHotelKey] = useState<string>('TULUM')
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -64,8 +65,9 @@ const DropdownButtonComponent = ({ textColor = "", textButton = "" }: DropdownBu
             >
                 <ul className="backdrop-blur-md bg-black/80  rounded-md text-sm text-body font-medium">
                     {ROUTES.HOTELS.map((hotel, index) => (
-                        <li key={index} className='hover:bg-slate-200'>
-                            <a href={buildUrl(hotel.route, hotel.name, hotel.banner)} className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
+                        <li key={hotel.key} className='hover:bg-slate-200'>
+                            <a href={buildUrl(hotel.route, hotel.name, hotel.banner)}
+                                className="inline-flex text-white items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-black rounded">
                                 {hotel.name}
                             </a>
                         </li>

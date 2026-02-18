@@ -12,7 +12,7 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
     const [slidesToShow, setSlidesToShow] = useState(3);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-    const images = IMAGES_ROUTES.PAQUETES
+    const images = IMAGES_ROUTES.PAQUETES_DATA.SEMANA_SANTA.flatMap(paquete => paquete.images);
 
     useEffect(() => {
         const handleResize = () => {
@@ -62,13 +62,12 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
             <div className="grid lg:grid-cols-2 gap-8 mb-12" data-aos="fade-up">
                 <div className="flex items-center text-center">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl lg:px-28 font-bold uppercase leading-tight text-black">
-                        Nuestros Paquetes de verano
+                        Nuestros Paquetes de Semana Santa
                     </h1>
                 </div>
                 <div className="flex items-start lg:items-center">
                     <p className="text-lg md:text-xl text-gray-700 px-5 lg:px-20 text-center font-light">
-                        Experimenta el lujo entre la majestuosa selva maya, donde el legado ancestral y la comodidad de un hotel se fusionan en una experiencia única. Vive
-                        <span className="font-bold text-teal-700"> #UnVeranoEnElMundoMaya.</span>
+                        Experimenta el lujo entre la majestuosa selva maya, donde el legado ancestral y la comodidad de un hotel se fusionan en una experiencia única.
                     </p>
                 </div>
             </div>

@@ -51,7 +51,9 @@ const PackageComponent: React.FC = () => {
     setActiveTab(tabId)
   }, [])
 
-  const activeTabData = IMAGES_ROUTES.PAQUETES_DATA.find(tab => tab.id === activeTab)
+  const activeTabData = IMAGES_ROUTES.PAQUETES_DATA.SEMANA_SANTA.find(tab => tab.id === activeTab)
+
+  console.log("EL activedata es: " + activeTabData)
 
   // Opciones de reserva
   const reservationOptions: ReservationOption[] = [
@@ -93,7 +95,7 @@ const PackageComponent: React.FC = () => {
         >
           ¡Explora el Mundo Maya!
         </motion.h1>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -102,7 +104,7 @@ const PackageComponent: React.FC = () => {
         >
           Desde la comodidad de nuestros 6 hoteles turísticos, cada espacio ha sido diseñado para ofrecerte una experiencia auténtica, rodeada de historia, naturaleza y cultura.
         </motion.p>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -117,7 +119,7 @@ const PackageComponent: React.FC = () => {
       <div className="sticky top-0 z-30 bg-white shadow-md">
         <div className="container px-4 mx-auto">
           <div className="flex justify-center overflow-x-auto scrollbar-hide">
-            {IMAGES_ROUTES.PAQUETES_DATA.map((tab) => (
+            {IMAGES_ROUTES.PAQUETES_DATA.SEMANA_SANTA.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
@@ -149,25 +151,43 @@ const PackageComponent: React.FC = () => {
             className="grid grid-cols-1 gap-6 lg:grid-cols-2"
           >
             {activeTabData?.images.map((image, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="overflow-hidden rounded-xl shadow-lg group"
-              >
-                <div className="relative aspect-auto">
-                  <Image
-                    src={image}
-                    alt={`${activeTabData.label} - Imagen ${index + 1}`}
-                    width={1000} 
-                    height={1000}
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
-                    priority={index < 3}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className='grid grid-cols-1'>
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="overflow-hidden rounded-t-xl shadow-lg group"
+                >
+                  <div className="relative aspect-auto">
+                    <Image
+                      src={image}
+                      alt={`${activeTabData.label} - Imagen ${index + 1}`}
+                      width={1000}
+                      height={1000}
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      priority={index < 3}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                </motion.div>
+                <div className="w-full text-center bg-black text-white font-light">
+                  Cotiza tu paquete en los siguientes números:
                 </div>
-              </motion.div>
+                <div className="w-full flex flex-row ">
+                  <a href='https://wa.me/5660568009' 
+                      target='_blank' 
+                      rel='noopener noreferrer' 
+                      className='bg-teal-500 border-2 border-teal-500 text-teal-100 w-1/2 rounded-r-none text-center rounded-b-xl'>
+                    Whatsapp: <span className='font-bold'>+52 56 60568009</span>
+                  </a>
+                  <a href='tel:5966890116' 
+                      className='bg-blue-500 border-2 border-blue-500 text-blue-100 w-1/2 rounded-l-none text-center rounded-b-xl'>
+                    Teléfono: <span className='font-bold'>+52 59 6689 0116</span>
+                  </a>
+                </div>
+              </div>
+
             ))}
           </motion.div>
         </AnimatePresence>
@@ -210,7 +230,7 @@ const PackageComponent: React.FC = () => {
         </AnimatePresence>
 
         {/* Main Button */}
-        <motion.button
+        {/* <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -228,7 +248,7 @@ const PackageComponent: React.FC = () => {
           <div className="flex md:hidden">
             <CalendarIcon className="w-6 h-6" />
           </div>
-        </motion.button>
+        </motion.button> */}
       </div>
     </div>
   )

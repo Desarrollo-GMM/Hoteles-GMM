@@ -87,13 +87,12 @@ const WeatherComponent: React.FC<WeatherComponentProps> = ({
   switch(variant) {
     case 'compact':
       return (
-        <div className={`flex items-center gap-2 mx-auto bg-black/50 backdrop-blur-sm px-2 py-2 rounded-xl ${className}`}>
+        <div className={`flex items-center justify-center gap-2 mx-auto bg-black/50 backdrop-blur-sm px-2 py-2 rounded-xl ${className}`}>
           <div className={`text-3xl ${weatherInfo.color}`}>
             {getIconComponent(weatherInfo.icon)}
           </div>
           <div className="text-white">
             <div className="font-bold text-lg">{Math.round(weather.temperature)}°C</div>
-            <div className="text-xs opacity-80">{weatherInfo.label}</div>
           </div>
         </div>
       );

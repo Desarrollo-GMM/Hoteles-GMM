@@ -11,12 +11,15 @@ import TextOverImageComponent from "../../components/ui/images/textOverImageComp
 import DropButtonContactComponent from "@/components/ui/buttons/dropButtonContactComponent"
 import ModalPromotionComponent from '@/components/layouts/promotions/modalPromotionComponent';
 import TermsAndConditionComponent from "@/components/features/hotels/termsAndConditionsComponent"
+import HotelPrevieComponent from "@/components/features/dashboard/hotelPreviewComponent"
 
 import SimpleParallax from "simple-parallax-js"
 import Image from "next/image"
 
-const Page: React.FC = () => {
+import { IMAGES_ROUTES } from "../constants/routes"
 
+const Page: React.FC = () => {
+    const images = IMAGES_ROUTES.PAQUETES_DATA.SEMANA_SANTA.flatMap(paquete => paquete.images);
     return (
         <div className="relative">
             <NavbarComponent design={2} />
@@ -30,6 +33,8 @@ const Page: React.FC = () => {
                 <div className="lg:mt-16">
                     <OurPackageComponent />
                 </div>
+
+                <HotelPrevieComponent />
 
                 {/* <div className="" data-aos="fade-up">
                     <TextOverImageComponent

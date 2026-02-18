@@ -100,31 +100,27 @@ const ModalPromotionComponent: React.FC<ComponentProps> = ({
                         </p>
                     </div>
 
-                    <div className="grid lg:grid-cols-2 grid-cols-1 sm:flex-row gap-3 mt-6">
-                        <button
-                            onClick={handleClose}
-                            className="flex-1 px-6 py-3 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 rounded-lg font-medium hover:from-gray-200 hover:to-gray-300 transition-all duration-200"
-                        >
-                            Ver más tarde
-                        </button>
+                    <div className="grid grid-cols-2 gap-4">
                         <a
                             href="tel:5513935091"
                             onClick={handleClose}
-                            className="flex align-middle justify-center px-6 py-3 bg-gradient-to-r from-rose-600 to-pink-600 text-white rounded-lg font-medium hover:opacity-90 transition-all duration-200 shadow-md text-center"
+                            className="w-full px-6 py-3 border-2 text-center border-rose-500 text-rose-500 hover:bg-rose-50 rounded-lg font-medium transition-all duration-200 mt-4"
                         >
                             Reservar ahora
                         </a>
+
+                        <button
+                            onClick={() => {
+                                window.location.href = '/promociones';
+                                handleClose();
+                            }}
+                            className="w-full px-6 py-3 border-2 border-rose-500 text-rose-500 hover:bg-rose-50 rounded-lg font-medium transition-all duration-200 mt-4"
+                        >
+                            Ver todas las promociones
+                        </button>
                     </div>
 
-                    <button
-                        onClick={() => {
-                            window.location.href = '/promociones';
-                            handleClose();
-                        }}
-                        className="w-full px-6 py-3 border-2 border-rose-500 text-rose-500 hover:bg-rose-50 rounded-lg font-medium transition-all duration-200 mt-4"
-                    >
-                        📋 Ver todas las promociones
-                    </button>
+
                 </div>
             </div>
         </div>

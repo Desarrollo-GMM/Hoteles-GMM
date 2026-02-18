@@ -498,7 +498,7 @@ const Option3: React.FC<{
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <div className="w-32">
+                    <div className="w-24 mt-2 lg:mt-4">
                         <WeatherComponent city={selectedHotel} variant="compact" />
                     </div>
                 </motion.div>
