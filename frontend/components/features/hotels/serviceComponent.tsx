@@ -141,7 +141,7 @@ const ServiceComponent: React.FC<ComponentProps> = ({ COMODIDADES, destino }) =>
 
 
                 {/* Grid de categorías */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                     {categories.map((category, index) => {
                         const formattedCategory = formatearFrase(category);
                         const isActive = activeAccordions[index];
@@ -209,11 +209,11 @@ const ServiceComponent: React.FC<ComponentProps> = ({ COMODIDADES, destino }) =>
                                     `}
                                 >
                                     <div className="p-6 pt-2 border-t border-slate-100">
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-3 gap-4">
                                             {destinoData[category]?.map((service, serviceIndex) => (
                                                 <div
                                                     key={`${category}-service-${serviceIndex}`}
-                                                    className="group/service flex flex-col items-center text-center p-4 rounded-xl bg-white border border-slate-100 hover:border-slate-200 hover:shadow-md transition-all duration-200"
+                                                    className="group/service flex flex-col items-center text-center p-2 rounded-xl bg-white border border-slate-100 hover:border-slate-200 hover:shadow-md transition-all duration-200"
                                                 >
                                                     <div className={`
                                                         w-12 h-12 rounded-full flex items-center justify-center mb-3

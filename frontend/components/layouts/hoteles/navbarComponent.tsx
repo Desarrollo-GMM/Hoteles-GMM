@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState, useEffect, useCallback } from "react";
-import { ROUTES, EXTERNAL_LINKS } from "../../../app/constants/routes";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { ROUTES, EXTERNAL_LINKS, HOTEL_DATA } from "../../../app/constants/routes";
 import { usePathname } from "next/navigation";
 import DropdownButtonComponent from "../../ui/buttons/dropdownButtonComponent";
 
@@ -11,13 +11,24 @@ import DropdownButtonComponent from "../../ui/buttons/dropdownButtonComponent";
 import { useScrollDetection } from "@/lib/hooks/useScrollDetection";
 
 import { IoHome } from "react-icons/io5";
+import { FaPhone, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
-const NavbarComponent: React.FC = () => {
+interface ComponentProps {
+  destino?: string
+}
+
+const NavbarComponent: React.FC<ComponentProps> = ({ destino = "" }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const { isScrolled, scrollY } = useScrollDetection(20);
+  const [isActiveContact, setActiveContact] = useState(false);
+  const contactDropdownRef = useRef<HTMLDivElement>(null);
 
   const isActive = (path: string) => pathname === path;
+
+  const HotelData = HOTEL_DATA[destino as keyof typeof HOTEL_DATA]
+
+  console.log("el destino del navbar es: " + destino)
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -43,11 +54,73 @@ const NavbarComponent: React.FC = () => {
     return () => window.removeEventListener('keydown', handleEscape);
   }, []);
 
+  // Cerrar dropdown al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (contactDropdownRef.current && !contactDropdownRef.current.contains(event.target as Node)) {
+        setActiveContact(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const getScrollProgress = useCallback(() => {
     return Math.min(scrollY / 150, 1);
   }, [scrollY]);
 
   const scrollProgress = getScrollProgress();
+
+  // Componente interno para el dropdown de contacto
+  const ContactDropdown = ({ isOpen, onToggle, onClose, className = "" }: { isOpen: boolean; onToggle: () => void; onClose: () => void; className?: string }) => {
+    return (
+      <div className={`relative ${className}`} ref={contactDropdownRef}>
+        <button
+          onClick={onToggle}
+          className="group relative bg-teal-700 hover:bg-teal-600 text-white font-medium py-2 px-6 rounded-full transition-all duration-300 ease-out transform hover:scale-105 overflow-hidden"
+        >
+          <span className="relative z-10">Contáctanos</span>
+          <span className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
+          <span className="absolute inset-0 border-2 border-teal-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"></span>
+        </button>
+
+        {isOpen && (
+          <div className="absolute right-0 mt-2 w-auto bg-white rounded-lg shadow-xl py-2 z-50 border border-gray-200">
+            {HotelData.phone.map((currentValue, index) => (
+              <a
+                key={index}
+                href="tel:+521234567890"
+                className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
+                onClick={onClose}
+              >
+                <FaPhone className="w-4 h-4 text-teal-600" />
+                <span>{currentValue}</span>
+              </a>
+            ))}
+
+            <a
+              href="mailto:contacto@hotelesmundo-maya.com"
+              className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
+              onClick={onClose}
+            >
+              <FaEnvelope className="w-4 h-4 text-teal-600" />
+              <span>{HotelData.mail}</span>
+            </a>
+            {/* <a
+              href="https://wa.me/521234567890"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
+              onClick={onClose}
+            >
+              <FaWhatsapp className="w-4 h-4 text-teal-600" />
+              <span>WhatsApp</span>
+            </a> */}
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <nav
@@ -63,7 +136,7 @@ const NavbarComponent: React.FC = () => {
           <div className="flex justify-center w-full h-full relative">
             <button
               type="button"
-              className="lg:hidden p-2 focus:outline-none z-60 absolute top-1/2 left-0 lg:left-4 transform -translate-y-1/2"
+              className="lg:hidden p-2 focus:outline-none z-60 absolute top-1/2 left-0 md:left-1/2 transform -translate-y-1/2 md:-translate-x-1/2"
               aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
@@ -208,11 +281,12 @@ const NavbarComponent: React.FC = () => {
                   ))}
                 </div>
 
-                <button className="group relative bg-teal-700 hover:bg-teal-600 text-white font-medium py-2 px-6 rounded-full transition-all duration-300 ease-out transform hover:scale-105 overflow-hidden">
-                  <span className="relative z-10">Contáctanos</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
-                  <span className="absolute inset-0 border-2 border-teal-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"></span>
-                </button>
+                {/* Dropdown de contacto (reemplaza al botón anterior) */}
+                <ContactDropdown
+                  isOpen={isActiveContact}
+                  onToggle={() => setActiveContact(!isActiveContact)}
+                  onClose={() => setActiveContact(false)}
+                />
               </div>
             </div>
           </div>
@@ -348,13 +422,16 @@ const NavbarComponent: React.FC = () => {
               ))}
             </div>
 
-            <button
-              className="group relative bg-teal-700 hover:bg-teal-600 text-white font-medium py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 mt-8 w-full max-w-xs"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <span className="relative z-10">Contáctanos</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            </button>
+            {/* Dropdown de contacto en móvil */}
+            <ContactDropdown
+              isOpen={isActiveContact}
+              onToggle={() => setActiveContact(!isActiveContact)}
+              onClose={() => {
+                setActiveContact(false);
+                setIsMenuOpen(false);
+              }}
+              className="w-full max-w-xs"
+            />
           </div>
         </div>
       </div>
@@ -371,6 +448,8 @@ const NavbarComponent: React.FC = () => {
     </nav>
   );
 };
+
+// ... (los componentes de iconos FacebookIcon, TwitterIcon, InstagramIcon se mantienen igual)
 
 const FacebookIcon = ({ className }: { className?: string }) => (
   <svg

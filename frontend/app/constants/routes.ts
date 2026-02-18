@@ -3,13 +3,13 @@ export const ROUTES = {
   PROMOTIONS: '/promociones',
   SUMMER_PACKAGES: '/paquetes',
   HOTELS: [
-    { name: 'Tulum', route: "/hoteles", banner: "/images/hoteles/banner/TULUM/Tulum_BANNER.webp"},
-    { name: 'Tulum Aeropuerto', route: "/hoteles", banner: "/images/hoteles/banner/TULUM_AEROPUERTO/Tulum_Aeropuerto_BANNER.webp"},
-    { name: 'Chichen Itzá', route: "/hoteles", banner: "/images/hoteles/banner/CHICHEN_ITZA/CHICHEN_ITZA_BANNER.webp"},
-    { name: 'Nuevo Uxmal', route: "/hoteles", banner: "/images/hoteles/banner/NUEVO_UXMAL/Nuevo_Uxmal_BANNER.webp" },
-    { name: 'Edzná', route: "/hoteles", banner: "/images/hoteles/banner/EDZNA/Edzna_BANNER.webp"},
-    { name: 'Calakmul', route: "/hoteles", banner: "/images/hoteles/banner/CALAKMUL/Calakmul_BANNER.webp"},
-    { name: 'Palenque', route: "/hoteles", banner: "/images/hoteles/banner/PALENQUE/Palenque-BANNER.webp"}
+    { key: 'TULUM', name: 'Tulum', route: "/hoteles", banner: "/images/hoteles/banner/TULUM/Tulum_BANNER.webp" },
+    { key: 'TULUM_AEROPUERTO', name: 'Tulum Aeropuerto', route: "/hoteles", banner: "/images/hoteles/banner/TULUM_AEROPUERTO/Tulum_Aeropuerto_BANNER.webp" },
+    { key: 'CHICHEN_ITZA', name: 'Chichen Itzá', route: "/hoteles", banner: "/images/hoteles/banner/CHICHEN_ITZA/CHICHEN_ITZA_BANNER.webp" },
+    { key: 'NUEVO_UXMAL', name: 'Nuevo Uxmal', route: "/hoteles", banner: "/images/hoteles/banner/NUEVO_UXMAL/Nuevo_Uxmal_BANNER.webp" },
+    { key: 'EDZNA', name: 'Edzná', route: "/hoteles", banner: "/images/hoteles/banner/EDZNA/Edzna_BANNER.webp" },
+    { key: 'CALAKMUL', name: 'Calakmul', route: "/hoteles", banner: "/images/hoteles/banner/CALAKMUL/Calakmul_BANNER.webp" },
+    { key: 'PALENQUE', name: 'Palenque', route: "/hoteles", banner: "/images/hoteles/banner/PALENQUE/Palenque-BANNER.webp" }
   ],
   CONTACT: '/contacto',
   MAP: '#mapSection',
@@ -18,6 +18,46 @@ export const ROUTES = {
   INIT: '#initSection',
   TERMS_AND_CONDITIONS: "#termsAndConditions"
 } as const;
+
+export const HOTEL_DATA = {
+  TULUM: {
+    key: 'TULUM',
+    name: 'Tulum',
+    mail: "paquetestulum@grupomundomaya.com",
+    phone: ["983 689 0406", "984 231 2027"]
+  },
+  CHICHEN_ITZA: {
+    key: 'CHICHEN_ITZA',
+    name: 'Chichen Itzá',
+    mail: "paquetestulum@grupomundomaya.com",
+    phone: ["985 688 0525", "985 688 0503"]
+  },
+  NUEVO_UXMAL: {
+    key: 'NUEVO_UXMAL',
+    name: 'Nuevo Uxmal',
+    mail: "paquetestulum@grupomundomaya.com",
+    phone: ["996 432 3036"]
+  },
+  CALAKMUL: {
+    key: 'CALAKMUL',
+    name: 'Calakmul',
+    mail: "paquetestulum@grupomundomaya.com",
+    phone: ["983 689 0406", "984 231 2027"]
+  },
+  EDZNA: {
+    key: 'EDZNA',
+    name: 'Edzná',
+    mail: "paquetestulum@grupomundomaya.com",
+    phone: ["981 689 0590"]
+  },
+  TULUM_AEROPUERTO: {
+    key: 'TULUM_AEROPUERTO',
+    name: 'Tulum Aeropuerto',
+    mail: "paquetestulum@grupomundomaya.com",
+    phone: ["983 689 04 51"]
+  }
+} as const;
+export type HotelKey = keyof typeof HOTEL_DATA;
 
 export const EXTERNAL_LINKS = {
   ABOUT: 'https://grupomundomaya.mx/',
@@ -143,89 +183,151 @@ export const IMAGES_ROUTES = {
       "/images/hoteles/verticales/HOTEL_TULUM_AEROPUERTO/HOTEL AEROPUERTO TULUM_446.jpg",
     ],
   },
-  PAQUETES: [
-      "/images/hoteles/paquetes/TULUM/tulum1.png",
-      "/images/hoteles/paquetes/TULUM/tulum2.png",
-      "/images/hoteles/paquetes/CHICHEN_ITZA/chichen1.png",
-      "/images/hoteles/paquetes/CHICHEN_ITZA/chichen2.png",
-      "/images/hoteles/paquetes/NUEVO_UXMAL/nuevo uxmal1.png",
-      "/images/hoteles/paquetes/NUEVO_UXMAL/nuevo uxmal2.png",
-      "/images/hoteles/paquetes/EDZNA/edzna1.png",
-      "/images/hoteles/paquetes/EDZNA/edzna2.png",
-      "/images/hoteles/paquetes/PALENQUE/palenque1.png",
-      "/images/hoteles/paquetes/PALENQUE/palenque2.png",
-      "/images/hoteles/paquetes/CALAKMUL/calakmul OLR.png"
-  ],
-  PAQUETES_DATA: [
-    {
-      id: 'tulum',
-      label: 'Tulum',
-      active_color: 'bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600',
-      images: [
-        "/images/hoteles/paquetes/TULUM/tulum1.png",
-        "/images/hoteles/paquetes/TULUM/tulum2.png",
-      ],
-      link: "https://forms.cloud.microsoft/r/siFvxDkdRs?origin=lprLink",
-      description: "Descubre las playas de arena blanca y ruinas mayas frente al mar Caribe."
-    },
-    {
-      id: 'chichen',
-      label: 'Chichén Itzá',
-      active_color: 'bg-gradient-to-r from-red-400 via-red-500 to-red-600',
-      images: [
-        "/images/hoteles/paquetes/CHICHEN_ITZA/chichen1.png",
-        "/images/hoteles/paquetes/CHICHEN_ITZA/chichen2.png",
-      ],
-      link: "https://forms.cloud.microsoft/r/mUkfDkLCNH?origin=lprLink",
-      description: "Maravilla del mundo moderno, hogar de la pirámide de Kukulkán."
-    },
-    {
-      id: 'uxmal',
-      label: 'Nuevo Uxmal',
-      active_color: 'bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700',
-      images: [
-        "/images/hoteles/paquetes/NUEVO_UXMAL/nuevo uxmal1.png",
-        "/images/hoteles/paquetes/NUEVO_UXMAL/nuevo uxmal2.png",
-      ],
-      link: "https://forms.cloud.microsoft/r/hcrmxe0W14?origin=lprLink",
-      description: "Arquitectura maya Puuc en todo su esplendor."
-    },
-    {
-      id: 'edza',
-      label: 'Edzná',
-      active_color: 'bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700',
-      images: [
-        "/images/hoteles/paquetes/EDZNA/edzna1.png",
-        "/images/hoteles/paquetes/EDZNA/edzna2.png",
-      ],
-      link: "https://forms.cloud.microsoft/r/5geEFYW4Lp?origin=lprLink",
-      description: "La 'Casa de los Itzáes', famosa por su sistema hidráulico."
-    },
-    {
-      id: 'palenque',
-      label: 'Palenque',
-      active_color: 'bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700',
-      images: [
-        "/images/hoteles/paquetes/PALENQUE/palenque1.png",
-        "/images/hoteles/paquetes/PALENQUE/palenque2.png",
-      ],
-      link: "https://forms.cloud.microsoft/r/6SPw6Vtm5d?origin=lprLink",
-      description: "Joyas arquitectónicas en medio de la selva tropical."
-    },
-    {
-      id: 'calakmul',
-      label: 'Calakmul',
-      active_color: 'bg-gradient-to-r from-green-400 via-green-500 to-green-600',
-      images: [
-        "/images/hoteles/paquetes/CALAKMUL/calakmul OLR.png",
-      ],
-      link: "https://forms.cloud.microsoft/r/9LJF5VuWT3?origin=lprLink",
-      description: "Antigua ciudad maya escondida en la Reserva de la Biosfera."
-    },
-  ],
+  PAQUETES_DATA: {
+    VERANO: [
+      {
+        id: 'tulum',
+        label: 'Tulum',
+        active_color: 'bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600',
+        images: [
+          "/images/hoteles/paquetes/TULUM/tulum1.png",
+          "/images/hoteles/paquetes/TULUM/tulum2.png",
+        ],
+        link: "https://forms.cloud.microsoft/r/siFvxDkdRs?origin=lprLink",
+        description: "Descubre las playas de arena blanca y ruinas mayas frente al mar Caribe."
+      },
+      {
+        id: 'chichen',
+        label: 'Chichén Itzá',
+        active_color: 'bg-gradient-to-r from-red-400 via-red-500 to-red-600',
+        images: [
+          "/images/hoteles/paquetes/CHICHEN_ITZA/chichen1.png",
+          "/images/hoteles/paquetes/CHICHEN_ITZA/chichen2.png",
+        ],
+        link: "https://forms.cloud.microsoft/r/mUkfDkLCNH?origin=lprLink",
+        description: "Maravilla del mundo moderno, hogar de la pirámide de Kukulkán."
+      },
+      {
+        id: 'uxmal',
+        label: 'Nuevo Uxmal',
+        active_color: 'bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700',
+        images: [
+          "/images/hoteles/paquetes/NUEVO_UXMAL/nuevo uxmal1.png",
+          "/images/hoteles/paquetes/NUEVO_UXMAL/nuevo uxmal2.png",
+        ],
+        link: "https://forms.cloud.microsoft/r/hcrmxe0W14?origin=lprLink",
+        description: "Arquitectura maya Puuc en todo su esplendor."
+      },
+      {
+        id: 'edza',
+        label: 'Edzná',
+        active_color: 'bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700',
+        images: [
+          "/images/hoteles/paquetes/EDZNA/edzna1.png",
+          "/images/hoteles/paquetes/EDZNA/edzna2.png",
+        ],
+        link: "https://forms.cloud.microsoft/r/5geEFYW4Lp?origin=lprLink",
+        description: "La 'Casa de los Itzáes', famosa por su sistema hidráulico."
+      },
+      {
+        id: 'palenque',
+        label: 'Palenque',
+        active_color: 'bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700',
+        images: [
+          "/images/hoteles/paquetes/PALENQUE/palenque1.png",
+          "/images/hoteles/paquetes/PALENQUE/palenque2.png",
+        ],
+        link: "https://forms.cloud.microsoft/r/6SPw6Vtm5d?origin=lprLink",
+        description: "Joyas arquitectónicas en medio de la selva tropical."
+      },
+      {
+        id: 'calakmul',
+        label: 'Calakmul',
+        active_color: 'bg-gradient-to-r from-green-400 via-green-500 to-green-600',
+        images: [
+          "/images/hoteles/paquetes/CALAKMUL/calakmul OLR.png",
+        ],
+        link: "https://forms.cloud.microsoft/r/9LJF5VuWT3?origin=lprLink",
+        description: "Antigua ciudad maya escondida en la Reserva de la Biosfera."
+      },
+    ],
+    SEMANA_SANTA: [
+      {
+        id: 'tulum',
+        label: 'Tulum',
+        active_color: 'bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600',
+        images: [
+          "/images/hoteles/paquetes/TULUM/SEMANA_SANTA/SEMANA SANTA HORIZONTAL TULUM 2.jpg",
+          "/images/hoteles/paquetes/TULUM/SEMANA_SANTA/SEMANA SANTA HORIZONTAL TULUM.jpg",
+        ],
+        link: "https://forms.cloud.microsoft/r/siFvxDkdRs?origin=lprLink",
+        description: "Descubre las playas de arena blanca y ruinas mayas frente al mar Caribe.",
+        mail: "paquetestulum@grupomundomaya.com"
+      },
+      {
+        id: 'chichen',
+        label: 'Chichén Itzá',
+        active_color: 'bg-gradient-to-r from-red-400 via-red-500 to-red-600',
+        images: [
+          "/images/hoteles/paquetes/CHICHEN_ITZA/SEMANA_SANTA/SEMANA SANTA HORIZONTAL CHICHEN 2.jpg",
+          "/images/hoteles/paquetes/CHICHEN_ITZA/SEMANA_SANTA/SEMANA SANTA HORIZONTAL CHICHEN.jpg",
+        ],
+        link: "https://forms.cloud.microsoft/r/mUkfDkLCNH?origin=lprLink",
+        description: "Maravilla del mundo moderno, hogar de la pirámide de Kukulkán.",
+        mail: "paqueteschichenitza@grupomundomaya.com"
+      },
+      {
+        id: 'uxmal',
+        label: 'Nuevo Uxmal',
+        active_color: 'bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700',
+        images: [
+          "/images/hoteles/paquetes/NUEVO_UXMAL/SEMANA_SANTA/SEMANA SANTA HORIZONTAL  NUEVO UXMAL.jpg",
+          "/images/hoteles/paquetes/NUEVO_UXMAL/SEMANA_SANTA/SEMANA SANTA HORIZONTAL  NUEVO UXMAL.png",
+        ],
+        link: "https://forms.cloud.microsoft/r/hcrmxe0W14?origin=lprLink",
+        description: "Arquitectura maya Puuc en todo su esplendor.",
+        mail: "paquetesnuevouxmal@grupomundomaya.com"
+      },
+      {
+        id: 'edza',
+        label: 'Edzná',
+        active_color: 'bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700',
+        images: [
+          "/images/hoteles/paquetes/EDZNA/SEMANA_SANTA/SEMANA SANTA HORIZONTAL EDZNA 2.jpg",
+          "/images/hoteles/paquetes/EDZNA/SEMANA_SANTA/SEMANA SANTA HORIZONTAL EDZNA.jpg",
+        ],
+        link: "https://forms.cloud.microsoft/r/5geEFYW4Lp?origin=lprLink",
+        description: "La 'Casa de los Itzáes', famosa por su sistema hidráulico.",
+        mail: "paquetesedzna@grupomundomaya.com"
+      },
+      {
+        id: 'palenque',
+        label: 'Palenque',
+        active_color: 'bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700',
+        images: [
+          "/images/hoteles/paquetes/PALENQUE/SEMANA_SANTA/SEMANA SANTA HORIZONTAL PALENQUE 2.jpg",
+          "/images/hoteles/paquetes/PALENQUE/SEMANA_SANTA/SEMANA SANTA HORIZONTAL PALENQUE.jpg",
+        ],
+        link: "https://forms.cloud.microsoft/r/6SPw6Vtm5d?origin=lprLink",
+        description: "Joyas arquitectónicas en medio de la selva tropical.",
+        mail: "paquetespalenque@grupomundomaya.com"
+      },
+      {
+        id: 'calakmul',
+        label: 'Calakmul',
+        active_color: 'bg-gradient-to-r from-green-400 via-green-500 to-green-600',
+        images: [
+          "/images/hoteles/paquetes/CALAKMUL/SEMANA_SANTA/SEMANA SANTA HORIZONTAL.jpg",
+        ],
+        link: "https://forms.cloud.microsoft/r/9LJF5VuWT3?origin=lprLink",
+        description: "Antigua ciudad maya escondida en la Reserva de la Biosfera.",
+        mail: "paquetescalakmul@grupomundomaya.com"
+      },
+    ]
+  },
   FOOTER: [
-    {src:"/images/footer/MEXICOESTADEMODA_LOGO.png"},
-    {src:"/images/footer/Destino 2.png"}
+    { src: "/images/footer/MEXICOESTADEMODA_LOGO.png" },
+    { src: "/images/footer/Destino 2.png" }
   ],
   LOGO: "/images/GMM blanco.png",
   HOTEL_LOGO: {

@@ -65,8 +65,8 @@ function HotelContent() {
     const img_verticales = IMAGES_ROUTES.VERTICAL_IMAGES[destinoNormalizado as keyof typeof IMAGES_ROUTES.VERTICAL_IMAGES] || IMAGES_ROUTES.VERTICAL_IMAGES.TULUM;
 
     return (
-        <div className="lg:m-4 m-2">
-            <NavbarComponent />
+        <div className="lg:m-4 m-2 ">
+            <NavbarComponent destino={destinoNormalizado}/>
 
             <ReservationComponent
                 imageUrl={banner}
@@ -78,9 +78,9 @@ function HotelContent() {
 
             <HotelLocationComponent destino={destino} />
 
-            <div className="my-12" id='galerySection'>
+            <div className="mt-24" id='galerySection'>
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-gray-800 mb-2">Galería Visual</h2>
+                    <h2 className="lg:text-3xl text-xl font-bold text-gray-800 mb-2">Galería Visual</h2>
                     <p className="text-gray-600">Descubre la magia de {destino} a través de nuestras imágenes</p>
                 </div>
 

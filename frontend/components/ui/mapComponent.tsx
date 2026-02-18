@@ -286,7 +286,7 @@ const MapComponent: React.FC<ComponentProps> = ({
         <div className="flex flex-wrap items-center justify-between mb-4">
           <div>
             <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
-              <FaMapMarkerAlt className="text-teal-600" />
+              <FaMapMarkerAlt className="text-teal-600 lg:text-3xl text-xl" />
               {hasMultipleMarkers ? 'ubicaciones de los Hoteles' : 'Ubicación del Hotel'}
             </h3>
             {showMapType && (
