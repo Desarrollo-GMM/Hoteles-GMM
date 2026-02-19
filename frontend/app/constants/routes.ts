@@ -16,7 +16,9 @@ export const ROUTES = {
   SERVICES: '#servicesSection',
   GALLERY: '#galerySection',
   INIT: '#initSection',
-  TERMS_AND_CONDITIONS: "#termsAndConditions"
+  TERMS_AND_CONDITIONS: "#termsAndConditions",
+  BANNER_VIDEO: "videos/Hoteles.mp4",
+  BANNER_IMAGE: "images/686d5354c468605f89c569ae_calidad 5.jpg"
 } as const;
 
 export const HOTEL_DATA = {
@@ -24,40 +26,66 @@ export const HOTEL_DATA = {
     key: 'TULUM',
     name: 'Tulum',
     mail: "paquetestulum@grupomundomaya.com",
-    phone: ["983 689 0406", "984 231 2027"]
+    phone: ["983 689 0406", "984 231 2027"],
+    fullName: 'Hotel Mundo Maya Tulum',
+    image: '/images/hoteles/verticales/HOTEL_TULUM/HOTEL_TULUM_58.jpg',
+    alt: 'Imagen Hotel Tulum',
   },
   CHICHEN_ITZA: {
     key: 'CHICHEN_ITZA',
     name: 'Chichen Itzá',
     mail: "paquetestulum@grupomundomaya.com",
-    phone: ["985 688 0525", "985 688 0503"]
+    phone: ["985 688 0525", "985 688 0503"],
+    fullName: 'Hotel Mundo Maya Chichen Itzá',
+    image: '/images/hoteles/verticales/HOTEL_CHICHEN_ITZA/HOTEL CHICHEN_1.jpg',
+    alt: 'Imagen Hotel Chichen Itzá',
   },
   NUEVO_UXMAL: {
     key: 'NUEVO_UXMAL',
     name: 'Nuevo Uxmal',
     mail: "paquetestulum@grupomundomaya.com",
-    phone: ["996 432 3036"]
+    phone: ["996 432 3036"],
+    fullName: 'Hotel Mundo Maya Nuevo Uxmal',
+    image: '/images/hoteles/verticales/HOTEL_UXMAL/HOTEL UXMAL_640.jpg',
+    alt: 'Imagen Hotel Nuevo Uxmal'
   },
   CALAKMUL: {
     key: 'CALAKMUL',
     name: 'Calakmul',
     mail: "paquetestulum@grupomundomaya.com",
-    phone: ["983 689 0406", "984 231 2027"]
+    phone: ["983 689 0406", "984 231 2027"],
+    fullName: 'Hotel Mundo Maya Calakmul',
+    image: '/images/hoteles/verticales/HOTEL_CALAKMUL/HOTEL KALAKMUL_703.jpg',
+    alt: 'Imagen Hotel Calakmul',
   },
   EDZNA: {
     key: 'EDZNA',
     name: 'Edzná',
     mail: "paquetestulum@grupomundomaya.com",
-    phone: ["981 689 0590"]
+    phone: ["981 689 0590"],
+    fullName: 'Hotel Mundo Maya Edzná',
+    image: '/images/hoteles/verticales/HOTEL_EDZNA/HTM Edzna 2.jpeg',
+    alt: 'Imagen Hotel Edzná',
   },
   TULUM_AEROPUERTO: {
     key: 'TULUM_AEROPUERTO',
     name: 'Tulum Aeropuerto',
     mail: "paquetestulum@grupomundomaya.com",
-    phone: ["983 689 04 51"]
-  }
+    phone: ["983 689 04 51"],
+    fullName: 'Hotel Mundo Maya Tulum Aeropuerto',
+    image: '/images/hoteles/verticales/HOTEL_TULUM_AEROPUERTO/FACHADA DE NOCHE OFICIAL .png',
+    alt: 'Imagen Hotel Tulum Aeropuerto'
+  },
+  PALENQUE: {
+    key: 'PALENQUE',
+    name: 'Palenque',
+    mail: 'paquetespalenque@grupomundomaya.com',
+    phone: ["916 689 0498"],
+    fullName: 'Hotel Mundo Maya Palenque',
+    image: '/images/hoteles/verticales/HOTEL_PALENQUE/HOTEL_PALENQUE_3.JPG',
+    alt: 'Imagen Hotel Palenque',
+  },
 } as const;
-export type HotelKey = keyof typeof HOTEL_DATA;
 
 export const EXTERNAL_LINKS = {
   ABOUT: 'https://grupomundomaya.mx/',
@@ -262,7 +290,8 @@ export const IMAGES_ROUTES = {
         ],
         link: "https://forms.cloud.microsoft/r/siFvxDkdRs?origin=lprLink",
         description: "Descubre las playas de arena blanca y ruinas mayas frente al mar Caribe.",
-        mail: "paquetestulum@grupomundomaya.com"
+        mail: "paquetestulum@grupomundomaya.com",
+        cellphone: "5523328695"
       },
       {
         id: 'chichen',
@@ -274,7 +303,8 @@ export const IMAGES_ROUTES = {
         ],
         link: "https://forms.cloud.microsoft/r/mUkfDkLCNH?origin=lprLink",
         description: "Maravilla del mundo moderno, hogar de la pirámide de Kukulkán.",
-        mail: "paqueteschichenitza@grupomundomaya.com"
+        mail: "paqueteschichenitza@grupomundomaya.com",
+        cellphone: "5513935091"
       },
       {
         id: 'uxmal',
@@ -286,7 +316,8 @@ export const IMAGES_ROUTES = {
         ],
         link: "https://forms.cloud.microsoft/r/hcrmxe0W14?origin=lprLink",
         description: "Arquitectura maya Puuc en todo su esplendor.",
-        mail: "paquetesnuevouxmal@grupomundomaya.com"
+        mail: "paquetesnuevouxmal@grupomundomaya.com",
+        cellphone: "5559049706"
       },
       {
         id: 'edza',
@@ -298,7 +329,8 @@ export const IMAGES_ROUTES = {
         ],
         link: "https://forms.cloud.microsoft/r/5geEFYW4Lp?origin=lprLink",
         description: "La 'Casa de los Itzáes', famosa por su sistema hidráulico.",
-        mail: "paquetesedzna@grupomundomaya.com"
+        mail: "paquetesedzna@grupomundomaya.com",
+        cellphone: "5559048214"
       },
       {
         id: 'palenque',
@@ -310,7 +342,8 @@ export const IMAGES_ROUTES = {
         ],
         link: "https://forms.cloud.microsoft/r/6SPw6Vtm5d?origin=lprLink",
         description: "Joyas arquitectónicas en medio de la selva tropical.",
-        mail: "paquetespalenque@grupomundomaya.com"
+        mail: "paquetespalenque@grupomundomaya.com",
+        cellphone: "9166890498"
       },
       {
         id: 'calakmul',
@@ -321,7 +354,8 @@ export const IMAGES_ROUTES = {
         ],
         link: "https://forms.cloud.microsoft/r/9LJF5VuWT3?origin=lprLink",
         description: "Antigua ciudad maya escondida en la Reserva de la Biosfera.",
-        mail: "paquetescalakmul@grupomundomaya.com"
+        mail: "paquetescalakmul@grupomundomaya.com",
+        cellphone: "5559049871"
       },
     ]
   },

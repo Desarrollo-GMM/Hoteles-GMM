@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScrollDetection } from "@/lib/hooks/useScrollDetection";
 import WeatherComponent from "@/components/ui/weatherComponent";
+import { ROUTES } from "@/app/constants/routes";
 
 interface ReservationComponentProps {
     option: 1 | 2 | 3 | 4;
@@ -728,10 +729,10 @@ const Option4: React.FC<{
             >
                 {/* Video de fondo */}
                 <motion.div 
-                    className="absolute inset-0 h-full sm:h-[60vh] md:h-[72vh] lg:h-[100vh]"
-                    initial={{ scale: 1.1 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    className="absolute inset-0 h-full sm:h-[60vh] md:h-[72vh] lg:h-[100vh] scale-110"
+                    initial={{ scale: 0.1 }}
+                    animate={{ scale: 1.1 }}
+                    transition={{ duration: 1.5 }}
                 >
                     <video
                         ref={videoRef}
@@ -739,10 +740,11 @@ const Option4: React.FC<{
                         muted
                         playsInline
                         onEnded={handleVideoEnd}
+                        poster={ROUTES.BANNER_IMAGE}
                         className={`w-full h-full object-cover ${extraStyles} transition-opacity duration-1000 ${videoEnded ? 'opacity-50' : 'opacity-100'}`}
                         style={{ objectFit: 'cover' }}
                     >
-                        <source src="/videos/Hoteles.mp4" type="video/mp4" />
+                        <source src={ROUTES.BANNER_VIDEO} type="video/mp4" />
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-teal-800"></div>
                     </video>
 

@@ -36,7 +36,7 @@ const AdditionalInformationComponent: React.FC<ComponentProps> = ({
 
 }) => {
     return (
-        <div className="px-1 md:px-8 lg:px-20 py-1 lg:py-12">
+        <div className="px-1 py-1 lg:py-12 w-full md:w-5/6 lg:w-4/6 mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 m-3 lg:m-0 border border-gray-300 rounded-xl lg:border-none">
                 <div className="flex flex-col items-center justify-center m-3 lg:m-0" data-aos="fade-up">
                     <p className="uppercase text-xl lg:text-5xl font-bold text-center text-black">el corazón del sureste mexicano</p>

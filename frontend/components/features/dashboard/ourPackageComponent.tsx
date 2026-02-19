@@ -58,7 +58,7 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
     }, [isAutoPlaying, currentIndex]);
 
     return (
-        <div className="px-4 md:px-8 lg:px-20 lg:py-12 py-5">
+        <div className="lg:py-12 py-5 w-full md:w-5/6 lg:w-4/6 mx-auto">
             <div className="grid lg:grid-cols-2 gap-8 mb-12" data-aos="fade-up">
                 <div className="flex items-center text-center">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl lg:px-28 font-bold uppercase leading-tight text-black">
@@ -73,7 +73,7 @@ const OurPackageComponent: React.FC<ComponentProps> = () => {
             </div>
 
             <div className="relative w-full overflow-hidden px-4" data-aos="fade-up">
-                <div className="relative h-[250px] md:h-[300px] lg:h-[400px] w-full">
+                <div className="relative h-[250px] md:h-[300px] lg:h-[350px] w-full">
                     <div 
                         className="flex w-72 lg:w-full h-full transition-transform duration-500 ease-in-out gap-3 md:gap-4 lg:gap-5"
                         style={{ 

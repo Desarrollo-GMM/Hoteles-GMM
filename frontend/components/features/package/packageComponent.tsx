@@ -151,9 +151,9 @@ const PackageComponent: React.FC = () => {
             className="grid grid-cols-1 gap-6 lg:grid-cols-2"
           >
             {activeTabData?.images.map((image, index) => (
-              <div className='grid grid-cols-1'>
+              <div className='grid grid-cols-1' key={index}>
                 <motion.div
-                  key={index}
+                  key={activeTabData.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
@@ -175,15 +175,16 @@ const PackageComponent: React.FC = () => {
                   Cotiza tu paquete en los siguientes números:
                 </div>
                 <div className="w-full flex flex-row ">
-                  <a href='https://wa.me/5660568009' 
+                  <a href={`https://wa.me/${activeTabData.cellphone}`} 
                       target='_blank' 
                       rel='noopener noreferrer' 
-                      className='bg-teal-500 border-2 border-teal-500 text-teal-100 w-1/2 rounded-r-none text-center rounded-b-xl'>
-                    Whatsapp: <span className='font-bold'>+52 56 60568009</span>
+                      className={`flex align-middle justify-center gap-2 bg-teal-500 border-2 border-teal-500 text-white w-1/2 rounded-r-none text-center rounded-b-xl`}>
+                      <WhatsappIcon className='h-12 flex align-middle' classIcon='m-auto h-10 w-auto'/>
+                      <span className='my-auto font-bold'>WhatsApp</span>
                   </a>
                   <a href='tel:5966890116' 
-                      className='bg-blue-500 border-2 border-blue-500 text-blue-100 w-1/2 rounded-l-none text-center rounded-b-xl'>
-                    Teléfono: <span className='font-bold'>+52 59 6689 0116</span>
+                      className={`flex align-middle justify-center gap-2 text-white w-1/2 rounded-l-none text-center rounded-b-xl ${activeTabData.active_color}`}>
+                    <span className='my-auto'>Teléfono:</span> <span className='my-auto font-bold'>+52 59 6689 0116</span>
                   </a>
                 </div>
               </div>
