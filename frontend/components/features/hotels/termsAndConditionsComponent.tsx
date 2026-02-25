@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { TERMS_AND_CONDITIONS } from '@/app/constants/termsAndConditions'
 
 // ==================== TIPOS ====================
@@ -20,7 +20,6 @@ const limpiarConCaracteresEspecificos = (texto: string) => {
         .replace(/\s+/g, '_')
         .trim();
 };
-
 
 // ==================== TYPE GUARDS ====================
 function hasEnvironmentalSanitationFee(data: HotelData): data is typeof TERMS_AND_CONDITIONS.TULUM | typeof TERMS_AND_CONDITIONS.TULUM_AEROPUERTO {
@@ -65,8 +64,8 @@ export default function TermsAndConditionComponent({ destino }: Props) {
       minimumFractionDigits: 2,
     }).format(amount)
 
-  // Configuración de animación para secciones
-  const sectionVariants = {
+  // Configuración de animación para secciones (AHORA TIPADO CORRECTAMENTE)
+  const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: (custom: number) => ({
       opacity: 1,
@@ -75,8 +74,8 @@ export default function TermsAndConditionComponent({ destino }: Props) {
     })
   }
 
-  // Animación para items de lista
-  const itemVariants = {
+  // Animación para items de lista (TIPADO)
+  const itemVariants: Variants = {
     hidden: { opacity: 0, x: -10 },
     visible: (i: number) => ({
       opacity: 1,

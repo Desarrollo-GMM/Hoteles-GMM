@@ -89,7 +89,7 @@ function FitBoundsToMarkers({ positions, defaultZoom }: { positions: [number, nu
   return null;
 }
 
-function AnimatedMarker({ position, icon, children }: { position: [number, number]; icon: L.Icon; children?: React.ReactNode }) {
+function AnimatedMarker({ position, icon, children }: { position: [number, number]; icon: L.Icon | L.DivIcon; children?: React.ReactNode }) {
   const markerRef = useRef<L.Marker | null>(null);
   const previousPosition = useRef<[number, number] | null>(null);
 
@@ -287,7 +287,7 @@ const MapComponent: React.FC<ComponentProps> = ({
           <div>
             <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
               <FaMapMarkerAlt className="text-teal-600 lg:text-3xl text-xl" />
-              {hasMultipleMarkers ? 'ubicaciones de los Hoteles' : 'Ubicación del Hotel'}
+              {hasMultipleMarkers ? 'Ubicacion de los Hoteles' : 'Ubicación del Hotel'}
             </h3>
             {showMapType && (
               <p className="text-gray-600 text-sm text-center lg:text-left">

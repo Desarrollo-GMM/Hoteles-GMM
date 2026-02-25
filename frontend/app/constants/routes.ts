@@ -17,7 +17,8 @@ export const ROUTES = {
   GALLERY: '#galerySection',
   INIT: '#initSection',
   TERMS_AND_CONDITIONS: "#termsAndConditions",
-  BANNER_VIDEO: "videos/Hoteles.mp4",
+  // BANNER_VIDEO: "videos/VIDEO PAGINA HOTELES V2 .mp4",
+  BANNER_VIDEO: "videos/VIDEO PAGINA HOTELES V2_1 .mp4",
   BANNER_IMAGE: "images/686d5354c468605f89c569ae_calidad 5.jpg"
 } as const;
 
@@ -369,11 +370,13 @@ export const IMAGES_ROUTES = {
     WHITE: "/images/navbar/LogoHotelesGMM-White.png"
   },
   MADE_IN_MEXICO: "/images/footer/HechoEnMexico-white.png",
-  ENREDADERA: "/images/enredadera-verde.png"
+  ENREDADERA: "/images/enredadera-verde.png",
+  MEXICO_MODA: "/images/footer/MEXICOESTADEMODA_LOGO.png",
 } as const;
 
 export const SVG_ROUTES = {
-  GENERAL_MARKER: "/svg/markers/hotel-location-svgrepo-com.svg"
+  // GENERAL_MARKER: "/svg/markers/hotel-location-svgrepo-com.svg"
+  GENERAL_MARKER: "/svg/markers/Proyecto nuevo 1.png"
 }
 
 export const hotelLocations = [

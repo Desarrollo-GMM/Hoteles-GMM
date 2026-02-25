@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { IMAGES_ROUTES } from '@/app/constants/routes';
 
 interface GaleriaInteractivaProps {
@@ -86,7 +86,7 @@ const GaleriaInteractiva: React.FC<GaleriaInteractivaProps> = ({
   });
 
   // Variantes de animación para las imágenes de la galería
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -97,13 +97,13 @@ const GaleriaInteractiva: React.FC<GaleriaInteractivaProps> = ({
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 260,
         damping: 20,
       },
@@ -115,7 +115,7 @@ const GaleriaInteractiva: React.FC<GaleriaInteractivaProps> = ({
       <div className="max-w-7xl mx-auto w-full flex flex-col h-full">
         {/* Área de scroll interno */}
         <div className="flex-1 overflow-y-auto pr-2 bg-blur-sm scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-          
+
           {/* Contenedor flex horizontal con columnas de ancho fijo */}
           <div className="flex flex-wrap -mx-2 pb-6">
             {columns.map((col, colIdx) => (

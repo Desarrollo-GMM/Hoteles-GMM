@@ -1,5 +1,8 @@
 # 📄 ESTANDARIZACIÓN DE ARQUITECTURA DE LOS APLICATIVOS
 
+```
+tree -I "node_modules|.git|.next" -L 3 --prune > arquitectura.txt
+``` 
 
 **Descripción breve**: 
 >Esta guía muestra las estructuras típicas de archivos TypeScript (.tsx) en proyectos Next.js con App Router y Pages Router. Tiene como finalidad estandarizar la arquitectura de los aplicativos para mejorar la comprencion tecnica.

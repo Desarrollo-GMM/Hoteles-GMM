@@ -13,6 +13,7 @@ import ModalPromotionComponent from '@/components/layouts/promotions/modalPromot
 import TermsAndConditionComponent from "@/components/features/hotels/termsAndConditionsComponent"
 import HotelPrevieComponent from "@/components/features/dashboard/hotelPreviewComponent"
 import CheckingHotelComponent from "@/components/features/dashboard/checkingHotelComponent"
+import ExploreComponent from "@/components/features/dashboard/exploreComponent"
 
 import SimpleParallax from "simple-parallax-js"
 import Image from "next/image"
@@ -23,12 +24,12 @@ const Page: React.FC = () => {
     const images = IMAGES_ROUTES.PAQUETES_DATA.SEMANA_SANTA.flatMap(paquete => paquete.images);
     return (
         <div className="relative">
-            <NavbarComponent design={3} />
+            <NavbarComponent design={2} />
 
             <div className="min-h-screen">
 
                 <div className="">
-                    <ReservationComponent option={2} />
+                    <ReservationComponent option={4} imageOverBanner={IMAGES_ROUTES.MEXICO_MODA} />
                 </div>
 
                 <OurPackageComponent />
@@ -71,6 +72,8 @@ const Page: React.FC = () => {
                 <div className="">
                     <AdditionalInformationComponent />
                 </div>
+
+                <ExploreComponent />
 
                 <div className="" data-aos="fade-up">
                     <TextOverImageComponent

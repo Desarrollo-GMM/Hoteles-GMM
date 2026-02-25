@@ -22,7 +22,7 @@ const defaultMarkers = hotelLocations.map((location) => ({
     <div className="p-3 min-w-[200px]">
       <h3 className="font-bold text-teal-700 text-lg mb-1">🏨 {location.city}</h3>
       <p className="text-sm text-gray-600 mb-2">
-        Hotel boutique en zona arqueológica.
+        Disfruta de la comodidad y el encanto de nuestros hoteles en {location.city}, donde cada estancia es una experiencia inolvidable.
       </p>
       <div className="text-xs bg-gray-100 p-2 rounded">
         <p><span className="font-medium">Lat:</span> {location.lat.toFixed(6)}</p>
