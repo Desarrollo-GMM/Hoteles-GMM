@@ -4,6 +4,7 @@ import './globals.css';
 import './styles/global.css';
 
 import AOSInit from '@/components/AOSInit'
+import { N8nChatWidget } from '@/components/ui/N8nChatWidget';
 
 
 const roboto = Roboto({
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body className={roboto.className}>
         <AOSInit />
         {children}
+        <N8nChatWidget/>
       </body>
     </html>
   )

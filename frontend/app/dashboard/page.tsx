@@ -96,7 +96,7 @@ const Page: React.FC = () => {
                     <VideoBandComponent />
                 </div> */}
 
-                <DropButtonContactComponent />
+                {/* <DropButtonContactComponent /> */}
 
                 
             </div>

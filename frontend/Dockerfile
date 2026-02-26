@@ -1,6 +1,7 @@
-FROM node:22-alpine as dev
+FROM node:22-slim as dev
 
-RUN apk add --no-cache libc6-compat
+# Install build dependencies for native modules (sharp, etc.)
+RUN apt-get update && apt-get install -y python3 build-essential ca-certificates --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -10,10 +11,8 @@ COPY package.json package-lock.json ./
 # Desactivar telemetría SOLO UNA VEZ al principio
 RUN npx next telemetry disable || echo "Telemetry disabled"
 
-# INSTALAR @types/aos
-RUN npm install --save-dev @types/aos@latest
-
-# Instalar todas las demás dependencias
+# INSTALAR @types/aos (si es necesario) y dependencias
+RUN npm install --save-dev @types/aos@latest || true
 RUN npm ci --include=dev
 
 # Verificar que @types/aos está instalado
@@ -42,8 +41,8 @@ RUN if [ -f "app/scripts/convert-images.js" ]; then \
       echo "⚠ convert-images.js no encontrado, omitiendo..."; \
     fi
 
-# Construir la aplicación
-RUN npm run build
+# Construir la aplicación (usar el bin directo de Next para evitar problemas de require relativo)
+RUN node node_modules/next/dist/bin/next build
 
 EXPOSE 3000
 
